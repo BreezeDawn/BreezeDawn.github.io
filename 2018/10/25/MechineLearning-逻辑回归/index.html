@@ -105,7 +105,7 @@
 <meta property="og:description" content="什么是逻辑回归逻辑回归算法是分类算法，可能它的名字里出现了“回归”让我们以为它属于回归问题，但逻辑回归算法实际上是一种分类算法，它主要处理当  $y$ 取值离散的情况，如：1 0 。 为什么不使用线性回归算法处理分类问题假设我们遇到的问题为 二分类问题，那么我们可能将结果分为负向类和正向类，即$y\in0,1$ ，其中 0 表示负向类，1 表示正向类。如果我们使用线性回归，那么假设函数的输出值可能">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/1540643022637.png">
-<meta property="og:updated_time" content="2018-10-29T02:43:55.715Z">
+<meta property="og:updated_time" content="2018-10-29T14:07:20.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习-逻辑回归">
 <meta name="twitter:description" content="什么是逻辑回归逻辑回归算法是分类算法，可能它的名字里出现了“回归”让我们以为它属于回归问题，但逻辑回归算法实际上是一种分类算法，它主要处理当  $y$ 取值离散的情况，如：1 0 。 为什么不使用线性回归算法处理分类问题假设我们遇到的问题为 二分类问题，那么我们可能将结果分为负向类和正向类，即$y\in0,1$ ，其中 0 表示负向类，1 表示正向类。如果我们使用线性回归，那么假设函数的输出值可能">
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
+                  1.8k
                 </span>
               
 
@@ -433,10 +433,10 @@
 <h3 id="为什么不使用线性回归算法处理分类问题"><a href="#为什么不使用线性回归算法处理分类问题" class="headerlink" title="为什么不使用线性回归算法处理分类问题"></a>为什么不使用线性回归算法处理分类问题</h3><p>假设我们遇到的问题为 二分类问题，那么我们可能将结果分为负向类和正向类，即$y\in0,1$ ，其中 0 表示负向类，1 表示正向类。如果我们使用线性回归，那么假设函数的输出值可能远大于 1，或者远小于0，但是我们需要的假设函数输出值需要在0到 1 之间，因此我们需要用到逻辑回归算法。</p>
 <a id="more"></a>
 <h3 id="逻辑回归的假设函数与理解"><a href="#逻辑回归的假设函数与理解" class="headerlink" title="逻辑回归的假设函数与理解"></a>逻辑回归的假设函数与理解</h3><h4 id="逻辑回归的假设函数-sigmoid-function-表示方法"><a href="#逻辑回归的假设函数-sigmoid-function-表示方法" class="headerlink" title="逻辑回归的假设函数 sigmoid function 表示方法 :"></a>逻辑回归的假设函数 sigmoid function 表示方法 :</h4><p>$$<br>h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}<br>$$</p>
-<h4 id="理解记忆"><a href="#理解记忆" class="headerlink" title="理解记忆:"></a>理解记忆:</h4><p>其实里面的$\theta_Tx$就是线性回归时的假设函数 h(x) ，<br>$$<br>h(x) = \theta^Tx = \sum_{j=0}^{n}{\theta_jx_j}<br>$$<br>而逻辑回归的假设函数其实就是将线性回归的表达式 h(x) <font color="rubine">以 z 的形式代入到了 S 型函数(sigmoid function) </font>中 :<br>$$<br>g(h(x)) = g(z) = \frac{1}{1+e^{-z}}<br>$$<br>ps: 这里我们用$h(x)$表示的是线性回归的假设函数，之后的$h$都将表示 sigmoid 函数。</p>
+<h4 id="理解记忆"><a href="#理解记忆" class="headerlink" title="理解记忆:"></a>理解记忆:</h4><p>其实里面的$\theta_Tx$就是线性回归时的假设函数 h(x) ，<br>$$<br>h(x) = \theta^Tx = \sum_{j=0}^{n}{\theta_jx_j}<br>$$<br>而逻辑回归的假设函数其实就是将线性回归的表达式 h(x) <font color="rubin">以 z 的形式代入到了 S 型函数(sigmoid function) </font>中 :<br>$$<br>g(h(x)) = g(z) = \frac{1}{1+e^{-z}}<br>$$<br>ps: 这里我们用$h(x)$表示的是线性回归的假设函数，之后的$h$都将表示 逻辑回归的假设函数。值得一提的是S型函数和我们的假设函数没关系，它只是一个输出值在0~1之间的函数，仅此而已。我们做的只是把之前得到的线性回归假设函数给代入进去形成逻辑回归的假设函数，这样</p>
 <h4 id="对假设函数的解释"><a href="#对假设函数的解释" class="headerlink" title="对假设函数的解释 :"></a>对假设函数的解释 :</h4><p>给定 x ，根据选择的参数计算出<code>y = 1</code> 的概率 ，具体的概率公式如下 :<br>$$<br>h_\theta(x) = P(y=1|x; \theta)<br>$$</p>
 <h4 id="Sigmoid-Python"><a href="#Sigmoid-Python" class="headerlink" title="Sigmoid - Python:"></a>Sigmoid - Python:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-z))</span><br></pre></td></tr></table></figure>
-<h3 id="判定边界-decision-boundary"><a href="#判定边界-decision-boundary" class="headerlink" title="判定边界(decision boundary)"></a>判定边界(decision boundary)</h3><h4 id="如何得出判定边界"><a href="#如何得出判定边界" class="headerlink" title="如何得出判定边界 :"></a>如何得出判定边界 :</h4><p>在 Sigmoid 中，但凡输出结果 $h_\theta(x)$大于 0.5 的，我们都将预测结果 $y$ 收敛于 1 ；小于 0.5 的，收敛于 0 ；而恰好等于 0.5 的，收敛1 或 0 都可以，我们可以自己设定它如何收敛。由此，我们的输出值就都在 0 到 1 之间了。而当 $h_\theta(x)$ 大于 0.5 时，$\theta^Tx$ 大于 0.5， $h_\theta(x)$ 小于 0.5 时，$\theta^Tx$ 小于 0.5， $h_\theta(x)$ 等于 0.5 时，$\theta^Tx$ 等于 0.5。<br>当然，具体的阈值是可以调整的，比如说你是一个比较保守的人，可能将阈值设为 0.9 ，也就是说有超过 90% 的把握，才相信这个$y$收敛于 1 。</p>
+<h3 id="判定边界-decision-boundary"><a href="#判定边界-decision-boundary" class="headerlink" title="判定边界(decision boundary)"></a>判定边界(decision boundary)</h3><h4 id="如何得出判定边界"><a href="#如何得出判定边界" class="headerlink" title="如何得出判定边界 :"></a>如何得出判定边界 :</h4><p>在 逻辑回归的假设函数中，但凡输出结果 $h_\theta(x)$大于 0.5 的，我们都将预测结果 $y$ 收敛于 1 ；小于 0.5 的，收敛于 0 ；而恰好等于 0.5 的，收敛1 或 0 都可以，我们可以自己设定它如何收敛。由此，我们的输出值就都在 0 到 1 之间了。而当 $h_\theta(x)$ 大于 0.5 时，$\theta^Tx$ 大于 0.5， $h_\theta(x)$ 小于 0.5 时，$\theta^Tx$ 小于 0.5， $h_\theta(x)$ 等于 0.5 时，$\theta^Tx$ 等于 0.5。<br>当然，具体的阈值是可以调整的，比如说你是一个比较保守的人，可能将阈值设为 0.9 ，也就是说有超过 90% 的把握，才相信这个$y$收敛于 1 。</p>
 <p>由此，我们能够绘制出判定边界 :<br>$$<br>\theta^Tx = 0<br>$$</p>
 <h4 id="关于判定边界"><a href="#关于判定边界" class="headerlink" title="关于判定边界 :"></a>关于判定边界 :</h4><ol>
 <li>决策边界不是训练集的属性，而是假设本身及其参数的属性</li>
@@ -640,7 +640,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -787,7 +787,7 @@
   <span class="post-meta-divider">|</span>
 
   <div class="theme-info">
-    <span class="post-count">博客全站共4.3k字</span>
+    <span class="post-count">博客全站共5.4k字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
@@ -1325,6 +1325,6 @@
   
 
   <script type="text/javascript" src="/js/src/china.js"></script>
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false});</script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true},"log":false});</script>
 </body>
 </html>
