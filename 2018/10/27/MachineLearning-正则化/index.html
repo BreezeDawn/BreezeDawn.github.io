@@ -96,18 +96,20 @@
 
 
 
-<meta name="description" content="正则化">
+<meta name="description" content="1. 正则化它可以改善或者减少过度拟合问题 2. 欠拟合(模型的高偏差)欠拟合是指模型拟合程度不高，数据距离拟合曲线较远，或者模型没有很好地捕捉到数据特征，不能够很好地拟合数据。">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MachineLearning-正则化">
+<meta property="og:title" content="机器学习-正则化">
 <meta property="og:url" content="http://yoursite.com/2018/10/27/MachineLearning-正则化/index.html">
 <meta property="og:site_name" content="Maifeel">
-<meta property="og:description" content="正则化">
+<meta property="og:description" content="1. 正则化它可以改善或者减少过度拟合问题 2. 欠拟合(模型的高偏差)欠拟合是指模型拟合程度不高，数据距离拟合曲线较远，或者模型没有很好地捕捉到数据特征，不能够很好地拟合数据。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-27T14:11:35.532Z">
+<meta property="og:image" content="http://yoursite.com/img/正则化.png">
+<meta property="og:updated_time" content="2018-10-29T08:41:47.139Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MachineLearning-正则化">
-<meta name="twitter:description" content="正则化">
+<meta name="twitter:title" content="机器学习-正则化">
+<meta name="twitter:description" content="1. 正则化它可以改善或者减少过度拟合问题 2. 欠拟合(模型的高偏差)欠拟合是指模型拟合程度不高，数据距离拟合曲线较远，或者模型没有很好地捕捉到数据特征，不能够很好地拟合数据。">
+<meta name="twitter:image" content="http://yoursite.com/img/正则化.png">
 
 
 
@@ -145,7 +147,7 @@
 
 
 
-  <title>MachineLearning-正则化 | Maifeel</title>
+  <title>机器学习-正则化 | Maifeel</title>
   
 
 
@@ -330,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MachineLearning-正则化</h1>
+          <h1 class="post-title" itemprop="name headline">机器学习-正则化</h1>
         
 
         <div class="post-meta">
@@ -402,7 +404,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3
+                  1.4k
                 </span>
               
 
@@ -427,7 +429,42 @@
       
 
       
-        <h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3>
+        <h2 id="1-正则化"><a href="#1-正则化" class="headerlink" title="1. 正则化"></a>1. 正则化</h2><p>它可以改善或者减少过度拟合问题</p>
+<h2 id="2-欠拟合-模型的高偏差"><a href="#2-欠拟合-模型的高偏差" class="headerlink" title="2. 欠拟合(模型的高偏差)"></a>2. 欠拟合(模型的高偏差)</h2><p>欠拟合是指模型拟合程度不高，数据距离拟合曲线较远，或者模型没有很好地捕捉到数据特征，不能够很好地拟合数据。</p>
+<a id="more"></a>
+<h2 id="3-过拟合-模型的高方差"><a href="#3-过拟合-模型的高方差" class="headerlink" title="3. 过拟合(模型的高方差)"></a>3. 过拟合(模型的高方差)</h2><h4 id="为什么出现过拟合"><a href="#为什么出现过拟合" class="headerlink" title="为什么出现过拟合"></a>为什么出现过拟合</h4><ol>
+<li>特征过多</li>
+<li>训练集数据较少</li>
+<li>模型复杂</li>
+</ol>
+<h4 id="对过拟合的理解"><a href="#对过拟合的理解" class="headerlink" title="对过拟合的理解"></a>对过拟合的理解</h4><p>如果我们拟合一个高阶多项式，那么这个函数能很好的拟合训练集能拟合几乎所有的训练数据，这就面临可能函数太过庞大的问题，即变量太多。同时如果我们没有足够的数据去约束这个变量过多的模型，就会出现过度拟合的情况。虽然训练出的模型能够很好的拟合训练集的样本数据，但很有可能无法泛化新样本。</p>
+<h4 id="如何解决过拟合"><a href="#如何解决过拟合" class="headerlink" title="如何解决过拟合"></a>如何解决过拟合</h4><ul>
+<li><h5 id="尽量减少选取特征数量。"><a href="#尽量减少选取特征数量。" class="headerlink" title="尽量减少选取特征数量。"></a>尽量减少选取特征数量。</h5><p>后面会学到模型选择算法 ，它能够自动选择采用哪些特征变量，且自动舍弃不需要的变量</p>
+</li>
+<li><h5 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h5><p>保留所有特征变量，但是减少参数$\theta_j$的大小</p>
+</li>
+</ul>
+<h2 id="4-怎么应用正则化"><a href="#4-怎么应用正则化" class="headerlink" title="4. 怎么应用正则化"></a>4. 怎么应用正则化</h2><h4 id="思想与做法"><a href="#思想与做法" class="headerlink" title="思想与做法"></a>思想与做法</h4><p>修改代价函数，从而<strong>收缩(惩罚)所有的参数值</strong>，因为我们并不知道具体的去收缩(惩罚)哪些参数，</p>
+<p>修改后的代价函数如下：<br>$$<br>J\left(\theta\right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{({h_\theta}({x}^{(i)})-{y}^{(i)})^{2}+\lambda \sum\limits_{j=1}^{n}\theta_{j}^{2}]}<br>$$<br>$\lambda $又称为正则化参数（<strong>Regularization Parameter</strong>），它能够平衡代价函数，使$\theta_j$尽可能的小。</p>
+<p>注：根据惯例，我们的$j$是从1开始的，也就是我们不对${\theta_{0}}$ 进行惩罚。</p>
+<h4 id="举一个例子"><a href="#举一个例子" class="headerlink" title="举一个例子"></a>举一个例子</h4><p>我们看这个假设函数: $h_\theta\left( x \right)=\theta_{0}+\theta_{1}x_{1}+\theta_{2}x_{2}^2+\theta_{3}x_{3}^3+\theta_{4}x_{4}^4$ 。<strong>通常地，正是那些高次项导致了过拟合的产生，所以如果我们能让这些高次项的系数接近于0的话，我们就能很好的拟合了。</strong>于是我们将修改代价函数，在其中${\theta_{3}}$和${\theta_{4}}$ 设置一点惩罚。这样做的话，我们在尝试最小化代价时也需要将这个惩罚纳入考虑中，并最终导致选择较小一些的${\theta_{3}}$和${\theta_{4}}$。修改后如下 :<br>$$<br>\underset{\theta}{\mathop\min }\,\frac{1}{2m}[\sum\limits_{i=1}^{m}{\left({h}_{\theta }\left( {x}^{(i)} \right)-{y}^{(i)} \right)^{2}+1000\theta _{3}^{2}+10000\theta _{4}^{2}]}<br>$$<br>但是正是因为我们并不知道具体的哪一个$\theta$是高次项，因此我们只能去收缩(惩罚)所有参数。</p>
+<h4 id="但是"><a href="#但是" class="headerlink" title="但是"></a>但是</h4><p>如果我们令 $\lambda$ 的值很大的话，那么$\theta $（不包括${\theta_{0}}$）都会趋近于0，这样我们所得到的只能是一条平行于$x$轴的直线。所以对于正则化，我们要取一个合理的 $\lambda$ 的值，这样才能更好的应用正则化。</p>
+<h2 id="5-正则化线性回归"><a href="#5-正则化线性回归" class="headerlink" title="5. 正则化线性回归"></a>5. 正则化线性回归</h2><h4 id="正则化代价函数"><a href="#正则化代价函数" class="headerlink" title="正则化代价函数"></a>正则化代价函数</h4><p>$$<br>J\left(\theta\right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{[(({h_\theta}({x}^{(i)})-{y}^{(i)})}^{2}+\lambda \sum\limits_{j=1}^{n}{\theta _{j}^{2})]}<br>$$</p>
+<h4 id="正则化梯度下降"><a href="#正则化梯度下降" class="headerlink" title="正则化梯度下降"></a>正则化梯度下降</h4><p>要使梯度下降法令正则化后的线性回归代价函数最小化，因为我们没有对$\theta_0$进行正则化，所以梯度下降算法有两种情形：<br>$$<br>{\theta_0}:={\theta_0}-a\frac{1}{m}\sum\limits_{i=1}^{m}(({h_\theta}({x}^{(i)})-{y}^{(i)})x_{0}^{(i)})<br>$$</p>
+<p>$$<br>{\theta_j}:={\theta_j}-a[\frac{1}{m}\sum\limits_{i=1}^{m}({h_\theta}({x}^{(i)})-{y}^{(i)})x_{j}^{\left(i\right)}+\frac{\lambda }{m}{\theta_j}]<br>$$</p>
+<p>对第二个式子进行变化后，可得:<br>$$<br>{\theta_j}:={\theta_j}(1-a\frac{\lambda }{m})-a\frac{1}{m}\sum\limits_{i=1}^{m}({h_\theta}({x}^{(i)})-{y}^{(i)})x_{j}^{\left(i\right)}<br>$$<br>可以看出，正则化线性回归的梯度下降算法的变化在于，每次都在原有算法更新规则的基础上令$\theta $值减少了一个额外的值。</p>
+<p>PS：梯度下降仍然是对$J(\theta)$进行最小化，通过求导，得出梯度下降算法</p>
+<h4 id="正则化正规方程"><a href="#正则化正规方程" class="headerlink" title="正则化正规方程"></a>正则化正规方程</h4><p><img src="/img/正则化.png" alt="在这里插入图片描述"></p>
+<p>注：图中的矩阵尺寸为 $(n+1)*(n+1)$。</p>
+<p>值得一提的是，哪怕此时$X$不可逆，经过$\lambda$相加变化后的矩阵将是可逆的。</p>
+<h2 id="6-正则化逻辑回归"><a href="#6-正则化逻辑回归" class="headerlink" title="6. 正则化逻辑回归"></a>6. 正则化逻辑回归</h2><h4 id="正则化代价函数-1"><a href="#正则化代价函数-1" class="headerlink" title="正则化代价函数"></a>正则化代价函数</h4><p>$$<br>J\left(\theta\right)=\frac{1}{m}\sum\limits_{i=1}^{m}{[-{y}^{(i)}\log \left({h_\theta}\left({x}^{(i)}\right)\right)-\left(1-{y}^{(i)} \right)\log\left(1-{h_\theta}\left({x}^{(i)}\right) \right)]}+\frac{\lambda}{2m}\sum\limits_{j=1}^{n}\theta _{j}^{2}<br>$$</p>
+<p>​    ps：注意这里$\lambda$的仍为$\frac{1}{2m}$</p>
+<h4 id="正则化梯度下降-1"><a href="#正则化梯度下降-1" class="headerlink" title="正则化梯度下降"></a>正则化梯度下降</h4><p>类似地，因为我们没有对$\theta_0$进行正则化，所以梯度下降算法有两种情形：<br>$$<br>{\theta_0}:={\theta_0}-a\frac{1}{m}\sum\limits_{i=1}^{m}(({h_\theta}({x}^{(i)})-{y}^{(i)})x_{0}^{(i)})<br>$$</p>
+<p>$$<br>{\theta_j}:={\theta_j}-a[\frac{1}{m}\sum\limits_{i=1}^{m}({h_\theta}({x}^{(i)})-{y}^{(i)})x_{j}^{\left( i \right)}+\frac{\lambda }{m}{\theta_j}]<br>$$</p>
+<p>看起来和线性回归的一模一样，实际上我们知道这里 ${h_\theta}\left( x \right)=g\left( {\theta^T}X \right)$，所以与线性回归不同。</p>
+<p>PS：值得注意的是，${\theta_{0}}$仍然不参与其中的任何一个正则化。</p>
+<h2 id="注"><a href="#注" class="headerlink" title="注:"></a>注:</h2><h4 id="泛化能力（generalization-ability）"><a href="#泛化能力（generalization-ability）" class="headerlink" title="泛化能力（generalization ability）"></a>泛化能力（generalization ability）</h4><p>泛化能力是指机器学习算法对新鲜样本的适应能力。学习的目的是学到隐含在数据背后的规律，对具有同一规律的学习集以外的数据，经过训练的模型也能给出合适的输出，该能力称为泛化能力。</p>
+
       
     </div>
     
@@ -505,8 +542,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/25/MechineLearning-逻辑回归/" rel="next" title="MachineLearning-逻辑回归">
-                <i class="fa fa-chevron-left"></i> MachineLearning-逻辑回归
+              <a href="/2018/10/25/MechineLearning-逻辑回归/" rel="next" title="机器学习-逻辑回归">
+                <i class="fa fa-chevron-left"></i> 机器学习-逻辑回归
               </a>
             
           </div>
@@ -695,7 +732,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则化"><span class="nav-number">1.</span> <span class="nav-text">正则化</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-正则化"><span class="nav-number">1.</span> <span class="nav-text">1. 正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-欠拟合-模型的高偏差"><span class="nav-number">2.</span> <span class="nav-text">2. 欠拟合(模型的高偏差)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-过拟合-模型的高方差"><span class="nav-number">3.</span> <span class="nav-text">3. 过拟合(模型的高方差)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么出现过拟合"><span class="nav-number">3.0.1.</span> <span class="nav-text">为什么出现过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对过拟合的理解"><span class="nav-number">3.0.2.</span> <span class="nav-text">对过拟合的理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何解决过拟合"><span class="nav-number">3.0.3.</span> <span class="nav-text">如何解决过拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#尽量减少选取特征数量。"><span class="nav-number">3.0.3.1.</span> <span class="nav-text">尽量减少选取特征数量。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#正则化"><span class="nav-number">3.0.3.2.</span> <span class="nav-text">正则化</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#4-怎么应用正则化"><span class="nav-number">4.</span> <span class="nav-text">4. 怎么应用正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#思想与做法"><span class="nav-number">4.0.1.</span> <span class="nav-text">思想与做法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举一个例子"><span class="nav-number">4.0.2.</span> <span class="nav-text">举一个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#但是"><span class="nav-number">4.0.3.</span> <span class="nav-text">但是</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-正则化线性回归"><span class="nav-number">5.</span> <span class="nav-text">5. 正则化线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则化代价函数"><span class="nav-number">5.0.1.</span> <span class="nav-text">正则化代价函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则化梯度下降"><span class="nav-number">5.0.2.</span> <span class="nav-text">正则化梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则化正规方程"><span class="nav-number">5.0.3.</span> <span class="nav-text">正则化正规方程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-正则化逻辑回归"><span class="nav-number">6.</span> <span class="nav-text">6. 正则化逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则化代价函数-1"><span class="nav-number">6.0.1.</span> <span class="nav-text">正则化代价函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则化梯度下降-1"><span class="nav-number">6.0.2.</span> <span class="nav-text">正则化梯度下降</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注"><span class="nav-number">7.</span> <span class="nav-text">注:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#泛化能力（generalization-ability）"><span class="nav-number">7.0.1.</span> <span class="nav-text">泛化能力（generalization ability）</span></a></li></ol></li></div>
             
 
           </div>
@@ -741,7 +778,7 @@
   <span class="post-meta-divider">|</span>
 
   <div class="theme-info">
-    <span class="post-count">博客全站共2.8k字</span>
+    <span class="post-count">博客全站共4.3k字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
