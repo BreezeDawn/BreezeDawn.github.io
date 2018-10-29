@@ -96,20 +96,20 @@
 
 
 
-<meta name="description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。 这时，我们把输入的样本特征$x_0x_1x_2x_3$看作第一层输入，$a_1a_2a_3$看作第一层的输出，把$">
+<meta name="description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习-神经网络">
 <meta property="og:url" content="http://yoursite.com/2018/10/29/MachineLearning-神经网络/index.html">
 <meta property="og:site_name" content="Maifeel">
-<meta property="og:description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。 这时，我们把输入的样本特征$x_0x_1x_2x_3$看作第一层输入，$a_1a_2a_3$看作第一层的输出，把$">
+<meta property="og:description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/神经网络-1.jpg">
 <meta property="og:image" content="http://yoursite.com/img/神经网络-2.png">
-<meta property="og:updated_time" content="2018-10-29T17:12:07.915Z">
+<meta property="og:updated_time" content="2018-10-29T17:35:37.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习-神经网络">
-<meta name="twitter:description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。 这时，我们把输入的样本特征$x_0x_1x_2x_3$看作第一层输入，$a_1a_2a_3$看作第一层的输出，把$">
+<meta name="twitter:description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。">
 <meta name="twitter:image" content="http://yoursite.com/img/神经网络-1.jpg">
 
 
@@ -432,6 +432,7 @@
       
         <h2 id="为什么要使用神经网络"><a href="#为什么要使用神经网络" class="headerlink" title="为什么要使用神经网络"></a>为什么要使用神经网络</h2><p>当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。</p>
 <h2 id="神经网络的模型表示"><a href="#神经网络的模型表示" class="headerlink" title="神经网络的模型表示"></a>神经网络的模型表示</h2><p>首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。</p>
+<a id="more"></a>
 <p>这时，我们把输入的样本特征$x_0x_1x_2x_3$看作第一层输入，$a_1a_2a_3$看作第一层的输出，把$a_0a_1a_2a_3$看作第二层的输入，$h_\theta(x)$看作第二层的输出。</p>
 <p>PS：输出的意思就是经过一个激励函数$g(z)$的运算得出的，这里：<br>$$<br>g(z)=\frac{1}{1+e^{-z}}<br>$$<br><img src="\img\神经网络-1.jpg" alt="神经网络"></p>
 <h4 id="输出怎么得到"><a href="#输出怎么得到" class="headerlink" title="输出怎么得到"></a>输出怎么得到</h4><p>从线性回归中我们能够知道：$h_\theta(x) = \theta_0x_0+\theta_1x_1+\theta_2x_2+\theta_3x_3 = y$</p>
