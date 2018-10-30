@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/img/神经网络-2.png">
 <meta property="og:image" content="http://yoursite.com/img/神经网络-3.png">
 <meta property="og:image" content="http://yoursite.com/img/神经网络-4.png">
-<meta property="og:updated_time" content="2018-10-30T07:44:19.633Z">
+<meta property="og:updated_time" content="2018-10-30T10:40:08.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习-神经网络">
 <meta name="twitter:description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。">
@@ -458,7 +458,7 @@
 <h4 id="更好的理解"><a href="#更好的理解" class="headerlink" title="更好的理解"></a>更好的理解</h4><p><img src="\img\神经网络-4.png" alt="神经网络(4)"></p>
 <p>其实神经网络就像是<strong>logistic regression</strong>，只不过我们把<strong>logistic regression</strong>中的输入向量$[ x_1\sim {x_3} ]$ 变成了中间层的$[ a_1^{(2)}\sim a_3^{(2)} ]$, 即:  $h_\theta(x)=g( \Theta_0^{ 2 }a_0^{ 2 }+\Theta_1^{ 2 }a_1^{ 2 }+\Theta_{2}^{ 2 }a_{2}^{ 2 }+\Theta_{3}^{ 2 }a_{3}^{ 2 } )$<br>我们可以把$a_0, a_1, a_2, a_3$看成更为高级的特征值，也就是$x_0, x_1, x_2, x_3$的进化体，并且它们是由 $x$与$\theta$决定的，因为是梯度下降的，所以$a$是变化的，并且变得越来越厉害，所以这些更高级的特征值远比仅仅将 $x$次方厉害，也能更好的预测新数据。<br>这就是神经网络相比于逻辑回归和线性回归的优势。从本质上讲，神经网络能够通过学习得出其自身的一系列特征。在普通的逻辑回归中，我们被限制为使用数据中的原始特征$x_1,x_2,…,{x}_{n}$，我们虽然可以使用一些二项式项来组合这些特征，但是我们仍然受到这些原始特征的限制。在神经网络中，原始特征只是输入层，在我们上面三层的神经网络例子中，第三层也就是输出层做出的预测利用的是第二层的特征，而非输入层中的原始特征，我们可以认为第二层中的特征是神经网络通过学习后自己得出的一系列用于预测输出变量的新特征。</p>
 <h2 id="单层神经元计算的简化理解"><a href="#单层神经元计算的简化理解" class="headerlink" title="单层神经元计算的简化理解"></a>单层神经元计算的简化理解</h2><p>神经网络中，单层神经元（无中间层）的计算可用来表示逻辑运算，比如逻辑与(<strong>AND</strong>)、逻辑或(<strong>OR</strong>)。当输入特征为布尔值（0或1）时，我们可以用一个单一的激活层可以作为二元逻辑运算符，为了表示不同的运算符，我们只需要选择不同的权重即可。</p>
-<p>在理解之前，我们再复习一下关于激励函数与判定边界。当$g(z)$中 $z &gt; 0$ 时，$g(z)$ &gt; 0.5 ，假如我们的阈值</p>
+<p>在理解之前，我们再复习一下关于激励函数与判定边界。当$g(z)$中 $z &gt; 0$ 时，$g(z)$ &gt; 0.5 ，假如我们的阈值就是 0.5，</p>
 
       
     </div>
@@ -773,7 +773,7 @@
   <span class="post-meta-divider">|</span>
 
   <div class="theme-info">
-    <span class="post-count">博客全站共6.4k字</span>
+    <span class="post-count">博客全站共7.5k字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
