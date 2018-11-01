@@ -14,8 +14,8 @@
 
 <script>
     (function(){
-        if('heima'){
-            if (prompt('请输入文章密码') !== 'heima'){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
                 alert('密码错误！');
                 history.back();
             }
@@ -111,7 +111,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="机器学习,神经网络,代价函数,">
 
 
 
@@ -122,17 +122,20 @@
 
 
 
-<meta name="description" content="讲述人简介 工作半年 学历 - 硕士 做的人工智能的自然语言处理，招聘系统里的算法组， 只面试了一家，当时找的数据挖掘，看重了学习能力留下来进了算法组，当场给的offer">
+<meta name="description" content="神经网络的代价函数   符号 意义     $L$ 神经网络结构总层数   $S_l$ 第 $l$ 层的单元数量 (不包括偏差单元)   $K = S_L$ 输出层的单元数量">
+<meta name="keywords" content="机器学习,神经网络,代价函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="经验">
-<meta property="og:url" content="http://yoursite.com/2018/10/28/经验/index.html">
+<meta property="og:title" content="MachineLearning-神经网络(二)">
+<meta property="og:url" content="http://xingtu.info/posts/36766/index.html">
 <meta property="og:site_name" content="Maifeel">
-<meta property="og:description" content="讲述人简介 工作半年 学历 - 硕士 做的人工智能的自然语言处理，招聘系统里的算法组， 只面试了一家，当时找的数据挖掘，看重了学习能力留下来进了算法组，当场给的offer">
+<meta property="og:description" content="神经网络的代价函数   符号 意义     $L$ 神经网络结构总层数   $S_l$ 第 $l$ 层的单元数量 (不包括偏差单元)   $K = S_L$ 输出层的单元数量">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-28T12:23:50.783Z">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-10.png">
+<meta property="og:updated_time" content="2018-11-01T01:28:18.085Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="经验">
-<meta name="twitter:description" content="讲述人简介 工作半年 学历 - 硕士 做的人工智能的自然语言处理，招聘系统里的算法组， 只面试了一家，当时找的数据挖掘，看重了学习能力留下来进了算法组，当场给的offer">
+<meta name="twitter:title" content="MachineLearning-神经网络(二)">
+<meta name="twitter:description" content="神经网络的代价函数   符号 意义     $L$ 神经网络结构总层数   $S_l$ 第 $l$ 层的单元数量 (不包括偏差单元)   $K = S_L$ 输出层的单元数量">
+<meta name="twitter:image" content="http://xingtu.info/img/神经网络-10.png">
 
 
 
@@ -162,7 +165,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/28/经验/">
+  <link rel="canonical" href="http://xingtu.info/posts/36766/">
 
 
 
@@ -170,7 +173,7 @@
 
 
 
-  <title>经验 | Maifeel</title>
+  <title>MachineLearning-神经网络(二) | Maifeel</title>
   
 
 
@@ -338,7 +341,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/28/经验/">
+    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/36766/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mai">
@@ -355,7 +358,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">经验</h2>
+          <h2 class="post-title" itemprop="name headline">MachineLearning-神经网络(二)</h2>
         
 
         <div class="post-meta">
@@ -368,8 +371,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-28T20:21:03+08:00">
-                2018-10-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T16:17:38+08:00">
+                2018-10-31
               </time>
             
 
@@ -378,6 +381,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -405,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  688
+                  159
                 </span>
               
 
@@ -430,37 +455,36 @@
       
 
       
-        <h4 id="讲述人简介"><a href="#讲述人简介" class="headerlink" title="讲述人简介"></a>讲述人简介</h4><ul>
-<li>工作半年</li>
-<li>学历 - 硕士</li>
-<li>做的人工智能的自然语言处理，招聘系统里的算法组，</li>
-<li>只面试了一家，当时找的数据挖掘，看重了学习能力留下来进了算法组，当场给的offer</li>
-</ul>
+        <h2 id="神经网络的代价函数"><a href="#神经网络的代价函数" class="headerlink" title="神经网络的代价函数"></a>神经网络的代价函数</h2><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L$</td>
+<td>神经网络结构总层数</td>
+</tr>
+<tr>
+<td>$S_l$</td>
+<td>第 $l$ 层的单元数量 (不包括偏差单元)</td>
+</tr>
+<tr>
+<td>$K = S_L$</td>
+<td>输出层的单元数量</td>
+</tr>
+</tbody>
+</table>
 <a id="more"></a>
-<h4 id="填简历几个维度去看你-让你的简历更容易被别人记下来"><a href="#填简历几个维度去看你-让你的简历更容易被别人记下来" class="headerlink" title="填简历几个维度去看你,让你的简历更容易被别人记下来"></a>填简历几个维度去看你,让你的简历更容易被别人记下来</h4><ol>
-<li><h5 id="薪资"><a href="#薪资" class="headerlink" title="薪资"></a>薪资</h5><p>填一下无论HR还是自己都对自己有预期，可以填一下</p>
-</li>
-<li><h5 id="职能"><a href="#职能" class="headerlink" title="职能"></a>职能</h5><p>与投递的公司契合度在哪里</p>
-</li>
-<li><h5 id="学历"><a href="#学历" class="headerlink" title="学历"></a>学历</h5><p> 很看重，四六级，211与否，本科or硕士，占不到优势就只能侧重于技能方向</p>
-</li>
-<li><h5 id="技能-重点"><a href="#技能-重点" class="headerlink" title="技能(重点)"></a>技能(重点)</h5><p> 无论做什么方向，讲述自己具备技能时需要有自己的特色，或者说相比于别人你需要更好的去表述自己擅长的方面：宏观上你对项目的贡献，微观上贡献的技术点深入(吹)，学会吹 ：），吹牛逼不是撒谎 = =/。注意细节，描述的越细越真，不能含糊</p>
-</li>
-<li><h5 id="自学能力"><a href="#自学能力" class="headerlink" title="自学能力"></a>自学能力</h5><p>描述自己的学习过程，遇到的困难坎坷，表现出自己的自学能力很强</p>
-</li>
-<li><h5 id="热情"><a href="#热情" class="headerlink" title="热情"></a>热情</h5><p>要嗨起来，展示对技术的追求与对未知的好奇心，正能量</p>
-</li>
-</ol>
-<h4 id="关于不是本专业的-非科班-，怕受到歧视"><a href="#关于不是本专业的-非科班-，怕受到歧视" class="headerlink" title="关于不是本专业的(非科班)，怕受到歧视"></a>关于不是本专业的(非科班)，怕受到歧视</h4><p>不用担心，大部分科班都是走的校招找工作，而我们去找工作是社招，别人看重的是我们的技能，讲述人所在的算法组中都不是计算机本专业的，在公司，周围的同事大部分也不是本专业的，所以不用太担心，嗨起来</p>
-<h4 id="关于爬虫"><a href="#关于爬虫" class="headerlink" title="关于爬虫"></a>关于爬虫</h4><p>可能你们分布式爬虫都搞不出来，老师教的很有限，目前来讲爬虫方向的门槛很高，讲述人的公司面了很多爬虫最后都没有要</p>
-<h4 id="关于就业"><a href="#关于就业" class="headerlink" title="关于就业"></a>关于就业</h4><p>讲述人建议，当前的问题就在于就业，想走高端方向可以慢慢学，但是目前来讲没有经济基础还是先就业比较好，要现实一点先找到工作，目前的测试需求非常大，他的朋友就是先工作然后转到了算法工程师，python就是一个起点，也就是从零到一的开始，先开个头，再莽。</p>
-<h4 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h4><ul>
-<li>住的地方离公司近一点，开销会少很多</li>
-<li>把目前的公司当跳板，好好利用周末时间进行个人技能的提升</li>
-<li>简历有老师辅导很简单了，重点就在面试了，注意细节，要嗨起来</li>
-<li>数据结构与算法最好系统的学一学，有手写算法的面试题的都用的上</li>
-</ul>
-
+<p><img src="\img\神经网络-10.png" alt=""></p>
+<blockquote>
+<p>(日了个仙人板板，手写一直渲染错误只能贴图了，: ) 浪费好久时间 )</p>
+</blockquote>
+<p>代价函数中 $\theta_0$  总是被忽略的，因为我们并不想把 $\theta_0$ 加入到正则化里，也不想使它为 0，即不把偏差项正则化。</p>
+<h2 id="代价函数的最优化"><a href="#代价函数的最优化" class="headerlink" title="代价函数的最优化"></a>代价函数的最优化</h2><p>利用<strong>反向传播算法，</strong> 计算代价函数的偏导数项：$\frac{\partial}{\partial\Theta^{l}_{ij}}J(\Theta)$</p>
+<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h2>
       
     </div>
     
@@ -523,6 +547,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/神经网络/" rel="tag"><i class="fa fa-tag"></i> 神经网络</a>
+          
+            <a href="/tags/代价函数/" rel="tag"><i class="fa fa-tag"></i> 代价函数</a>
+          
+        </div>
+      
       
       
       
@@ -532,8 +566,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/27/MachineLearning-正则化/" rel="next" title="机器学习-正则化">
-                <i class="fa fa-chevron-left"></i> 机器学习-正则化
+              <a href="/posts/54972/" rel="next" title="使用Hexo+Github搭建个人博客(详细)">
+                <i class="fa fa-chevron-left"></i> 使用Hexo+Github搭建个人博客(详细)
               </a>
             
           </div>
@@ -541,10 +575,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/29/MachineLearning-神经网络/" rel="prev" title="机器学习-神经网络(一)">
-                机器学习-神经网络(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -726,7 +756,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#讲述人简介"><span class="nav-number">1.</span> <span class="nav-text">讲述人简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#填简历几个维度去看你-让你的简历更容易被别人记下来"><span class="nav-number">2.</span> <span class="nav-text">填简历几个维度去看你,让你的简历更容易被别人记下来</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#薪资"><span class="nav-number">2.1.</span> <span class="nav-text">薪资</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#职能"><span class="nav-number">2.2.</span> <span class="nav-text">职能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#学历"><span class="nav-number">2.3.</span> <span class="nav-text">学历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#技能-重点"><span class="nav-number">2.4.</span> <span class="nav-text">技能(重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自学能力"><span class="nav-number">2.5.</span> <span class="nav-text">自学能力</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#热情"><span class="nav-number">2.6.</span> <span class="nav-text">热情</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于不是本专业的-非科班-，怕受到歧视"><span class="nav-number">3.</span> <span class="nav-text">关于不是本专业的(非科班)，怕受到歧视</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于爬虫"><span class="nav-number">4.</span> <span class="nav-text">关于爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于就业"><span class="nav-number">5.</span> <span class="nav-text">关于就业</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议"><span class="nav-number">6.</span> <span class="nav-text">建议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络的代价函数"><span class="nav-number">1.</span> <span class="nav-text">神经网络的代价函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代价函数的最优化"><span class="nav-number">2.</span> <span class="nav-text">代价函数的最优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向传播"><span class="nav-number">3.</span> <span class="nav-text">反向传播</span></a></li></ol></div>
             
 
           </div>
@@ -1313,7 +1343,7 @@
   
 
   <script type="text/javascript" src="/js/src/china.js"></script>
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true,"width":50,"height":100},"log":false});</script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true,"width":50,"height":100},"neat_enable":true,"neat_html":{"enable":true,"exclude":null},"neat_css":{"enable":true,"exclude":["‘*.min.css’"]},"neat_js":{"enable":true,"mangle":true,"output":null,"compress":null,"exclude":["‘*.min.js’"]},"log":false});</script>
 
   
    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 

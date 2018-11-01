@@ -111,7 +111,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,神经网络,代价函数,">
+  <meta name="keywords" content="机器学习,">
 
 
 
@@ -122,20 +122,28 @@
 
 
 
-<meta name="description" content="神经网络的代价函数   符号 意义     $L$ 神经网络结构总层数   $S_l$ 第 $l$ 层的单元数量 (不包括偏差单元)   $K = S_L$ 输出层的单元数量">
-<meta name="keywords" content="机器学习,神经网络,代价函数">
+<meta name="description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MachineLearning-神经网络(二)">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/MachineLearning-神经网络-二/index.html">
+<meta property="og:title" content="机器学习-神经网络(一)">
+<meta property="og:url" content="http://xingtu.info/posts/6267/index.html">
 <meta property="og:site_name" content="Maifeel">
-<meta property="og:description" content="神经网络的代价函数   符号 意义     $L$ 神经网络结构总层数   $S_l$ 第 $l$ 层的单元数量 (不包括偏差单元)   $K = S_L$ 输出层的单元数量">
+<meta property="og:description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/img/神经网络-10.png">
-<meta property="og:updated_time" content="2018-10-31T14:41:52.404Z">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-1.jpg">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-2.png">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-3.png">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-4.png">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-5.png">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-6.png">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-7.jpg">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-8.jpg">
+<meta property="og:image" content="http://xingtu.info/img/神经网络-9.jpg">
+<meta property="og:updated_time" content="2018-11-01T01:28:18.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MachineLearning-神经网络(二)">
-<meta name="twitter:description" content="神经网络的代价函数   符号 意义     $L$ 神经网络结构总层数   $S_l$ 第 $l$ 层的单元数量 (不包括偏差单元)   $K = S_L$ 输出层的单元数量">
-<meta name="twitter:image" content="http://yoursite.com/img/神经网络-10.png">
+<meta name="twitter:title" content="机器学习-神经网络(一)">
+<meta name="twitter:description" content="为什么要使用神经网络当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。 神经网络的模型表示首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。">
+<meta name="twitter:image" content="http://xingtu.info/img/神经网络-1.jpg">
 
 
 
@@ -165,7 +173,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/31/MachineLearning-神经网络-二/">
+  <link rel="canonical" href="http://xingtu.info/posts/6267/">
 
 
 
@@ -173,7 +181,7 @@
 
 
 
-  <title>MachineLearning-神经网络(二) | Maifeel</title>
+  <title>机器学习-神经网络(一) | Maifeel</title>
   
 
 
@@ -341,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/MachineLearning-神经网络-二/">
+    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/6267/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mai">
@@ -358,7 +366,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">MachineLearning-神经网络(二)</h2>
+          <h2 class="post-title" itemprop="name headline">机器学习-神经网络(一)</h2>
         
 
         <div class="post-meta">
@@ -371,8 +379,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T16:17:38+08:00">
-                2018-10-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-29T19:56:08+08:00">
+                2018-10-29
               </time>
             
 
@@ -430,7 +438,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  159
+                  2.2k
                 </span>
               
 
@@ -455,36 +463,62 @@
       
 
       
-        <h2 id="神经网络的代价函数"><a href="#神经网络的代价函数" class="headerlink" title="神经网络的代价函数"></a>神经网络的代价函数</h2><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$L$</td>
-<td>神经网络结构总层数</td>
-</tr>
-<tr>
-<td>$S_l$</td>
-<td>第 $l$ 层的单元数量 (不包括偏差单元)</td>
-</tr>
-<tr>
-<td>$K = S_L$</td>
-<td>输出层的单元数量</td>
-</tr>
-</tbody>
-</table>
+        <h2 id="为什么要使用神经网络"><a href="#为什么要使用神经网络" class="headerlink" title="为什么要使用神经网络"></a>为什么要使用神经网络</h2><p>当特征太多时，计算的负荷会特别大，而普通的线性回归/逻辑回归都无法有效地处理这么多的特征，这个时候我们需要神经网络。</p>
+<h2 id="神经网络的模型表示"><a href="#神经网络的模型表示" class="headerlink" title="神经网络的模型表示"></a>神经网络的模型表示</h2><p>首先，我们为神经网络里的每一层都增加了一个偏差单元，即每一层的0号下标的单元，它的值永远为1，而偏差单元我们只在当作输入时使用。</p>
 <a id="more"></a>
-<p><img src="\img\神经网络-10.png" alt=""></p>
+<p>这时，我们把输入的样本特征$x_0x_1x_2x_3$看作第一层输入，$a_1a_2a_3$看作第一层的输出，把$a_0a_1a_2a_3$看作第二层的输入，$h_\theta(x)$看作第二层的输出。</p>
+<p>PS：输出的意思就是经过一个激励函数$g(z)$的运算得出的，这里：<br>$$<br>g(z)=\frac{1}{1+e^{-z}}<br>$$<br><img src="\img\神经网络-1.jpg" alt="神经网络"></p>
+<h4 id="输出怎么得到"><a href="#输出怎么得到" class="headerlink" title="输出怎么得到"></a>输出怎么得到</h4><p>从线性回归中我们能够知道：$h_\theta(x) = \theta_0x_0+\theta_1x_1+\theta_2x_2+\theta_3x_3 = y$</p>
+<p>如果我们想要使用相同的输入 $x_0x_1x_2x_3$ 得出一个不一样的 $y_1$ ，我们必须要改变 $\theta$的值使得与第一次运算的 $\theta$ 不一样。</p>
+<p>同理，当我们把输入的样本特征 $x_0x_1x_2x_3$ 看作第一层输入时，我们就需要三组不同的 $\theta$ 值，使得<strong>经过激励函数后得到</strong>三个不同的值 $a_1a_2a_3$。因此，我们就有了关于第一层输入的 $\theta$ 矩阵 $\Theta^{(1)}$，它的尺寸为 3*4。那么第二层输入的 $\theta$ 矩阵 $\theta^{(2)}$ 的尺寸则为 1*4。当然我们也可能会有许多次输入输出，如果我们进行多次的输入输出，$a_{i}^{\left( j \right)}$ 则代表第 $j$ 层的第 $i$ 个激活单元(输入)。${\theta }^{\left( j \right)}$代表从第 $j$ 层映射到第 $ j+1$ 层时的权重的矩阵，例如 ${\theta }^{\left( 1 \right)}$ 代表从第一层映射(输出)到第二层的权重的矩阵。其尺寸为：以第 $j+1$层的激活单元数量为行数，以第 $j$ 层的激活单元数加一为列数的矩阵。</p>
+<h4 id="输入-输出的过程"><a href="#输入-输出的过程" class="headerlink" title="输入-输出的过程"></a>输入-输出的过程</h4><p>因为 $a_1a_2a_3$ 是样本特征 $x_0x_1x_2x_3$ 与 $\Theta^{(1)}$ <strong>经过激励函数后</strong>得到的值，因此此过程可写为：</p>
+<p>$a_{1}^{2}=g(\Theta_{10}^{1}x_{0}+\Theta_{11}^{1}x_{1}+\Theta_{12}^{1}x_{2}+\Theta_{13}^{1}x_{3})$</p>
+<p>$a_{2}^{2}=g(\Theta_{20}^{1}x_{0}+\Theta_{21}^{1}x_{1}+\Theta_{22}^{1}x_{2}+\Theta_{23}^{1}x_{3})$</p>
+<p>$a_{3}^{2}=g(\Theta_{30}^{1}x_{0}+\Theta_{31}^{1}x_{1}+\Theta_{32}^{1}x_{2}+\Theta_{33}^{1}x_{3})$</p>
+<p>$h_\Theta(x)=g(\Theta_{10}^{2}a_{0}^{2}+\Theta_{11}^{2}a_{1}^{2}+\Theta_{12}^{2}a_{2}^{2}+\Theta_{13}^{2}a_{3}^{2})$</p>
+<p>上面进行的讨论中只是将特征矩阵中的一行（一个训练实例）喂给了神经网络，我们需要将整个训练集都喂给我们的神经网络算法来学习模型。</p>
+<p>我们可以知道：每一个    $a$ 都是由上一层所有的$x$和每一个$x$所对应的决定的。</p>
+<p>（我们把这样从左到右的算法称为前向传播算法( <strong>FORWARD PROPAGATION</strong> )）    </p>
+<p>把$x$, $\theta$, $a$ 分别用矩阵表示：</p>
+<p><img src="\img\神经网络-2.png" alt="神经网络(2)"></p>
+<p>我们可以得到 $g(\theta \cdot X)=a$ 。</p>
+<p>如果细分下去，我们就能够得到向量化的结果：<br>$$<br>g(\Theta^{(1)}\cdot{X^T})=a^{(2)}<br>$$</p>
+<p>即：</p>
+<p><img src="\img\神经网络-3.png" alt="神经网络(3)"></p>
+<p>以上是以第一层为例进行的说明，那么现在我们看第二层，则有<br>$$<br>g(\Theta^{(2)}\cdot a^{(2)})=h_\theta(x)<br>$$<br>我们令 ${z}^\left( 3 \right)={\theta }^{( 2 )}{a}^{( 2 )}$，则 $h_\theta(x)={a}^{\left(3\right)}=g({z}^{\left(3\right)})$。</p>
+<h4 id="更好的理解"><a href="#更好的理解" class="headerlink" title="更好的理解"></a>更好的理解</h4><p><img src="\img\神经网络-4.png" alt="神经网络(4)"></p>
+<p>其实神经网络就像是<strong>logistic regression</strong>，只不过我们把<strong>logistic regression</strong>中的输入向量$[ x_1\sim {x_3} ]$ 变成了中间层的$[ a_1^{(2)}\sim a_3^{(2)} ]$, </p>
+<p>即:  $h_\theta(x)=g( \Theta_0^{ 2 }a_0^{ 2 }+\Theta_1^{ 2 }a_1^{ 2 }+\Theta_{2}^{ 2 }a_{2}^{ 2 }+\Theta_{3}^{ 2 }a_{3}^{ 2 } )$ </p>
+<p>我们可以把 $a_0, a_1, a_2, a_3$ 看成更为高级的特征值，也就是 $x_0, x_1, x_2, x_3$ 的进化体，并且它们是由 $x$与$\theta$决定的，因为是梯度下降的，所以 $a$ 是变化的，并且变得越来越厉害，所以这些更高级的特征值远比仅仅将 $x$次方厉害，也能更好的预测新数据。<br>这就是神经网络相比于逻辑回归和线性回归的优势。从本质上讲，神经网络能够通过学习得出其自身的一系列特征。在普通的逻辑回归中，我们被限制为使用数据中的原始特征 $x_1,x_2,…,{x}_{n}$ ，我们虽然可以使用一些二项式项来组合这些特征，但是我们仍然受到这些原始特征的限制。在神经网络中，原始特征只是输入层，在我们上面三层的神经网络例子中，第三层也就是输出层做出的预测利用的是第二层的特征，而非输入层中的原始特征，我们可以认为第二层中的特征是神经网络通过学习后自己得出的一系列用于预测输出变量的新特征。</p>
+<h2 id="单层神经元计算的简化理解"><a href="#单层神经元计算的简化理解" class="headerlink" title="单层神经元计算的简化理解"></a>单层神经元计算的简化理解</h2><p>神经网络中，单层神经元（无中间层）的计算可用来表示逻辑运算，比如逻辑与(<strong>AND</strong>)、逻辑或(<strong>OR</strong>)。当输入特征为布尔值（0或1）时，我们可以用一个单一的激活层可以作为二元逻辑运算符，为了表示不同的运算符，我们只需要选择不同的权重即可。</p>
+<p>在理解之前，我们再复习一下关于激励函数与判定边界。当$g(z)$中 $z &gt; 0$ 时，$g(z)$ &gt; 0.5 ，假如我们的阈值就是 0.5，那么我们此时就把 $g(z)$ 的结果归为 1 ，反之则为 0。</p>
+<h4 id="逻辑与"><a href="#逻辑与" class="headerlink" title="逻辑与"></a>逻辑与</h4><p>那么，如果我们现在有输出函数 $h_\theta(x) = g(\theta_0x_0+\theta_1x_1+\theta_2x_2)$，且 $\Theta = [-30,20,20]$，此时 $h_\theta(x) = g(-30+20x_1+20x_2)$，我们就能够得到$x_1x_2$分别取值时的结果对照表：</p>
+<p><img src="\img\神经网络-5.png" alt="神经网络(5)"></p>
+<p><strong>经过复习和上表的对照我们能够很轻松的理解。</strong></p>
+<p>此时$h_\theta(x)$ 得出的结果 等于 $x_1 AND x_2$ 得出的结果，因此我们就能够把此时的输出函数中进行的计算简化理解为：对输入做 <strong>逻辑与(AND)</strong>​ 运算。</p>
+<h4 id="逻辑或"><a href="#逻辑或" class="headerlink" title="逻辑或"></a>逻辑或</h4><p>而当 $\Theta = [-10,20,20]$ 时，此时 $h_\theta(x) = g(-10+20x_1+20x_2)$ ，我们就能够得到$x_1x_2$分别取值时的结果对照表：</p>
+<p><img src="\img\神经网络-6.png" alt="神经网络(6)"></p>
+<p>此时$h_\theta(x)$ 得出的结果 等于 $x_1  OR  x_2$ 得出的结果，因此我们就能够把此时的输出函数中进行的计算简化理解为：对输入做 <strong>逻辑或(OR)</strong> 运算。</p>
+<h4 id="逻辑非"><a href="#逻辑非" class="headerlink" title="逻辑非"></a>逻辑非</h4><p>当 $\Theta = [10,-20,0]$ 时，此时 $h_\theta(x) = g(10-20x_1)$ ，我们就能够知道$x_1$取 0 时，结果为 1，$x_1$取 1 时，结果为 0 。我们就能够把此时的神经元的作用等同于 <strong>逻辑非(NOT)</strong></p>
+<h4 id="XNOR-输入两个值相等时，结果为-1"><a href="#XNOR-输入两个值相等时，结果为-1" class="headerlink" title="XNOR(输入两个值相等时，结果为 1 )"></a>XNOR(输入两个值相等时，结果为 1 )</h4><p>那么我们如何表示呢?</p>
+<p>首先我们构造一个能表达 $(NOT x_1) AND (NOTx_2)$ 的神经元进行第一层计算，如图：</p>
+<p><img src="\img\神经网络-7.jpg" alt="神经网络(7)"></p>
+<p>然后构造一个能表示 <strong>OR</strong> 的神经元进行第二层计算，再让这两层组合在一起：</p>
+<p><img src="\img\神经网络-8.jpg" alt="神经网络(8)"></p>
+<p>这样我们就得到了一个能实现 $\text{XNOR}$ 功能的神经网络。</p>
+<p>因此，我们能够组合三种简单的运算来逐渐构造出复杂的函数，这样我们也能得到更加复杂有趣的特征值。</p>
+<p>这就是神经网络的厉害之处。</p>
+<h2 id="多类处理的神经网络"><a href="#多类处理的神经网络" class="headerlink" title="多类处理的神经网络"></a>多类处理的神经网络</h2><p>我们在上面的神经网络仅仅输出了一个结果，也就是我们只做了二分类问题，那么我们如果想要进行多个类的分类呢?</p>
+<p>很简单，我们只需要让结果值的数目等于你要分类的类数目。比如说：如果我们要训练一个神经网络算法来识别路人、汽车、摩托车和卡车，在输出层我们应该有4个值。第一个值为1或0用于预测是否是行人，第二个值用于判断是否为汽车，第三个值用于预测是否是摩托车，第四个值用于判断是否为卡车。</p>
+<p>如果我们构造两个中间层进行，输出层4个神经元分别用来表示4类，那么神经网络图可能如下所示：</p>
+<p><img src="\img\神经网络-9.jpg" alt="神经网络(9)"></p>
+<p>我们希望当输入人的图片时，输出的结果为 [1 , 0, 0, 0]，输入卡车图片时，输出的结果为 [0 , 0, 0, 1]。</p>
+<p>这样，我们就实现了神经网络的多分类处理。</p>
 <blockquote>
-<p>(日了个仙人板板，手写一直渲染错误只能贴图了，: ) 浪费好久时间 )</p>
+<p>如果对你有所帮助，点个赞吧 ！</p>
+<p>查看我的CSDN: <a href="https://blog.csdn.net/qq_28827635" target="_blank" rel="noopener">https://blog.csdn.net/qq_28827635</a></p>
 </blockquote>
-<p>代价函数中 $\theta_0$  总是被忽略的，因为我们并不想把 $\theta_0$ 加入到正则化里，也不想使它为 0，即不把偏差项正则化。</p>
-<h2 id="代价函数的最优化"><a href="#代价函数的最优化" class="headerlink" title="代价函数的最优化"></a>代价函数的最优化</h2><p>利用<strong>反向传播算法，</strong> 计算代价函数的偏导数项：$\frac{\partial}{\partial\Theta^{l}_{ij}}J(\Theta)$</p>
-<h2 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h2>
+
       
     </div>
     
@@ -551,10 +585,6 @@
           
             <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
-            <a href="/tags/神经网络/" rel="tag"><i class="fa fa-tag"></i> 神经网络</a>
-          
-            <a href="/tags/代价函数/" rel="tag"><i class="fa fa-tag"></i> 代价函数</a>
-          
         </div>
       
       
@@ -566,8 +596,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/30/使用Hexo-Github搭建个人博客-详细/" rel="next" title="使用Hexo+Github搭建个人博客(详细)">
-                <i class="fa fa-chevron-left"></i> 使用Hexo+Github搭建个人博客(详细)
+              <a href="/posts/59767/" rel="next" title="经验">
+                <i class="fa fa-chevron-left"></i> 经验
               </a>
             
           </div>
@@ -575,6 +605,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/54972/" rel="prev" title="使用Hexo+Github搭建个人博客(详细)">
+                使用Hexo+Github搭建个人博客(详细) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -756,7 +790,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络的代价函数"><span class="nav-number">1.</span> <span class="nav-text">神经网络的代价函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代价函数的最优化"><span class="nav-number">2.</span> <span class="nav-text">代价函数的最优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向传播"><span class="nav-number">3.</span> <span class="nav-text">反向传播</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用神经网络"><span class="nav-number">1.</span> <span class="nav-text">为什么要使用神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络的模型表示"><span class="nav-number">2.</span> <span class="nav-text">神经网络的模型表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输出怎么得到"><span class="nav-number">2.0.1.</span> <span class="nav-text">输出怎么得到</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入-输出的过程"><span class="nav-number">2.0.2.</span> <span class="nav-text">输入-输出的过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更好的理解"><span class="nav-number">2.0.3.</span> <span class="nav-text">更好的理解</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#单层神经元计算的简化理解"><span class="nav-number">3.</span> <span class="nav-text">单层神经元计算的简化理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑与"><span class="nav-number">3.0.1.</span> <span class="nav-text">逻辑与</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑或"><span class="nav-number">3.0.2.</span> <span class="nav-text">逻辑或</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑非"><span class="nav-number">3.0.3.</span> <span class="nav-text">逻辑非</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#XNOR-输入两个值相等时，结果为-1"><span class="nav-number">3.0.4.</span> <span class="nav-text">XNOR(输入两个值相等时，结果为 1 )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多类处理的神经网络"><span class="nav-number">4.</span> <span class="nav-text">多类处理的神经网络</span></a></li></div>
             
 
           </div>
@@ -1343,7 +1377,7 @@
   
 
   <script type="text/javascript" src="/js/src/china.js"></script>
-  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true,"width":50,"height":100},"log":false});</script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":true,"width":50,"height":100},"neat_enable":true,"neat_html":{"enable":true,"exclude":null},"neat_css":{"enable":true,"exclude":["‘*.min.css’"]},"neat_js":{"enable":true,"mangle":true,"output":null,"compress":null,"exclude":["‘*.min.js’"]},"log":false});</script>
 
   
    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
