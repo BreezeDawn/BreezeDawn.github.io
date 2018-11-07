@@ -131,7 +131,7 @@
 <meta property="og:description" content="怎么改进算法当使用训练好的模型时，新样本输出的数据产生了巨大的误差，如何改进算法的性能。  使用更多的训练样本，但通常来讲并没有什么卵用 尝试选用更少的特征集，来防止过拟合 或许也需要更多的特征集，当目前的特征集对你没有多大用处时，可以从更多的特征角度去收集更多的特征 增加多项式特征 减小正则化中的 $\lambda$ 的值 增大正则化中的 $\lambda$ 的值   我们不应该随机选择上面的某">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://xingtu.info/img/应用机器学习建议-1.png">
-<meta property="og:updated_time" content="2018-11-07T11:31:38.603Z">
+<meta property="og:updated_time" content="2018-11-07T14:41:22.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习-如何有效使用机器学习算法">
 <meta name="twitter:description" content="怎么改进算法当使用训练好的模型时，新样本输出的数据产生了巨大的误差，如何改进算法的性能。  使用更多的训练样本，但通常来讲并没有什么卵用 尝试选用更少的特征集，来防止过拟合 或许也需要更多的特征集，当目前的特征集对你没有多大用处时，可以从更多的特征角度去收集更多的特征 增加多项式特征 减小正则化中的 $\lambda$ 的值 增大正则化中的 $\lambda$ 的值   我们不应该随机选择上面的某">
@@ -430,7 +430,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.9k
+                  3k
                 </span>
               
 
@@ -546,6 +546,27 @@
 <li>尝试增加正则化程度λ——解决高方差</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">使用较小的神经网络，类似于参数较少的情况，容易导致高偏差和欠拟合，但计算代价较小使用较大的神经网络，类似于参数较多的情况，容易导致高方差和过拟合，虽然计算代价比较大，但是可以通过正则化手段来调整而更加适应数据。</span><br><span class="line"></span><br><span class="line">通常选择较大的神经网络并采用正则化处理会比采用较小的神经网络效果要好。</span><br><span class="line"></span><br><span class="line">对于神经网络中的隐藏层的层数的选择，通常从一层开始逐渐增加层数，为了更好地作选择，可以把数据分为训练集、交叉验证集和测试集，针对不同隐藏层层数的神经网络训练神经网络，</span><br><span class="line"></span><br><span class="line">然后选择交叉验证集代价最小的神经网络。</span><br></pre></td></tr></table></figure>
+<h2 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h2><h4 id="构建一个学习算法的推荐方法为："><a href="#构建一个学习算法的推荐方法为：" class="headerlink" title="构建一个学习算法的推荐方法为："></a>构建一个学习算法的推荐方法为：</h4><ol>
+<li>首先使用简单快速的方式实现算法，然后使用交叉验证集数据验证这个算法。</li>
+<li>绘制学习曲线，决定是增加更多数据，或者添加更多特征，还是其他方式完善算法。</li>
+<li>进行误差分析：人工检查交叉验证集在我们算法中产生预测误差的样本，看看这些样本是否有某种系统化的趋势。</li>
+</ol>
+<h2 id="数值评估"><a href="#数值评估" class="headerlink" title="数值评估"></a>数值评估</h2><p><strong>误差分析并不总能帮助我们判断应该采取怎样的行动。有时我们需要尝试不同的模型，然后进行比较，在模型比较时，用数值来判断哪一个模型更好更有效，通常我们是看交叉验证集的误差。</strong></p>
+<p>通过一个量化的数值评估，我们可以看看这个数字，误差是变大还是变小了，它可以直观地告诉我们：你的想法是提高了算法表现，还是让它变得更坏，这会大大提高我们实践算法时的速度。</p>
+<h2 id="类偏斜"><a href="#类偏斜" class="headerlink" title="类偏斜"></a>类偏斜</h2><p>类偏斜情况表现为在训练集中同一种类的样本特别多，其他类的样本特别少。</p>
+<p>在类偏斜的情况下，模型的准确率的提升并不能说明我们的模型质量得到了提升，比如当我们的模型准确率为98时，我们完善了模型后，把准确率提升到了99％，但是训练集中的99％的数据是属于同一类的，我们并不知道我们的算法究竟是得到了完善还是变成了碰到数据就把它归为99％那一类的撒比算法。</p>
+<p>所以我们需要一个不同寻常的评估度量值：<strong>查准率</strong> 和 <strong>召回率。</strong></p>
+<p><strong>查准率：预测出的实际结果数量 占 预测结果总数量 的百分比</strong></p>
+<p><strong>召回率：预测出的实际结果数量 占 实际结果总数量 的百分比</strong></p>
+<p>这两个数字越高，就说明模型质量越好。</p>
+<h2 id="查准率和召回率之间的权衡"><a href="#查准率和召回率之间的权衡" class="headerlink" title="查准率和召回率之间的权衡"></a>查准率和召回率之间的权衡</h2><p>我们选取的阈值决定了我们最终预测结果的走向是0还是1，所以阈值是影响查准率和召回率的重要因素，那么我们应该选取 $0-1$ 之间哪个数为阈值呢?</p>
+<p>不同的阈值对应着不同的查准率和召回率，查准率和召回率都是越高越好，但是我们无法判断究竟查准率 $0.7$ 召回率 $0.3$ 好 ，还是查准率 $0.4$ 召回率 $0.6$ 好 。</p>
+<p>这时我们就需要一个评估度量值来综合的考虑两个因素给定一个结果：阈值设为多少合适。</p>
+<p>这个评估度量值的计算公式有很多个，我们现在看在机器学习中经常用到的一个：<br>$$<br>{F}_{1} = \frac{PR}{P+R}<br>$$</p>
+<blockquote>
+<p>P 查准率        R 召回率</p>
+</blockquote>
+<h2 id="机器学习的数据"><a href="#机器学习的数据" class="headerlink" title="机器学习的数据"></a>机器学习的数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">事实上，如果你选择任意一个算法，可能是选择了一个&quot;劣等的&quot;算法，如果你给这个劣等算法更多的数据，那么从这些例子中看起来的话，它看上去很有可能会其他算法更好，甚至会比&quot;优等算法&quot;更好。由于这项原始的研究非常具有影响力，因此已经有一系列许多不同的研究显示了类似的结果。这些结果表明，许多不同的学习算法有时倾向于表现出非常相似的表现，这还取决于一些细节，但是真正能提高性能的，是你能够给一个算法大量的训练数据。像这样的结果，引起了一种在机器学习中的普遍共识：&quot;取得成功的人不是拥有最好算法的人，而是拥有最多数据的人&quot;。</span><br><span class="line"></span><br><span class="line">现在假设我们使用了非常非常大的训练集，在这种情况下，尽管我们希望有很多参数，但是如果训练集比参数的数量还大，甚至是更多，那么这些算法就不太可能会过度拟合。也就是说训练误差有希望接近测试误差。</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -814,7 +835,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么改进算法"><span class="nav-number">1.</span> <span class="nav-text">怎么改进算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么评估算法的性能（机器学习诊断法-machine-learning-diagnostics-）"><span class="nav-number">2.</span> <span class="nav-text">怎么评估算法的性能（机器学习诊断法[machine learning diagnostics]）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准方法"><span class="nav-number">2.0.1.</span> <span class="nav-text">标准方法</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么选择模型"><span class="nav-number">3.</span> <span class="nav-text">怎么选择模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过交叉验证，选择能最好的拟合数据的多项式次数的模型"><span class="nav-number">3.0.1.</span> <span class="nav-text">通过交叉验证，选择能最好的拟合数据的多项式次数的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型出现问题，是欠拟合还是过拟合"><span class="nav-number">3.0.2.</span> <span class="nav-text">模型出现问题，是欠拟合还是过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何选取正则化参数-lambda"><span class="nav-number">3.0.3.</span> <span class="nav-text">如何选取正则化参数 $\lambda$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于学习曲线"><span class="nav-number">3.0.4.</span> <span class="nav-text">关于学习曲线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应该采用哪种方法改进算法"><span class="nav-number">4.</span> <span class="nav-text">应该采用哪种方法改进算法</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么改进算法"><span class="nav-number">1.</span> <span class="nav-text">怎么改进算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么评估算法的性能（机器学习诊断法-machine-learning-diagnostics-）"><span class="nav-number">2.</span> <span class="nav-text">怎么评估算法的性能（机器学习诊断法[machine learning diagnostics]）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准方法"><span class="nav-number">2.0.1.</span> <span class="nav-text">标准方法</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么选择模型"><span class="nav-number">3.</span> <span class="nav-text">怎么选择模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过交叉验证，选择能最好的拟合数据的多项式次数的模型"><span class="nav-number">3.0.1.</span> <span class="nav-text">通过交叉验证，选择能最好的拟合数据的多项式次数的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型出现问题，是欠拟合还是过拟合"><span class="nav-number">3.0.2.</span> <span class="nav-text">模型出现问题，是欠拟合还是过拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何选取正则化参数-lambda"><span class="nav-number">3.0.3.</span> <span class="nav-text">如何选取正则化参数 $\lambda$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于学习曲线"><span class="nav-number">3.0.4.</span> <span class="nav-text">关于学习曲线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应该采用哪种方法改进算法"><span class="nav-number">4.</span> <span class="nav-text">应该采用哪种方法改进算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#误差分析"><span class="nav-number">5.</span> <span class="nav-text">误差分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构建一个学习算法的推荐方法为："><span class="nav-number">5.0.1.</span> <span class="nav-text">构建一个学习算法的推荐方法为：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值评估"><span class="nav-number">6.</span> <span class="nav-text">数值评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类偏斜"><span class="nav-number">7.</span> <span class="nav-text">类偏斜</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查准率和召回率之间的权衡"><span class="nav-number">8.</span> <span class="nav-text">查准率和召回率之间的权衡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器学习的数据"><span class="nav-number">9.</span> <span class="nav-text">机器学习的数据</span></a></li></div>
             
 
           </div>
@@ -860,7 +881,7 @@
   <span class="post-meta-divider">|</span>
 
   <div class="theme-info">
-    <span class="post-count">博客全站共12.8k字</span>
+    <span class="post-count">博客全站共13.9k字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
