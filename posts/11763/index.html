@@ -14,8 +14,8 @@
 
 <script>
     (function(){
-        if('heima'){
-            if (prompt('请输入文章密码') !== 'heima'){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
                 alert('密码错误！');
                 history.back();
             }
@@ -111,7 +111,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="机器学习,支持向量机,">
 
 
 
@@ -122,17 +122,22 @@
 
 
 
-<meta name="description" content="讲述人简介 工作半年 学历 - 硕士 做的人工智能的自然语言处理，招聘系统里的算法组， 只面试了一家，当时找的数据挖掘，看重了学习能力留下来进了算法组，当场给的offer">
+<meta name="description" content="支持向量机的代价函数$$J(\theta) = \min_{\theta} C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)}) + (1-y^{(i)})cost_0(\theta^Tx^{(i)})] + \frac{1}{2}\sum_{i=1}^n\theta_j^{2}$$  C 可以看作 $\frac{1}{\lambda}$   支持向量机的作用">
+<meta name="keywords" content="机器学习,支持向量机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="经验">
-<meta property="og:url" content="http://xingtu.info/posts/59767/index.html">
+<meta property="og:title" content="机器学习-支持向量机（SVM）">
+<meta property="og:url" content="http://xingtu.info/posts/11763/index.html">
 <meta property="og:site_name" content="Maifeel">
-<meta property="og:description" content="讲述人简介 工作半年 学历 - 硕士 做的人工智能的自然语言处理，招聘系统里的算法组， 只面试了一家，当时找的数据挖掘，看重了学习能力留下来进了算法组，当场给的offer">
+<meta property="og:description" content="支持向量机的代价函数$$J(\theta) = \min_{\theta} C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)}) + (1-y^{(i)})cost_0(\theta^Tx^{(i)})] + \frac{1}{2}\sum_{i=1}^n\theta_j^{2}$$  C 可以看作 $\frac{1}{\lambda}$   支持向量机的作用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T01:28:18.094Z">
+<meta property="og:image" content="http://dec3.jlu.edu.cn/webcourse/t000022/teach/chapter5/5_1.files/image002.gif">
+<meta property="og:image" content="http://dec3.jlu.edu.cn/webcourse/t000022/teach/chapter5/5_1.files/image004.gif">
+<meta property="og:image" content="http://dec3.jlu.edu.cn/webcourse/t000022/teach/chapter5/5_1.files/image006.gif">
+<meta property="og:updated_time" content="2018-11-08T14:09:09.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="经验">
-<meta name="twitter:description" content="讲述人简介 工作半年 学历 - 硕士 做的人工智能的自然语言处理，招聘系统里的算法组， 只面试了一家，当时找的数据挖掘，看重了学习能力留下来进了算法组，当场给的offer">
+<meta name="twitter:title" content="机器学习-支持向量机（SVM）">
+<meta name="twitter:description" content="支持向量机的代价函数$$J(\theta) = \min_{\theta} C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)}) + (1-y^{(i)})cost_0(\theta^Tx^{(i)})] + \frac{1}{2}\sum_{i=1}^n\theta_j^{2}$$  C 可以看作 $\frac{1}{\lambda}$   支持向量机的作用">
+<meta name="twitter:image" content="http://dec3.jlu.edu.cn/webcourse/t000022/teach/chapter5/5_1.files/image002.gif">
 
 
 
@@ -162,7 +167,7 @@
 
 
 
-  <link rel="canonical" href="http://xingtu.info/posts/59767/">
+  <link rel="canonical" href="http://xingtu.info/posts/11763/">
 
 
 
@@ -170,7 +175,7 @@
 
 
 
-  <title>经验 | Maifeel</title>
+  <title>机器学习-支持向量机（SVM） | Maifeel</title>
   
 
 
@@ -338,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/59767/">
+    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/11763/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mai">
@@ -355,7 +360,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">经验</h2>
+          <h2 class="post-title" itemprop="name headline">机器学习-支持向量机（SVM）</h2>
         
 
         <div class="post-meta">
@@ -368,8 +373,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-28T20:21:03+08:00">
-                2018-10-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T22:42:33+08:00">
+                2018-11-07
               </time>
             
 
@@ -378,6 +383,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -405,7 +432,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  688
+                  1.6k
                 </span>
               
 
@@ -430,36 +457,59 @@
       
 
       
-        <h4 id="讲述人简介"><a href="#讲述人简介" class="headerlink" title="讲述人简介"></a>讲述人简介</h4><ul>
-<li>工作半年</li>
-<li>学历 - 硕士</li>
-<li>做的人工智能的自然语言处理，招聘系统里的算法组，</li>
-<li>只面试了一家，当时找的数据挖掘，看重了学习能力留下来进了算法组，当场给的offer</li>
+        <h2 id="支持向量机的代价函数"><a href="#支持向量机的代价函数" class="headerlink" title="支持向量机的代价函数"></a>支持向量机的代价函数</h2><p>$$<br>J(\theta) = \min_{\theta} C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tx^{(i)}) + (1-y^{(i)})cost_0(\theta^Tx^{(i)})] + \frac{1}{2}\sum_{i=1}^n\theta_j^{2}<br>$$</p>
+<blockquote>
+<p>C 可以看作 $\frac{1}{\lambda}$ </p>
+</blockquote>
+<h2 id="支持向量机的作用"><a href="#支持向量机的作用" class="headerlink" title="支持向量机的作用"></a>支持向量机的作用</h2><ul>
+<li>人们有时将支持向量机看作是大间距分类器</li>
+<li>支持向量机能够努力的将正样本和负样本用最大的间距分开。这也是支持向量机具有鲁棒性的原因，鲁棒是Robust的音译，也就是健壮和强壮的意思。</li>
+<li>支持向量机（SVM）实际上是一种凸优化问题，因此它总是能找到全局最小值或者接近它的值从而不用担心局部最优</li>
 </ul>
-<a id="more"></a>
-<h4 id="填简历几个维度去看你-让你的简历更容易被别人记下来"><a href="#填简历几个维度去看你-让你的简历更容易被别人记下来" class="headerlink" title="填简历几个维度去看你,让你的简历更容易被别人记下来"></a>填简历几个维度去看你,让你的简历更容易被别人记下来</h4><ol>
-<li><h5 id="薪资"><a href="#薪资" class="headerlink" title="薪资"></a>薪资</h5><p>填一下无论HR还是自己都对自己有预期，可以填一下</p>
-</li>
-<li><h5 id="职能"><a href="#职能" class="headerlink" title="职能"></a>职能</h5><p>与投递的公司契合度在哪里</p>
-</li>
-<li><h5 id="学历"><a href="#学历" class="headerlink" title="学历"></a>学历</h5><p> 很看重，四六级，211与否，本科or硕士，占不到优势就只能侧重于技能方向</p>
-</li>
-<li><h5 id="技能-重点"><a href="#技能-重点" class="headerlink" title="技能(重点)"></a>技能(重点)</h5><p> 无论做什么方向，讲述自己具备技能时需要有自己的特色，或者说相比于别人你需要更好的去表述自己擅长的方面：宏观上你对项目的贡献，微观上贡献的技术点深入(吹)，学会吹 ：），吹牛逼不是撒谎 = =/。注意细节，描述的越细越真，不能含糊</p>
-</li>
-<li><h5 id="自学能力"><a href="#自学能力" class="headerlink" title="自学能力"></a>自学能力</h5><p>描述自己的学习过程，遇到的困难坎坷，表现出自己的自学能力很强</p>
-</li>
-<li><h5 id="热情"><a href="#热情" class="headerlink" title="热情"></a>热情</h5><p>要嗨起来，展示对技术的追求与对未知的好奇心，正能量</p>
-</li>
-</ol>
-<h4 id="关于不是本专业的-非科班-，怕受到歧视"><a href="#关于不是本专业的-非科班-，怕受到歧视" class="headerlink" title="关于不是本专业的(非科班)，怕受到歧视"></a>关于不是本专业的(非科班)，怕受到歧视</h4><p>不用担心，大部分科班都是走的校招找工作，而我们去找工作是社招，别人看重的是我们的技能，讲述人所在的算法组中都不是计算机本专业的，在公司，周围的同事大部分也不是本专业的，所以不用太担心，嗨起来</p>
-<h4 id="关于爬虫"><a href="#关于爬虫" class="headerlink" title="关于爬虫"></a>关于爬虫</h4><p>可能你们分布式爬虫都搞不出来，老师教的很有限，目前来讲爬虫方向的门槛很高，讲述人的公司面了很多爬虫最后都没有要</p>
-<h4 id="关于就业"><a href="#关于就业" class="headerlink" title="关于就业"></a>关于就业</h4><p>讲述人建议，当前的问题就在于就业，想走高端方向可以慢慢学，但是目前来讲没有经济基础还是先就业比较好，要现实一点先找到工作，目前的测试需求非常大，他的朋友就是先工作然后转到了算法工程师，python就是一个起点，也就是从零到一的开始，先开个头，再莽。</p>
-<h4 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h4><ul>
-<li>住的地方离公司近一点，开销会少很多</li>
-<li>把目前的公司当跳板，好好利用周末时间进行个人技能的提升</li>
-<li>简历有老师辅导很简单了，重点就在面试了，注意细节，要嗨起来</li>
-<li>数据结构与算法最好系统的学一学，有手写算法的面试题的都用的上</li>
-</ul>
+<h2 id="关于内积和范数"><a href="#关于内积和范数" class="headerlink" title="关于内积和范数"></a>关于内积和范数</h2><p><strong>1.</strong> <strong>内积</strong>：设有<em>n</em>维向量</p>
+<p>​          <img src="http://dec3.jlu.edu.cn/webcourse/t000022/teach/chapter5/5_1.files/image002.gif" alt="img"></p>
+<p>令        <img src="http://dec3.jlu.edu.cn/webcourse/t000022/teach/chapter5/5_1.files/image004.gif" alt="img"> ，</p>
+<p>则称[<strong>x</strong>,<strong>y</strong>]为向量<strong>x</strong>与<strong>y</strong>的内积。</p>
+<p><strong>2.</strong> <strong>范数</strong>：称 <img src="http://dec3.jlu.edu.cn/webcourse/t000022/teach/chapter5/5_1.files/image006.gif" alt="img"> 为向量<em>x</em>的范数(或长度)。</p>
+<h2 id="支持向量机产生大间距分类的原因"><a href="#支持向量机产生大间距分类的原因" class="headerlink" title="支持向量机产生大间距分类的原因"></a>支持向量机产生大间距分类的原因</h2><p>由内积和范数引起变化，具体先不写。。。</p>
+<h2 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h2><h4 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h4><p>$$<br>exp(-\frac{||x-l^{i}||^2}{2\sigma^2})<br>$$</p>
+<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><p>使用核函数构造复杂的非线性分类器，能够根据数据的相似与否定义许多新的特征值</p>
+<p>相似度函数就是核函数就是高斯核函数，$\sigma$ 是高斯核函数的参数</p>
+<p>我们通过标记点和核函数来定义新的特征变量从而训练复杂的非线性边界</p>
+<h4 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h4><p>我们通过核函数能够得到</p>
+<h2 id="如何选取标记点"><a href="#如何选取标记点" class="headerlink" title="如何选取标记点"></a>如何选取标记点</h2><p>每一个标记点的位置都与样本点的位置精确对应，选出 $m$ 个标记点。这样就说明特征函数基本上是在描述每一个样本距离样本集中其他样本的距离</p>
+<h2 id="支持向量机如何通过核函数有效的学习复杂非线性函数"><a href="#支持向量机如何通过核函数有效的学习复杂非线性函数" class="headerlink" title="支持向量机如何通过核函数有效的学习复杂非线性函数"></a>支持向量机如何通过核函数有效的学习复杂非线性函数</h2><p>如果我们要进行预测，首先我们需要计算特征向量 $f_{(m+1)×1}$  ，内部值都是 传入 $x$ 与 标记点 通过核函数 与m个样本点进行相似度比较产出的。</p>
+<p>我们再使用参数转置乘特征向量： $\theta^Tf = \theta_0f_0 + \theta_1f_1 + \theta_2f_2 + ……+ \theta_mf_m$</p>
+<p>如果结果 大于等于零，预测结果为 1。</p>
+<p>但是我们怎么获得参数 $\theta$ 的值，我们通过最小化下式就能得到支持向量机的参数<br>$$<br>J(\theta) = \min_{\theta} C\sum_{i=1}^m[y^{(i)}cost_1(\theta^Tf^{(i)}) + (1-y^{(i)})cost_0(\theta^Tf^{(i)})] + \frac{1}{2}\sum_{i=1}^n\theta_j^{2}<br>$$</p>
+<blockquote>
+<p>这里的 $n = m$ ，这里我们仍然不对 $\theta_0$ 做正则化处理</p>
+<p>最后的 $\sum_{i=1}^n\theta_j^{2}$  还能够被写为 $\theta^T\theta$ 或是别的比如 $\theta^TM\theta$ ，这取决于我们使用的是什么核函数，这能够使支持向量机更有效率的运行，这样修改能够适应超大的训练集，那时 求解m维参数的成本会非常高，主要为了计算效率。</p>
+<p>核函数虽然也能用在逻辑回归上，但是它毕竟是为支持向量机开发的，用在逻辑回归上会十分缓慢。</p>
+</blockquote>
+<h2 id="使用支持向量机时，怎么选择支持向量机里的参数"><a href="#使用支持向量机时，怎么选择支持向量机里的参数" class="headerlink" title="使用支持向量机时，怎么选择支持向量机里的参数"></a>使用支持向量机时，怎么选择支持向量机里的参数</h2><h4 id="参数-C"><a href="#参数-C" class="headerlink" title="参数 $C$"></a>参数 $C$</h4><p>在使用支持向量机时，其中一个要选择的事情是目标函数中的参数 $C$ 。</p>
+<p>我们知道 $C$ 的作用类似于 $\frac{1}{\lambda}$ 。</p>
+<p>如果使用较大的 $C$ ，这意味着我们没有使用正则化，这可能使我们可能得到一个低偏差高方差的模型。</p>
+<p>如果使用较小的 $C$ ，这相当于我们在逻辑回归中用了一个大的 $\lambda$，这可能使我们可能得到一个高偏差低方差的模型。</p>
+<h4 id="高斯核函数中的参数-sigma-2"><a href="#高斯核函数中的参数-sigma-2" class="headerlink" title="高斯核函数中的参数 $\sigma^2$"></a>高斯核函数中的参数 $\sigma^2$</h4><p>当 $\sigma^2$ 偏大时，由核函数得到的相似度会变化的很平缓，这会给模型带来较高的偏差和较低的方差。</p>
+<p>当 $\sigma^2$ 偏小时，由核函数得到的相似度会变化的很剧烈，会有较大斜率和较大的导数，这会给模型带来较低的偏差和较高的方差。</p>
+<h2 id="运用SVM时的一些细节"><a href="#运用SVM时的一些细节" class="headerlink" title="运用SVM时的一些细节"></a>运用SVM时的一些细节</h2><blockquote>
+<p>使用不带有核函数的支持向量机就叫做线核的SVM，即没有 $f$ ，你可以把它想象为给了你一个线性分类器</p>
+</blockquote>
+<h4 id="线核SVM"><a href="#线核SVM" class="headerlink" title="线核SVM"></a>线核SVM</h4><p>如果有大量的特征值（N很大），且训练的样本数很小（M很小），那么是不会去想着拟合拟合一个非常复杂的非线性函数的，因为没有足够多的数据很有可能过度拟合。</p>
+<h4 id="高斯核函数"><a href="#高斯核函数" class="headerlink" title="高斯核函数"></a>高斯核函数</h4><p>如果有少量的特征值（N很小），且训练的样本数很大（M很大），</p>
+<h4 id="提供核函数"><a href="#提供核函数" class="headerlink" title="提供核函数"></a>提供核函数</h4><p>高斯核函数和线性核函数是最普遍的核函数，</p>
+<blockquote>
+<p> 注意事项：如果你有大小不一样的特征变量，为了不使间距被大型特征操控（小的特征都被忽略掉），在使用高斯核函数前最好将这些特征变量的大小按比例归一化。</p>
+<p>warning：所有的核函数都已经满足一个技术条件，它叫做莫塞尔定理。</p>
+<p>吴恩达很少很少很少使用其他核函数，</p>
+</blockquote>
+<h4 id="多类分类（K分类）中如何使用支持向量机"><a href="#多类分类（K分类）中如何使用支持向量机" class="headerlink" title="多类分类（K分类）中如何使用支持向量机"></a>多类分类（K分类）中如何使用支持向量机</h4><p>现成的多类分类的函数包，</p>
+<h4 id="逻辑回归算法于支持向量机的选择"><a href="#逻辑回归算法于支持向量机的选择" class="headerlink" title="逻辑回归算法于支持向量机的选择"></a>逻辑回归算法于支持向量机的选择</h4><p>$n&gt;=m$  逻辑回归或者线核SVM，因为没有更好更多的数据拟合复杂的非线性函数</p>
+<p>$n&lt;=m$   高斯SVM</p>
+<p> $n&lt;&lt;=m$  增加或者创建更多的特征变量，然后使用逻辑回归或者线核SVM</p>
+<h4 id="为什么不使用神经网络"><a href="#为什么不使用神经网络" class="headerlink" title="为什么不使用神经网络"></a>为什么不使用神经网络</h4><p>训练起来会特别的慢</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>算法确实很重要，但更重要的是我们有多少数据，我们是否擅长做误差分析和诊断学习算法来指出设定新的特征变量，或找出其他能够决定我们学习算法的变量等方面，通常这些方面会比我们使用逻辑回归还是SVM这方面更加重要</p>
 
       
     </div>
@@ -523,6 +573,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/支持向量机/" rel="tag"><i class="fa fa-tag"></i> 支持向量机</a>
+          
+        </div>
+      
       
       
       
@@ -532,8 +590,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/1179/" rel="next" title="机器学习-正则化">
-                <i class="fa fa-chevron-left"></i> 机器学习-正则化
+              <a href="/posts/16394/" rel="next" title="机器学习-如何有效使用机器学习算法">
+                <i class="fa fa-chevron-left"></i> 机器学习-如何有效使用机器学习算法
               </a>
             
           </div>
@@ -541,10 +599,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/6267/" rel="prev" title="机器学习-神经网络(一)">
-                机器学习-神经网络(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -726,7 +780,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#讲述人简介"><span class="nav-number">1.</span> <span class="nav-text">讲述人简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#填简历几个维度去看你-让你的简历更容易被别人记下来"><span class="nav-number">2.</span> <span class="nav-text">填简历几个维度去看你,让你的简历更容易被别人记下来</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#薪资"><span class="nav-number">2.1.</span> <span class="nav-text">薪资</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#职能"><span class="nav-number">2.2.</span> <span class="nav-text">职能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#学历"><span class="nav-number">2.3.</span> <span class="nav-text">学历</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#技能-重点"><span class="nav-number">2.4.</span> <span class="nav-text">技能(重点)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自学能力"><span class="nav-number">2.5.</span> <span class="nav-text">自学能力</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#热情"><span class="nav-number">2.6.</span> <span class="nav-text">热情</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于不是本专业的-非科班-，怕受到歧视"><span class="nav-number">3.</span> <span class="nav-text">关于不是本专业的(非科班)，怕受到歧视</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于爬虫"><span class="nav-number">4.</span> <span class="nav-text">关于爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于就业"><span class="nav-number">5.</span> <span class="nav-text">关于就业</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议"><span class="nav-number">6.</span> <span class="nav-text">建议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机的代价函数"><span class="nav-number">1.</span> <span class="nav-text">支持向量机的代价函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机的作用"><span class="nav-number">2.</span> <span class="nav-text">支持向量机的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于内积和范数"><span class="nav-number">3.</span> <span class="nav-text">关于内积和范数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机产生大间距分类的原因"><span class="nav-number">4.</span> <span class="nav-text">支持向量机产生大间距分类的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核函数"><span class="nav-number">5.</span> <span class="nav-text">核函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#公式"><span class="nav-number">5.0.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目的"><span class="nav-number">5.0.2.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何使用"><span class="nav-number">5.0.3.</span> <span class="nav-text">如何使用</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#如何选取标记点"><span class="nav-number">6.</span> <span class="nav-text">如何选取标记点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量机如何通过核函数有效的学习复杂非线性函数"><span class="nav-number">7.</span> <span class="nav-text">支持向量机如何通过核函数有效的学习复杂非线性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用支持向量机时，怎么选择支持向量机里的参数"><span class="nav-number">8.</span> <span class="nav-text">使用支持向量机时，怎么选择支持向量机里的参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数-C"><span class="nav-number">8.0.1.</span> <span class="nav-text">参数 $C$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯核函数中的参数-sigma-2"><span class="nav-number">8.0.2.</span> <span class="nav-text">高斯核函数中的参数 $\sigma^2$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运用SVM时的一些细节"><span class="nav-number">9.</span> <span class="nav-text">运用SVM时的一些细节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线核SVM"><span class="nav-number">9.0.1.</span> <span class="nav-text">线核SVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高斯核函数"><span class="nav-number">9.0.2.</span> <span class="nav-text">高斯核函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提供核函数"><span class="nav-number">9.0.3.</span> <span class="nav-text">提供核函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多类分类（K分类）中如何使用支持向量机"><span class="nav-number">9.0.4.</span> <span class="nav-text">多类分类（K分类）中如何使用支持向量机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归算法于支持向量机的选择"><span class="nav-number">9.0.5.</span> <span class="nav-text">逻辑回归算法于支持向量机的选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么不使用神经网络"><span class="nav-number">9.0.6.</span> <span class="nav-text">为什么不使用神经网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">10.</span> <span class="nav-text">最后</span></a></li></div>
             
 
           </div>
