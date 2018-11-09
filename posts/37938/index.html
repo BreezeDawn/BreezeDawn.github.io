@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-loading-bar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,HTML,JS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="自己写一个博客难免用到前端东西，配合着某宝几块钱的视频也算是系统的过了一遍吧.. 把笔记发上来供以后查阅。 有点后悔写博客没有写笔记…虽然代码特别烂…">
+<meta name="keywords" content="前端,HTML,JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端笔记">
+<meta property="og:url" content="http://xingtu.info/posts/37938/index.html">
+<meta property="og:site_name" content="Maifeel">
+<meta property="og:description" content="自己写一个博客难免用到前端东西，配合着某宝几块钱的视频也算是系统的过了一遍吧.. 把笔记发上来供以后查阅。 有点后悔写博客没有写笔记…虽然代码特别烂…">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-09T14:09:11.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端笔记">
+<meta name="twitter:description" content="自己写一个博客难免用到前端东西，配合着某宝几块钱的视频也算是系统的过了一遍吧.. 把笔记发上来供以后查阅。 有点后悔写博客没有写笔记…虽然代码特别烂…">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xingtu.info/posts/37938/">
+
+
+
+
+
+
+
+  <title>前端笔记 | Maifeel</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maifeel</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/37938/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maifeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">前端笔记</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-07T00:35:16+08:00">
+                2017-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.3k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>自己写一个博客难免用到前端东西，配合着某宝几块钱的视频也算是系统的过了一遍吧..</p>
+<p>把笔记发上来供以后查阅。</p>
+<p>有点后悔写博客没有写笔记…虽然代码特别烂…</p>
+<a id="more"></a>
+<h4 id="对整篇笔记的标记解释"><a href="#对整篇笔记的标记解释" class="headerlink" title="对整篇笔记的标记解释"></a>对整篇笔记的标记解释</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">标记</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">🍟</td>
+<td style="text-align:center">了解</td>
+</tr>
+<tr>
+<td style="text-align:center">🌙</td>
+<td style="text-align:center">熟悉</td>
+</tr>
+<tr>
+<td style="text-align:center">⭐</td>
+<td style="text-align:center">重点</td>
+</tr>
+<tr>
+<td style="text-align:center">👑</td>
+<td style="text-align:center">重中之重</td>
+</tr>
+<tr>
+<td style="text-align:center">🐚</td>
+<td style="text-align:center">案例</td>
+</tr>
+<tr>
+<td style="text-align:center">🍓</td>
+<td style="text-align:center">甜点,解释,额外理解</td>
+</tr>
+<tr>
+<td style="text-align:center">🍦</td>
+<td style="text-align:center">作用,方法,属性</td>
+</tr>
+<tr>
+<td style="text-align:center">🔔</td>
+<td style="text-align:center">注意</td>
+</tr>
+<tr>
+<td style="text-align:center">🚀</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">💎</td>
+<td style="text-align:center">种类</td>
+</tr>
+<tr>
+<td style="text-align:center">⚡</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">🏆</td>
+<td style="text-align:center">总标题</td>
+</tr>
+</tbody>
+</table>
+<h4 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">696</span><br><span class="line">697</span><br><span class="line">698</span><br><span class="line">699</span><br><span class="line">700</span><br><span class="line">701</span><br><span class="line">702</span><br><span class="line">703</span><br><span class="line">704</span><br><span class="line">705</span><br><span class="line">706</span><br><span class="line">707</span><br><span class="line">708</span><br><span class="line">709</span><br><span class="line">710</span><br><span class="line">711</span><br><span class="line">712</span><br><span class="line">713</span><br><span class="line">714</span><br><span class="line">715</span><br><span class="line">716</span><br><span class="line">717</span><br><span class="line">718</span><br><span class="line">719</span><br><span class="line">720</span><br><span class="line">721</span><br><span class="line">722</span><br><span class="line">723</span><br><span class="line">724</span><br><span class="line">725</span><br><span class="line">726</span><br><span class="line">727</span><br><span class="line">728</span><br><span class="line">729</span><br><span class="line">730</span><br><span class="line">731</span><br><span class="line">732</span><br><span class="line">733</span><br><span class="line">734</span><br><span class="line">735</span><br><span class="line">736</span><br><span class="line">737</span><br><span class="line">738</span><br><span class="line">739</span><br><span class="line">740</span><br><span class="line">741</span><br><span class="line">742</span><br><span class="line">743</span><br><span class="line">744</span><br><span class="line">745</span><br><span class="line">746</span><br><span class="line">747</span><br><span class="line">748</span><br><span class="line">749</span><br><span class="line">750</span><br><span class="line">751</span><br><span class="line">752</span><br><span class="line">753</span><br><span class="line">754</span><br><span class="line">755</span><br><span class="line">756</span><br><span class="line">757</span><br><span class="line">758</span><br><span class="line">759</span><br><span class="line">760</span><br><span class="line">761</span><br><span class="line">762</span><br><span class="line">763</span><br><span class="line">764</span><br><span class="line">765</span><br><span class="line">766</span><br><span class="line">767</span><br></pre></td><td class="code"><pre><span class="line">视口: 在移动端观看不缩放<span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">块元素-&gt;一行只能有一个   可以更改宽高值</span><br><span class="line">内联元素-&gt; 一行可以有多个  不能更改宽高值</span><br><span class="line"></span><br><span class="line">☢☢☢☢☢☢<span class="tag">&lt;<span class="name">标签</span>&gt;</span>☢☢☢☢☢☢</span><br><span class="line"></span><br><span class="line">HTML 注释   <span class="comment">&lt;!--This is a comment --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span> 		描述网页</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> 		是可见的页面内容</span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>   		被显示为标题  <span class="tag">&lt;<span class="name">h1</span>&gt;</span> - <span class="tag">&lt;<span class="name">h6</span>&gt;</span>  大-&gt;小  </span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span> 		段落  						 </span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span> /&gt;</span>  	创建水平线</span><br><span class="line"><span class="tag">&lt;<span class="name">br</span> /换行&gt;</span>  	&amp;nbsp;空格, &amp;lt;<span class="tag">&lt;<span class="name">,</span> &amp;<span class="attr">gt</span>;&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span>       预格式文本它保留了空格和换行,很适合显示计算机代码</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> 		块级使用容器 (不能被P嵌套)</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span> 		内联使用 容器</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.w3school.com.cn"</span> <span class="attr">target</span>=<span class="string">"_blank(新页面)"</span>&gt;</span>This is a link<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"w3school.jpg"</span> <span class="attr">alt</span>=<span class="string">"图片无法显示时提示"</span> <span class="attr">width</span>=<span class="string">"104"</span> <span class="attr">height</span>=<span class="string">"142"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">文本格式化标签 -&gt;直接用以下标签包裹文本或者格式化内容</span><br><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>				定义粗体文本。</span><br><span class="line"><span class="tag">&lt;<span class="name">big</span>&gt;</span>			定义大号字。</span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>			定义着重文字。</span><br><span class="line"><span class="tag">&lt;<span class="name">i</span>&gt;</span>				定义斜体字。</span><br><span class="line"><span class="tag">&lt;<span class="name">small</span>&gt;</span>			定义小号字。</span><br><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>		定义加重语气。</span><br><span class="line"><span class="tag">&lt;<span class="name">sub</span>&gt;</span>			定义下标字。</span><br><span class="line"><span class="tag">&lt;<span class="name">sup</span>&gt;</span>			定义上标字。</span><br><span class="line"><span class="tag">&lt;<span class="name">ins</span>&gt;</span>			定义插入字。</span><br><span class="line"><span class="tag">&lt;<span class="name">del</span>&gt;</span>			定义删除字。</span><br><span class="line"></span><br><span class="line">★ CSS 样式</span><br><span class="line"></span><br><span class="line">㊙ 外联式<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"mystyle.css"</span>&gt;</span></span><br><span class="line">㊙ 嵌入式</span><br><span class="line">㊙ 内联式</span><br><span class="line"></span><br><span class="line">★ CSS选择器 <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	通用选择器 *</span><br><span class="line">	▲ 标签选择器 div</span><br><span class="line">	▲ 类选择器 class</span><br><span class="line">	▲ id选择器 id</span><br><span class="line"></span><br><span class="line">★ 组合选择器 <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	多元素选择器: 	逗号						</span><br><span class="line">	后代选择器:     空格  </span><br><span class="line">	子代选择器:   	大于  </span><br><span class="line">	毗邻选择器:   	加号  </span><br><span class="line"></span><br><span class="line">⭐ 属性选择器 <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	a 标签的另类选择 [href="www"]&#123;&#125;</span><br><span class="line"></span><br><span class="line">⭐ 伪类选择器<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"> 	input:focus(点下) &#123;border: 1px solid/dashed red;outline: none;&#125;	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">☢☢☢☢☢☢☢☢☢☢<span class="tag">&lt;<span class="name">属性</span>&gt;</span>☢☢☢☢☢☢☢☢☢☢</span><br><span class="line"></span><br><span class="line">❤属性 				❤作用 						❤举例</span><br><span class="line"></span><br><span class="line">width 				设置元素(标签)的宽度 			width: 200px;</span><br><span class="line"></span><br><span class="line">height 				设置元素(标签)的高度 			height: 200px;</span><br><span class="line"></span><br><span class="line">background-color 	设置元素背景色                  background-color: pink; rgba(r,g,b,alph)</span><br><span class="line">background-image    设置元素背景图片		        background-image: url('./images/bg01.jpg')</span><br><span class="line">background-repeat   设置背景图片是否重复            background-repeat: not repeat;</span><br><span class="line">background 			设置元素背景色或者背景图片		background: url('./images/bg01.jpg') pink; rgba(r,g,b,alph) not repeat;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">border				设置元素四周的边框 			border: 1px solid pink;会影响宽高</span><br><span class="line"></span><br><span class="line">color 				设置文字的颜色				color:  red;</span><br><span class="line"></span><br><span class="line">font-size 			设置文字的大小 				font-size:  12px;</span><br><span class="line"></span><br><span class="line">font-family 		设置文字的字体 				font-family: 'Microsoft  Yahei'; </span><br><span class="line"></span><br><span class="line">font-weight 		设置文字是否加粗 				font-weight: bold;  </span><br><span class="line"></span><br><span class="line">line-height 		设置文字的行高 				line-height: 24px;</span><br><span class="line"></span><br><span class="line">text-decoration		设置文字的下划线				text-decoration:none;  (取消下划线)</span><br><span class="line"></span><br><span class="line">margin 				设置外边距					上右下左/没有对面拿</span><br><span class="line">					设置水平居中					0px auto</span><br><span class="line"></span><br><span class="line">padding 			设置内边距					会影响宽高</span><br><span class="line"></span><br><span class="line">text-align			设置文字水平对齐方式			text-align:center  </span><br><span class="line"></span><br><span class="line">text-indent 		设置文字首行缩进				text-indent:32px;(默认字-16px)</span><br><span class="line"></span><br><span class="line">display</span><br><span class="line">	- none   		元素隐藏且不占位置</span><br><span class="line">	- block  		此元素会被显示为块元素</span><br><span class="line">	- inline 		此元素会被显示为内联元素</span><br><span class="line">	- inline-block 	行内块元素 ( 了解 )</span><br><span class="line"></span><br><span class="line">overflow  			管理元素异常溢出				hidden隐藏/scroll滑动/auto首选</span><br><span class="line"></span><br><span class="line">border-radius       边框圆角                        border-radius:30px;    </span><br><span class="line"></span><br><span class="line">cursor              鼠标图标变化                    cursor:pointer;</span><br><span class="line"></span><br><span class="line">list-style:none;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">⭐ 浮动: (  float  )</span><br><span class="line"></span><br><span class="line">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■</span><br><span class="line"></span><br><span class="line">margin父子塌陷: </span><br><span class="line">- 如果父级 div 中没有 border,   padding,   inline content, </span><br><span class="line">子级 div 的 margin 会一直往上找,直到找到某个标签包括 border,  padding, inline content中的其中一个, 然后按此 div 进行 margin.</span><br><span class="line"></span><br><span class="line">margin兄弟塌陷:</span><br><span class="line">- 如果上下两个元素都有设置相对的margin值, 则选择大的.</span><br><span class="line"></span><br><span class="line">盒子的真实尺寸 </span><br><span class="line">盒子的width和height值固定时，如果盒子增加border和padding，盒子整体的尺寸会变大，所以盒子的真实尺寸为：</span><br><span class="line">- 盒子宽度 = width 	+ padding左右 + border左右</span><br><span class="line">- 盒子高度 = height + padding上下 + border上下</span><br><span class="line"></span><br><span class="line">⭐ 列表</span><br><span class="line">    有序列表 -&gt;有序号</span><br><span class="line">	    <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    无序列表</span><br><span class="line">	    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">⭐ emmet 语法</span><br><span class="line">	div.box&gt;.box1+.box2</span><br><span class="line">	#page&gt;div.logo+ul#navigation&gt;li*5&gt;a&#123;Item $&#125; / 大于号&#123;值&#125;/ $序号</span><br><span class="line">	div#header+div.page+"div#footer.class1.class2.class3" /"平级多个id和class"</span><br><span class="line"></span><br><span class="line">⭐ HTML表单</span><br><span class="line">    表单内使用p会有默认宽高</span><br><span class="line">	用于搜集不同类型的用户输入</span><br><span class="line">🐚 <span class="tag">&lt;<span class="name">form</span>&gt;</span>标签 定义整体的表单区域</span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://www..."</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span><span class="comment">&lt;!-- action-&gt;发送目标地址 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"username"</span>&gt;</span>姓名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span> <span class="comment">&lt;!--for 与 input 关联,点击label,焦点也会出现--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">id</span>=<span class="string">"username"</span> <span class="attr">placeholder</span>=<span class="string">"请输入姓名"</span>/&gt;</span> <span class="comment">&lt;!-- placeholder 默认底值 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span>&gt;</span>密码：<span class="tag">&lt;/<span class="name">label</span>&gt;</span> <span class="comment">&lt;!-- password-&gt;***** --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span>&gt;</span>性别：<span class="tag">&lt;/<span class="name">label</span>&gt;</span> <span class="comment">&lt;!-- radio-&gt;单选 --&gt;</span><span class="comment">&lt;!-- name-&gt;关联 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"0"</span> /&gt;</span> 男</span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"1"</span> /&gt;</span> 女</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span>&gt;</span>爱好：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="comment">&lt;!-- checkbox-&gt;多选 --&gt;</span><span class="comment">&lt;!-- value-&gt;传值 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"like"</span> <span class="attr">value</span>=<span class="string">"sing"</span> /&gt;</span> 唱歌</span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"like"</span> <span class="attr">value</span>=<span class="string">"run"</span> /&gt;</span> 跑步</span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span>&gt;</span>照片：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="comment">&lt;!-- file-&gt;选择文件 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"person_pic"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span>&gt;</span>个人描述：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="comment">&lt;!-- textarea-&gt;区域输入 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">"about"</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span>&gt;</span>籍贯：<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="comment">&lt;!-- select-&gt;下拉 --&gt;</span><span class="comment">&lt;!-- option-&gt;选项 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"site"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span>上海<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span><span class="comment">&lt;!-- submit-&gt;提交 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">value</span>=<span class="string">"重置"</span>&gt;</span><span class="comment">&lt;!-- reset-&gt;重置 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">⭐ 表格元素及相关样式</span><br><span class="line">	table&#123;</span><br><span class="line">	border-collapse:collapse;<span class="comment">&lt;!-- 边框重合 --&gt;</span></span><br><span class="line">	text-align:center;<span class="comment">&lt;!-- 居中 --&gt;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="tag">&lt;<span class="name">table</span>&gt;</span>表格</span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span>表头</span><br><span class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span>数据体</span><br><span class="line">    <span class="tag">&lt;<span class="name">tfoot</span>&gt;</span>脚注</span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>标题</span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span>行</span><br><span class="line">	    <span class="tag">&lt;<span class="name">td</span>&gt;</span>列</span><br><span class="line">	        <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">'2'</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span>列合并</span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">'2'</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span>行合并</span><br><span class="line">            </span><br><span class="line">⭐ 定位</span><br><span class="line">    </span><br><span class="line">    文档流(了解)</span><br><span class="line">    position &gt;&gt; left,top,right,bottom</span><br><span class="line">            - static 不如不写</span><br><span class="line">            - relative 相对定位,占位,相对原来的位置定位</span><br><span class="line">            - absolution 绝对定位,不占位,脱离文档流,相对于上一个设置了定位的父级元素定位,如果找不到,脱离文档流,相对于body定位.</span><br><span class="line">            - fixed 固定定位,不占位,相对于浏览器窗口定位</span><br><span class="line">    元素层级 &gt;&gt; 脱离文档流后的层叠顺序</span><br><span class="line">            - z-index</span><br><span class="line"></span><br><span class="line">🐚 弹窗 &gt;&gt; 叠层</span><br><span class="line">    - opacity 透明度</span><br><span class="line">    position - margin&gt;auto 犯冲</span><br><span class="line"></span><br><span class="line">🌙 嵌套网页</span><br><span class="line">    iframe </span><br><span class="line">        - src 嵌套网页地址</span><br><span class="line">        - frameborder 边框</span><br><span class="line">        - name </span><br><span class="line">        - a 标签搭配 <span class="comment">&lt;!-- a的target关联iframe的name --&gt;</span></span><br><span class="line"></span><br><span class="line">⭐ CSS权重值计算</span><br><span class="line">    - 内联样式    1000</span><br><span class="line">    - 标签选择器  1</span><br><span class="line">    - 类选择器    10</span><br><span class="line">    - 伪类选择器  10</span><br><span class="line">    - id选择器    100</span><br><span class="line"></span><br><span class="line">🌙 打包前端</span><br><span class="line">    hbuilder </span><br><span class="line">--------------------    </span><br><span class="line">⭐ 打印名片敲三遍</span><br><span class="line">    </span><br><span class="line">🌙 js引入方式</span><br><span class="line">    行间事件 onclick 任何标签都可以添加的属性</span><br><span class="line">    嵌入     <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    外部引入 <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/xxx.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">🌙 变量</span><br><span class="line">    var a = 5</span><br><span class="line"></span><br><span class="line">⭐ 数据类型</span><br><span class="line">    number     数字</span><br><span class="line">    string     字符串</span><br><span class="line">    boolean    布尔 -&gt; 小写</span><br><span class="line">    undefined  未定义类型 -&gt; 未定义类型不是未定义错误,它本身有一个undefined值</span><br><span class="line">    null       null类型 var age = null , 它的值是null,它的上面有一个object类型</span><br><span class="line">    object     复合类型</span><br><span class="line">    -- typeof -- 查看类型</span><br><span class="line">    </span><br><span class="line">🌙 注释与分号</span><br><span class="line">    css            <span class="comment">&lt;!-- 这是注释 --&gt;</span></span><br><span class="line">    js             // 这是单行注释</span><br><span class="line">    通用多行注释    /* 这是注释 */</span><br><span class="line">    分号           根据规定可加可不加</span><br><span class="line"></span><br><span class="line">🌙 标识符</span><br><span class="line">    区分大小写</span><br><span class="line">    第一个字符必须是字母/下划线/$</span><br><span class="line">    其他字符可以是字母/下划线/$/数字</span><br><span class="line"></span><br><span class="line">🌙 命名风格</span><br><span class="line">    对象        o</span><br><span class="line">    数组        a</span><br><span class="line">    字符串      s</span><br><span class="line">    整数        i</span><br><span class="line">    布尔值      b</span><br><span class="line">    浮点数      f</span><br><span class="line">    函数        fn</span><br><span class="line">    正则        re</span><br><span class="line">    jQuery对象  $</span><br><span class="line"></span><br><span class="line">⭐ 函数</span><br><span class="line">    定义    function 函数名( 参数 )&#123;</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">    调用    函数名( 参数 )</span><br><span class="line"></span><br><span class="line">    js 中有预解析功能,函数调用可放在定义前不出错</span><br><span class="line">        变量定义也有预解析,但变量赋值没有预解析</span><br><span class="line"></span><br><span class="line">    返回值  return  返回值或对象/结束函数运行</span><br><span class="line"></span><br><span class="line">⭐ 全局变量与局部变量</span><br><span class="line">    定义在函数体外的变量都是全局变量,在函数体内不需要global声明可以直接调用.</span><br><span class="line">    定义在函数体内的变量如果没有var声明,也是一个全局变量.</span><br><span class="line">    定义在函数体内的变量如果使用var声明,则是函数体内的局部变量,在函数体外不可用.</span><br><span class="line"></span><br><span class="line">⭐ 匿名函数与封闭函数</span><br><span class="line">    - 没有名字的函数就是匿名函数.</span><br><span class="line">        function () &#123;&#125;</span><br><span class="line">    - 封闭函数 - 匿名函数的调用.</span><br><span class="line">        (function () &#123;&#125;)()</span><br><span class="line">        !function () &#123;&#125;()</span><br><span class="line">        ~function () &#123;&#125;()</span><br><span class="line"></span><br><span class="line">🔔 条件运算符</span><br><span class="line">    ==      只要求值相当(比较时会转换数据类型)</span><br><span class="line">    ===     要求值和类型都相等(等同Python'==')</span><br><span class="line">    &gt;       大于</span><br><span class="line">    <span class="tag">&lt;       小于</span></span><br><span class="line"><span class="tag">    &gt;</span>=      大于等于</span><br><span class="line">    <span class="tag">&lt;<span class="name">=</span>      小于等于</span></span><br><span class="line"><span class="tag">    !=      <span class="string">不等于</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">🔔 逻辑运算符</span></span><br><span class="line"><span class="tag">    &amp;&amp;      <span class="attr">and</span></span></span><br><span class="line"><span class="tag">    ||      <span class="attr">or</span></span></span><br><span class="line"><span class="tag">    !       <span class="attr">not</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">👑 异或运算     相同 <span class="attr">1</span> 不同 <span class="attr">0</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">🏆 <span class="attr">if</span></span></span><br><span class="line"><span class="tag">    <span class="attr">if</span> (判定条件)&#123;</span></span><br><span class="line"><span class="tag">            执行语句</span></span><br><span class="line"><span class="tag">    &#125;<span class="attr">else</span> <span class="attr">if</span>&#123;</span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">    &#125; <span class="attr">else</span> &#123;</span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">    &#125;</span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">🐚   事件与取值</span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">    <span class="attr">onclick</span>                 单击后触发</span></span><br><span class="line"><span class="tag">    <span class="attr">ondbclick</span>               双击后触发</span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">    <span class="attr">alert</span>(<span class="attr">str</span>)              <span class="attr">-</span>&gt;</span> 弹窗,可用来当作print使用,阻断程序运行,碰到alert,alert下面的代码不加载不显示,直到被点击</span><br><span class="line"></span><br><span class="line">    console.log()           -&gt; 相当于print</span><br><span class="line"></span><br><span class="line">    onmouseover             鼠标进入(进入子元素也触发)</span><br><span class="line">    onmouseenter            鼠标进入(进入子元素不触发)</span><br><span class="line">    </span><br><span class="line">    onmouseout              鼠标离开(离开子元素也触发)</span><br><span class="line">    onmouseleave            鼠标离开(离开子元素不触发)</span><br><span class="line"></span><br><span class="line">    getElementById          获取到该id的标签</span><br><span class="line">    </span><br><span class="line">    getElementByClassName  获取到该class的集合</span><br><span class="line"></span><br><span class="line">    window.innerHeight      获取浏览器高度 </span><br><span class="line"></span><br><span class="line">    innerHTML               获取标签内的内容</span><br><span class="line">    opacity                    透明度</span><br><span class="line"></span><br><span class="line">    document.body.scrollTop || document.documentElement.scrollTop 获取当前页面滚动条纵坐标的位置</span><br><span class="line">    两个都是获取滚动条滚动的高的方法,但因为浏览器的兼容性原因,总会只有一个生效,所以使用或连接</span><br><span class="line"></span><br><span class="line">    window.onload = function ()&#123;                     -&gt; 使onload后的函数 在body 加载后执行</span><br><span class="line">        var oDiv= document.getElementById(标签id)    -&gt; 获取到此id的标签</span><br><span class="line">        var oDiv= document.getElementByClassName(class)[0]    -&gt; 获取到此class的集合中第0号标签</span><br><span class="line">        oDiv.onclick = function ()&#123;                  -&gt; 匿名函数绑定事件</span><br><span class="line">            alter('hello world')</span><br><span class="line">            &#125;</span><br><span class="line">        oDiv.href                                   -&gt; 获取元素属性</span><br><span class="line">        oDiv.href = '123'                           -&gt; 更改元素属性</span><br><span class="line">        oDiv.style.color = 'red'</span><br><span class="line">        oDiv.innerHTML                              -&gt; 获取此标签内的文本(标签/文字)</span><br><span class="line">        oDiv.innerHTML= '<span class="tag">&lt;<span class="name">p</span>&gt;</span>哈哈<span class="tag">&lt;<span class="name">p</span>&gt;</span>'                -&gt; 改变标签内的文本</span><br><span class="line">        oDiv.className = 'username'                 -&gt; class必须要className才可以获取到,只此一个特殊</span><br><span class="line">        可更改类名以更换样式或更改引用的样式文件路径以更换整体样式</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">👑 getElementById 写在元素上面,会获取不到</span><br><span class="line">    第一种方法: 将js放在页面最下面</span><br><span class="line">    第二种方法: 将js语句放在window.onload 触发的函数里面</span><br><span class="line"></span><br><span class="line">🌙 匿名函数</span><br><span class="line">    没有名字的函数前 跟上事件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">🌙 数组</span><br><span class="line">    var 数组名 = new Array(元素一,元素二,...)</span><br><span class="line">    var 数组名 = [元素一,元素二,.....] </span><br><span class="line">    🍦 数组的属性:</span><br><span class="line">        length</span><br><span class="line">    🍦 数组的方法:</span><br><span class="line">        join()          将列表所有元素以指定字符串为分隔组成字符串</span><br><span class="line">        push()</span><br><span class="line">        pop()           从数组最后增加或删除元素</span><br><span class="line">        reverse()       将数组反转</span><br><span class="line">        indexOf()       返回数组中元素第一次出现的下标索引值,元素不存在返回-1不报错</span><br><span class="line">        splice()        在数组中增加或删除成员     -&gt; 数组名.splice(操作元素下标,</span><br><span class="line">                                                        操作几位[该参数为0默认增加元素不删除,否则默认进行删除操作],</span><br><span class="line">                                                        添加的新元素[可不写]) -&gt; 返回被操作对象</span><br><span class="line">    🐚 案例      </span><br><span class="line">        var aList = [1,2,3]</span><br><span class="line">        console.log(aList.length)</span><br><span class="line">        alert(aList[1]) -&gt; 只有从左向右取,不可以倒取</span><br><span class="line">        console.log(aList.join('-'))</span><br><span class="line">        aList.push('哈哈')</span><br><span class="line">        aList.pop()</span><br><span class="line">        aList.reverse()</span><br><span class="line">        aList.indexOf('2')</span><br><span class="line">        alert(aList.splice(1,2))</span><br><span class="line">        alert(aList.splice(1,2,'哈哈','呵呵'))</span><br><span class="line"></span><br><span class="line">⭐ for循环</span><br><span class="line">    for (条件) &#123; 执行代码</span><br><span class="line">                &#125;</span><br><span class="line">    🐚 案例</span><br><span class="line">        for (var i = 10;i&gt;0;i++)&#123; 执行代码</span><br><span class="line">                                &#125;</span><br><span class="line"></span><br><span class="line">🌙 字符串</span><br><span class="line">    字符串无论和什么相加,结果都是字符串</span><br><span class="line"></span><br><span class="line">    🍦 字符串的方法</span><br><span class="line">        parseInt()        将数字字符串转化为整数</span><br><span class="line">        parseFloat()      将数字字符串转化为小数</span><br><span class="line">        parsedoubleFloat()      将数字字符串转化为小数(长)</span><br><span class="line">        split()           把一个字符串以字符组成的数组</span><br><span class="line">        substring()       切片,无步长</span><br><span class="line">    🐚 案例</span><br><span class="line">        var a = 123</span><br><span class="line">        var str = '123'</span><br><span class="line">        console.log(parseInt(str))</span><br><span class="line">        str.substring(0,2)</span><br><span class="line">        str.split('').reverse().join('')    字符串反转</span><br><span class="line"></span><br><span class="line">🍓 调试</span><br><span class="line">    alert()             弹窗</span><br><span class="line">    console.log()       浏览器控制台</span><br><span class="line">    document.title()    网页标题</span><br><span class="line">    document.write()    写到body里</span><br><span class="line"></span><br><span class="line">👑 定时器</span><br><span class="line">    🍦 作用:</span><br><span class="line">        定时调用函数</span><br><span class="line">        制作动画</span><br><span class="line">        模拟网络延时的情况</span><br><span class="line">    💎 种类:</span><br><span class="line">        setTimeout()       执行一次的定时器           setTimeout(func,3000) -&gt;函数名,毫秒</span><br><span class="line">        setInterval()      执行多次的定时器</span><br><span class="line">        clearTimeout()     关闭只执行一次的定时器      clearInterval(哪个定时器)</span><br><span class="line">        clearInterval()    关闭反复执行的定时器</span><br><span class="line">    🐚 案例:</span><br><span class="line">        setTimeout(func,3000)</span><br><span class="line">        var timer = setInterval(func,3000)</span><br><span class="line">        function func () &#123;</span><br><span class="line">                        alert('调用了func')</span><br><span class="line">                        clearInterval(timer)</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">--------------------</span><br><span class="line">一个框架里,API始终在更新,是记不完的.</span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">🍓 库和框架,没有具体的界限,一般的来讲:</span><br><span class="line">    库      小而精</span><br><span class="line">    框架    大而全</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 淘宝模版市场 --&gt;</span></span><br><span class="line"></span><br><span class="line">🏆 jQuery 🏆</span><br><span class="line"></span><br><span class="line">🍓 加载顺序</span><br><span class="line">    body-&gt;标签-&gt;jQuery.ready-&gt;资源-&gt;window.onload</span><br><span class="line"></span><br><span class="line">🍦 方法</span><br><span class="line">    $(document).ready(function()&#123;&#125;)     作用与window.onload相同,完全版</span><br><span class="line">    $(function()&#123;&#125;)                     作用与window.onload相同,精简版</span><br><span class="line">    index()                             获取元素相对于同级元素的下标位置</span><br><span class="line">    animate  - 翻译为'动画'              动画效果</span><br><span class="line">        参数一:要改变的样式属性值,写成字典</span><br><span class="line">        参数二:动画持续的事件,单位为毫秒</span><br><span class="line">        参数三:动画曲线,默认为'swing':缓冲运动(加速-匀速-减速),'linear':匀速运动</span><br><span class="line">        参数四:动画回调函数,动画完成后执行的匿名函数</span><br><span class="line">    html()                              作用与innerHTML相同,里面写内容为替换,不写为取值</span><br><span class="line">    val()                               不传值获取input的内容,传值默认写入</span><br><span class="line">    prop()                              获取标签自带的属性值</span><br><span class="line">    attr()                              获取标签内的所有属性值</span><br><span class="line">    each()                              标签对象循环</span><br><span class="line">    click()                             作用与onclick相同</span><br><span class="line">    dblclick()                          作用与ondbclick相同</span><br><span class="line">    focus()                             元素获得焦点,可添加回调函数</span><br><span class="line">    blur()                              元素失去焦点,可添加回调函数</span><br><span class="line">    hover()                             同时为mouseenter和mouseleave事件指定处理函数,可以写两个调用函数</span><br><span class="line">    submit()                            用户递交表单,自己手写就使用自己的,不写就自动发给form的action后台</span><br><span class="line">                                        如果内部返回一个false,表单不会被提交</span><br><span class="line">    keyup keydown mousemove</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">🍦 jQuery选择器 - 选择规则和css样式相同</span><br><span class="line">    🍓 - 通过选择器拿到的是jQuery对象,通俗的讲究是一个容器,能够使用下标取值</span><br><span class="line">    $('#box')</span><br><span class="line">    $('div')</span><br><span class="line">    $('.pbox')</span><br><span class="line">    $('a[href="#"]')</span><br><span class="line">    $(this)      代表调用事件的标签对象          this-&gt;标签 $(this)-&gt;对象</span><br><span class="line"></span><br><span class="line">⭐ 选择集过滤 - 得到的都是对象</span><br><span class="line">    $().has()       包含           $('div').has('p')           选择包含p元素的div元素</span><br><span class="line">    $().not()       不包含         $('div').not('.myclass')    选择clss不等于myClass的div元素</span><br><span class="line">    $().eq()        下标等于       $('div').eq(5)              选择下标为6的div元素 - equal:相等   使用[index]获取的不是对象,不方便使用</span><br><span class="line"></span><br><span class="line">⭐ 选择集转移</span><br><span class="line">    $('').prev()        被选择的元素前面紧挨的同辈元素</span><br><span class="line">    $('').prevAll()     被选择的元素前面所有的同辈元素</span><br><span class="line">    $('').next()        被选择的元素后面紧挨的同辈元素</span><br><span class="line">    $('').nextAll()     被选择的元素前面所有的同辈元素</span><br><span class="line">    $('').parent()      被选择的元素的父元素</span><br><span class="line">    $('').children()    被选择的元素的所有子元素</span><br><span class="line">    $('').siblings()    被选择的元素的所有的同级元素(不包括自己))</span><br><span class="line">    $('').find('')      被选择的元素'内'的满足条件的标签</span><br><span class="line"></span><br><span class="line">⭐ 操作样式</span><br><span class="line">    $('').css('width')                             获取样式</span><br><span class="line">    $('').css('width','100px')                      单个样式的修改/设置</span><br><span class="line">    $('').css(&#123;'width':'100px','color':'pink'&#125;)     多个样式的修改/设置</span><br><span class="line">    $('').addClass('divbox')     追加类名</span><br><span class="line">    $('').removeClass('divbox')     移除类名</span><br><span class="line">    $('').toggleClass('divbox')     追加/移除,自动检测元素是否有此类名,若有则移除,若没有则追加</span><br><span class="line"></span><br><span class="line">🐚 案例</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./jquery-1.12.4.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .box &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        background-color: green;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .divbox &#123;</span></span><br><span class="line"><span class="undefined">        width: 300px;</span></span><br><span class="line"><span class="undefined">        height: 300px;</span></span><br><span class="line"><span class="undefined">        background-color: pink;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    $(function()&#123;</span></span><br><span class="line"><span class="undefined">        // 选取元素</span></span><br><span class="line"><span class="undefined">            $('div')</span></span><br><span class="line"><span class="undefined">            $('#box')</span></span><br><span class="line"><span class="undefined">            $('.pbox')</span></span><br><span class="line"><span class="undefined">            $('a[href="#"]')</span></span><br><span class="line"><span class="undefined">        // 选择集过滤</span></span><br><span class="line"><span class="undefined">            $('div').has('p')</span></span><br><span class="line"><span class="undefined">            $('div').not('.box')</span></span><br><span class="line"><span class="undefined">            $('ul li').eq(2)</span></span><br><span class="line"><span class="undefined">        // 选择集转移</span></span><br><span class="line"><span class="undefined">            $('.box').prev().html('哈哈')</span></span><br><span class="line"><span class="undefined">            $('.box').prevAll().html('hehe')</span></span><br><span class="line"><span class="undefined">            $('.box').next().html('hehe')</span></span><br><span class="line"><span class="undefined">            $('.box').nextAll().html('hehe')</span></span><br><span class="line"><span class="undefined">            $('.box').parent().prev().html('嘿嘿')</span></span><br><span class="line"><span class="undefined">            $('.box').parent().next().children().html('哈哈')</span></span><br><span class="line"><span class="undefined">            $('.box').parent().siblings().html('haha')</span></span><br><span class="line"><span class="undefined">            $('div').find('.secondbox').html('haha')</span></span><br><span class="line"><span class="undefined">        // 操作样式</span></span><br><span class="line"><span class="undefined">            $('#box').css(&#123;'width':'100px','height':'100px','background-color':'yellow','color':'pink'&#125;)  //修改样式</span></span><br><span class="line"><span class="undefined">            $('.box').addClass('divbox')  //追加类名</span></span><br><span class="line"><span class="undefined">            $('.box').removeClass('box')  //移除类名</span></span><br><span class="line"><span class="undefined">            $('button').click(function () &#123;</span></span><br><span class="line"><span class="undefined">            $('.divbox').toggleClass('box')  //新增/移除类名</span></span><br><span class="line"><span class="undefined">            $('.box').toggleClass('divbox')  //新增/移除类名</span></span><br><span class="line"><span class="undefined">        &#125;)</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 选取元素 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span>box<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pbox"</span>&gt;</span>pbox<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>a<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 选择集过滤 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span>box<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>item $$$ <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>item $$$ <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>item $$$<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 选择集转移 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>四号的a标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"secondbox"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"last"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>微微<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>wewe<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 操作样式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span>box<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pbox"</span>&gt;</span>pbox<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>a<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">--------------------</span><br><span class="line">下载node,自带npm,npm install animate</span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">⭐ jQuery特殊效果 - 与display:none;搭配使用</span><br><span class="line">    fadeIn()            淡入</span><br><span class="line">    fadeOut()           淡出</span><br><span class="line">    fadeToggle()        切换淡入/淡出</span><br><span class="line">    hide()              隐藏</span><br><span class="line">    show()              显示</span><br><span class="line">    toggle()            切换隐藏/显示</span><br><span class="line">    slideDown()         收起</span><br><span class="line">    slideUp()           展开</span><br><span class="line">    slideToggle()       切换收起/展开</span><br><span class="line">    </span><br><span class="line">    🐚 案例</span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">            $(function()&#123;</span></span><br><span class="line"><span class="undefined">                $('.box').fadeIn()</span></span><br><span class="line"><span class="undefined">                $('.box').fadeOut()</span></span><br><span class="line"><span class="undefined">                $('.box').fadeToggle()</span></span><br><span class="line"><span class="undefined">                $('.box').hide()</span></span><br><span class="line"><span class="undefined">                $('.box').show()</span></span><br><span class="line"><span class="undefined">                $('.box').toggle()</span></span><br><span class="line"><span class="undefined">                $('.box').slideDown()</span></span><br><span class="line"><span class="undefined">                $('.box').slideUp()</span></span><br><span class="line"><span class="undefined">                $('.box').slideToggle()</span></span><br><span class="line"><span class="undefined">                </span></span><br><span class="line"><span class="undefined">            &#125;)</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">            .box &#123;</span></span><br><span class="line"><span class="undefined">                width: 100px;</span></span><br><span class="line"><span class="undefined">                height: 100px;</span></span><br><span class="line"><span class="undefined">                background: blue;</span></span><br><span class="line"><span class="undefined">                display: none;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"button"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">🍟 正则表达式</span><br><span class="line">    🔔 定义</span><br><span class="line">        var re = /规则/参数             参数[全文检索:g,忽略大小写:i],可以不写</span><br><span class="line">    🔔 规则</span><br><span class="line">        规则和Python一样</span><br><span class="line">    🔔 测试</span><br><span class="line">        var result = re.test(str)      返回值要么是true要么是false</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">🍓 为jQuery添加函数</span><br><span class="line">    🍟 jQuery.fn.slideLeftHide = function slideLeftHide(speed) &#123;&#125;</span><br><span class="line"></span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">🌙 事件冒泡</span><br><span class="line">    小明被打一下,无论他反击不反击,</span><br><span class="line">    都会告诉他爸,看他爸咋干,</span><br><span class="line">    他爸不论反击不反击,也都会告诉小明他爷</span><br><span class="line">    以此类推,click和mouseover都属于冒泡事件</span><br><span class="line"></span><br><span class="line">    在一个对象上触发某类时间,如果此对象定义了此事件的处理程序,</span><br><span class="line">    那么此事件就会调用这个处理程序,如果没有定义此事件处理程序或者事件返回true,</span><br><span class="line">    那么这个事件就会向这个对象的父级对象传播,从里到外,直至它被处理(父级对象所有</span><br><span class="line">    同类事件都将被激活),或者它到达了对象层次的最顶层,即document对象(有些浏览器是window)</span><br><span class="line"></span><br><span class="line">    🍦 事件冒泡的作用</span><br><span class="line">        事件冒泡允许多个操作被集中处理(把时间处理器添加到一个父级元素上,避免把</span><br><span class="line">        事件处理器添加到多个子级元素上),它还可以让你在对象层的不同级别捕获事件.</span><br><span class="line"></span><br><span class="line">    ⭐ 阻止事件冒泡和默认行为</span><br><span class="line">        return false</span><br><span class="line"></span><br><span class="line">⭐ 设计模式</span><br><span class="line">    解耦 - 解除耦合度 - 把复杂的事情简单化</span><br><span class="line">    耦合度越高对代码后期越不利</span><br><span class="line">    ⭐ 事件委托</span><br><span class="line">        $('父级').delegate(参数一,参数二,参数三)</span><br><span class="line">            参数一      代理对象</span><br><span class="line">            参数二      代理对象委托的事件</span><br><span class="line">            参数三      代理事件的触发函数</span><br><span class="line"></span><br><span class="line">🌙 Dom操作</span><br><span class="line">    1.移动现有标签的位置</span><br><span class="line">    2.将新创建的标签插入到现有的标签中</span><br><span class="line">    🍦 方法</span><br><span class="line">        $('selector').append($(content))           在元素内部添加,从后面放入</span><br><span class="line">        $(content).appendTo($('selector'))</span><br><span class="line">        </span><br><span class="line">        $('selector').prepend($(content))          在元素内部添加,从前面放入</span><br><span class="line">        $(content).prependTo($('selector'))</span><br><span class="line"></span><br><span class="line">        $('selector').after($(content))            在元素外部添加,从后面放入     </span><br><span class="line">        $(content).insertAfter($('selector'))</span><br><span class="line">        </span><br><span class="line">        $('selector').before($(content))            在元素外部添加,从前面放入</span><br><span class="line">        $(content).insertBefore($('selector'))</span><br><span class="line"></span><br><span class="line">        $('selector').remove($(content))            删除标签</span><br><span class="line"></span><br><span class="line">🌙 js对象</span><br><span class="line">    🐚 案例</span><br><span class="line">        var person = &#123;</span><br><span class="line">            name:'maimai',</span><br><span class="line">            age:18,</span><br><span class="line">            sayName:function()&#123;</span><br><span class="line">                alert('My name is' + this.name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        alert(person.name)</span><br><span class="line">        person.name = 'shuaibi' </span><br><span class="line">        person.sayName()</span><br><span class="line"></span><br><span class="line">⭐ Json</span><br><span class="line">    - 普遍使用的数据传输形式    </span><br><span class="line">    - 除了数字,都要加双引号</span><br><span class="line">    🐚 案例</span><br><span class="line">        var json = &#123;</span><br><span class="line">            "name":"tom",</span><br><span class="line">            "age":18</span><br><span class="line">            "school":&#123;</span><br><span class="line">                "name":"luoyangnormaluniversity"</span><br><span class="line">                "location":"luoyang"</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        json.school.name</span><br><span class="line"></span><br><span class="line">⭐ ajax - 封装在jQuery</span><br><span class="line">    🍓</span><br><span class="line">        同步 - 做完一件事后再做另一件事</span><br><span class="line">        异步 - 同时做几件事</span><br><span class="line">        ajax实现了局部刷新(无刷新) - ajax可以自己发送http请求不用通过浏览器的地址栏,</span><br><span class="line">        所以页面整体不会刷新,ajax获取到后台数据,更新页面显示数据的部分,就做到了页面局部刷新.</span><br><span class="line">    🍦 ajax使用方法(常用参数)</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            url:'请求地址',</span><br><span class="line">            type:'请求方式:默认是'GET',常用的还有'POST'',</span><br><span class="line">            dataType:'设置返回的数据格式,常用的是'json'格式,也可以设置为'html'',</span><br><span class="line">            data:'设置发送给服务器的数据',</span><br><span class="line">            success:'设置请求成功后的回调函数',</span><br><span class="line">            error:'设置请求失败后的回调函数',</span><br><span class="line">            async:'设置是否异步,默认值为'true',表示异步'</span><br><span class="line">        &#125;)</span><br><span class="line">    🐚 案例</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:'/change_data',</span><br><span class="line">        type:'GET',</span><br><span class="line">        dataType:'json',</span><br><span class="line">        data:&#123;'code':30000&#125;,</span><br><span class="line">    &#125;).done(function(data)&#123;</span><br><span class="line">        console.log(data)</span><br><span class="line">    &#125;).fail(function(error)&#123;</span><br><span class="line">        console.log('error')</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">--------------------</span><br><span class="line">nodemon     运行js文件</span><br><span class="line">--------------------</span><br><span class="line"></span><br><span class="line">👑Vue👑</span><br><span class="line">🔔 方便理解</span><br></pre></td></tr></table></figure>
+<pre><code>Vue的使用目的就是让js少写点,使固定的逻辑尽量写在标签中,这样就把jquery获取标签的步骤给省掉了
+</code></pre><p>⭐ vue使用<br>    第一步引入<br>    第二步div给坑<br>    第三步vue对象实例化<br>    var vm = new Vue({   // 变量赋值可写可不写<br>    })</p>
+<pre><code>🔔 注意 
+    - new Vue()   实例化对象
+    - 参数
+        el:关联HTML部分标签,使vue中的内容能够加载到HTML里面
+        data:页面中需要的数据,可以通过这个属性进行初始化,进而赋值到HTML页面去
+        methods:可以给当前vue对象添加方法,一般我们都会把方法放在这个对象里面
+        computed:计算属性,可以给data里面的值添加一些管理
+        watch:如果需要监控data中的某些属性值,可以在watch中添加监听方法  - 属于设计模式(观察者模式)用的很少
+    - 小胡子语法:{{}}(插值表达式)  - 不可以在属性中使用
+    - 点击事件:v-on
+
+⭐ 指令
+    &apos;v-&apos; 开头的都是指令 - 只要是指令,data中的值可以直接使用
+    v-if        接受一个布尔值,True显示,false隐藏            - 隐藏的实质是标签被销毁
+    v-else      和v-if挨着                                  -共享if布尔值
+    v-else-if   接受另一个布尔值                             - 可以无限使用和v-if挨着
+    v-on        触发事件                                    - 缩写 &gt;&gt;&gt;  :
+    v-bind      属性绑定data                                - 缩写  &gt;&gt;&gt;  @
+    v-show      隐藏或展示                                  - 隐藏的实质是标签display:none
+    v-hide      隐藏或展示                                                                                                                                     - 隐藏的实质是标签display:none
+
+⭐ 三元表达式 - 三元表达式在属性里必须写在数组中
+    {{isTrue ? '123' : '345'}}    
+    {{ok ? 'YES':'NO'}} 
+
+⭐ Class绑定(class和v-bind配合使用) - 受data控制
+    &lt;div :class=&quot;{}&quot;&gt;&lt;/div&gt;
+    &lt;div :class=&quot;[]&quot;&gt;&lt;/div&gt;
+
+🐚 案例
+&lt;script src=&quot;./vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        {{ msg }}     // 小胡子语法
+
+        {{isTrue ? '123' : '345'}}      // 如果True,输出123,否则输出345
+        {{ok ? 'YES':'NO'}}             // 如果True.输出YES,否则输出NO
+
+        &lt;div v-if=&apos;isOK&apos;&gt;if&lt;/div&gt;
+        &lt;div v-else-if=&apos;isOK&apos;&gt;elif&lt;/div&gt;
+        &lt;div v-else&gt;else&lt;/div&gt;
+
+        &lt;button v-on:click=&quot;func&quot;&gt;&lt;/button&gt;     // 函数使用
+        &lt;button @click=&quot;func&quot;&gt;&lt;/button&gt;     // 函数使用 - 缩写
+
+        &lt;img src=&quot;&quot; v-bind:alt=&apos;msg&apos;&gt;      // 属性展示data数据
+        &lt;img src=&quot;&quot; :alt=&apos;msg&apos;&gt;      // 属性展示data数据 - 缩写
+
+        {{ msg+1 }}                     // 可写逻辑不推荐,推荐写入computed
+        {{ newMsg }}                    // computed中的逻辑运算
+
+        &lt;button @click=&quot;msg += 1&quot;&gt;按钮&lt;/button&gt;
+        &lt;button @click=&quot;func&quot;&gt;按钮&lt;/button&gt;
+
+        &lt;div :class=&quot;{box:isTrue,divbox:isHave}&quot;&gt;div&lt;/div&gt;  // class 绑定
+        &lt;div :class=&quot;[firstStyle, secondStyle]&quot;&gt;div&lt;/div&gt;
+        &lt;div :class=&quot;[isTrue ? &apos;box&apos; : &apos;divbox&apos;]&quot;&gt;div&lt;/div&gt;
+
+        &lt;div :style=&quot;backgroundColor:colorname,color:color1&quot;&gt;div&lt;/div&gt;
+        &lt;div :style=&quot;[firstName,secondName]&quot;&gt;div&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+    new Vue({
+        el:&apos;#app&apos;,
+        data:{
+            msg:123,     // 变量:&quot;值&quot;
+            isOK:true,
+            isTrue:true,
+            isHave:true,
+            firstStyle:{
+                box:true,
+                divbox:true,
+            },
+            secondStyle:{
+                box:false,
+                divbox:false,
+            },
+            colorname:pink,
+            color1:red,
+            firstName:{
+                colorname:pink,
+            },
+            secondName:{
+                color1:red,
+            }
+
+        },
+        methods:{
+            func:function(){    // 函数名:函数体
+                this.msg += 1
+            }
+        },
+        computed:{
+            newMsg:function(){
+                return  this.msg+123        // this指代vue对象,不需要写data
+            }
+        },
+        watch:{     //watch中的function不是函数
+            msg:function(newValue,oldValue){
+                console.log(newValue)
+                console.log(oldValue)
+                观察msg,如果msg发生变化,执行本方法
+            }
+        }
+    })
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre><hr>
+<p>⭐ 列表渲染 - v-for<br>    🍦 遍历数组<br>        v-for=”item in items”</p>
+<pre><code>🍦 遍历对象
+    v-for=&quot;(value,key,index) in obj&quot;
+
+🐚 案例
+    &lt;script&gt;
+        new Vue({
+            el:&quot;#ul&quot;,
+            data:{
+                items:[&apos;foo&apos;,&apos;bar&apos;],
+                object:{
+                    firstName:&apos;John&apos;,
+                    lastName:&apos;Doe&apos;,
+                    age:30
+                }
+            }
+        })
+    &lt;/script&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;ul&quot;&gt;
+            &lt;ul&gt;
+                &lt;li v-for=&quot;(item,index) in items&quot;&gt;
+                    {{index}} - {{item.message}}
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;ul&gt;
+                &lt;li v-for=&quot;(key,value,index) in object&quot;&gt;
+                        {{index}} - {{key}}: {{index}}
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;  
+    &lt;/body&gt;
+</code></pre><p>⭐ 事件修饰符<br>    🍦 作用<br>        stop        阻止事件冒泡<br>        prevent     阻止默认行为<br>    🍦 使用方法<br>        <a v-on:click.stop.prevent="doThat"></a>    //点击事件后触发doThat方法,然后阻止事件冒泡和默认行为<br>        <form v-on:submit.prevent=""></form>   //点击提交后什么都不做</p>
+<p>⭐ v-model - 表单元素,使用data并更新data<br>    🐚 案例<br>    <script><br>        new Vue({<br>            data:{<br>                msg:’123’,<br>                check:’’,<br>                checks:[],<br>                radio:’’,<br>                select:’0’}<br>        })</p>
+<pre><code>&lt;/script&gt;
+&lt;body&gt;
+    {{msg}}     // input改变msg的值后,msg进行更新
+    &lt;input type=&quot;text&quot; v-model=&quot;msg&quot;&gt;
+    &lt;textarea v-model=&quot;msg&quot; cols=&quot;30&quot; rows=&quot;10&quot;&gt;&lt;/textarea&gt;
+    {{check}}   // 单个复选框
+    &lt;input type=&quot;checkbox&quot; v-model=&quot;check&quot;&gt;
+    {{checks}}  //多个复选框    -加value
+    &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;0&quot; v-model=&quot;checks&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;1&quot; v-model=&quot;checks&quot;&gt;
+    {{radio}}   //单选          -加value
+    &lt;input type=&quot;radio&quot; v-model=&quot;radio&quot; value=&quot;0&quot; name=&quot;gender&quot;&gt;
+    &lt;input type=&quot;radio&quot; v-model=&quot;radio&quot; value=&quot;1&quot; name=&quot;gender&quot;&gt;
+    {{select}}  //下拉框        -加value
+    &lt;select v-model=&quot;select&quot; name=&quot;&quot; id=&quot;&quot;&gt;
+        &lt;option value=&quot;0&quot;&gt;0&lt;/option&gt;
+        &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+        &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+        &lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;
+        &lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/body&gt;
+</code></pre><p>⭐ 过滤器 - 函数工厂<br>    🍦 定义<br>        Vue.filter(‘工厂函数名’,function(参数){<br>        })<br>    🍦 使用<br>        | - 管道 - 可在小胡子里或者v-bind中使用</p>
+<pre><code>🔔 注意
+    过滤器可以写在vue外面也可以写在里面
+
+🐚 案例
+&lt;script src=&quot;./日常琢磨与练习/2. 前端/js/vue.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+    window.onload = function (){
+        // 过滤器写在Vue外面
+        Vue.filter(&apos;Upper&apos;,function(value){
+            return value.toUpperCase()
+        })
+        new Vue({
+            el:&apos;#app&apos;,
+            data:{
+                msg:&apos;abcdefg&apos;,
+                msg2:&apos;ABCDEFG&apos;
+            },
+        // 过滤器写在Vue里面
+            filters:{
+                lower:function(value){
+                    return value.toLowerCase()
+                }
+            }
+        })
+    }
+    &lt;/script&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            {msg}
+            {msg | Upper}
+            {msg2 | lower}
+
+        &lt;/div&gt;
+    &lt;/body&gt;
+</code></pre><p>⭐ 自定义指令<br>    🍦 作用<br>        对普通DOM元素进行底层操作</p>
+<pre><code>🍦 使用
+    v-自定义指令名
+
+🔔 注意
+    directive可以写在vue外面也可以写在里面
+
+🐚 案例
+    &lt;script src=&quot;./日常琢磨与练习/2. 前端/js/vue.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        window.onload = function(){
+            Vue.directive(&apos;haha&apos;,{
+                inserted:function(el){
+                    el.style.width = &apos;300px&apos;,
+                    el.style.height = &apos;300px&apos;,
+                    el.style.backgroundColor = &apos;pink&apos;
+                }
+            })
+            new Vue({
+                el:&apos;#app&apos;,
+                data:{
+
+                }
+            })
+        }
+    &lt;/script&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;div v-hah&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+</code></pre><p>⭐ 生命周期<br>    (beforeCreate) - (created) - el - template - (beforMount)(挂载) - (mounted) -(是否交互)- (是)(beforeUpdate) - (updated) - (是否交互循环) - (是否销毁) - (是)(beforeDestroy) - (destroyed)<br>    🍓 钩子函数(中间件)<br>        程序从始至终一条线走到头,但我们可以在程序走的路上埋上一些函数,当程序走到这个地方时候必定会触发该函数<br>    🍓 挂载<br>        渲染前做的事情<br>    🍓 vue对象的销毁方法<br>        vm.$destroy()</p>
+<p>⭐ 数据交互 - Vue里的ajax<br>    🔔 注意<br>        ajax是在jQuery里,但axios不在vue里<br>    🐚 示例<br>        <script src="./axios.min.js"></script><br>        <script><br>            window.onload = function(){<br>                var vm = new Vue({<br>                    el:’#app’,<br>                    methods:{<br>                        func:function(){<br>                            axios.get({<br>                                url:’’<br>                            })<br>                            .then(function(){</p>
+<pre><code>                    })
+                    .catch(function(){
+
+                    })
+                }
+            }
+        })
+    }
+&lt;/script&gt;
+</code></pre><p><code>`</code></p>
+</script></p>
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #fc6423;font-size:14px;">本文结束   <i class="fa fa-music"></i>   感谢您的阅读</div>
+    
+</div>
+      
+    </div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Mai wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mai 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Mai 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+          
+            <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+          
+            <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
+          
+        </div>
+      
+      
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/65123/" rel="next" title="记录搭博客">
+                <i class="fa fa-chevron-left"></i> 记录搭博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/13502/" rel="prev" title="Markdawn使用笔记">
+                Markdawn使用笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BreezeDawn" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:mmmynnn@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/qq_28827635" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/xingtu-" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/qq_37738656" title="黄蜜桃" target="_blank">黄蜜桃</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/charles_thegod" title="Charles_TheGod" target="_blank">Charles_TheGod</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://Astlight.github.io" title="Astlight" target="_blank">Astlight</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#对整篇笔记的标记解释"><span class="nav-number">1.</span> <span class="nav-text">对整篇笔记的标记解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#笔记"><span class="nav-number">2.</span> <span class="nav-text">笔记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mai</span>
+
+  
+</div>
+
+
+
+
+<div>
+
+  <div class="powered-by"></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <span class="post-count">博客全站共33.9k字</span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-group"></i> 总访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总浏览量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  <script type="text/javascript" src="/js/src/china.js"></script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/histoire.model.json"},"display":{"position":"right","width":100,"height":200,"hOffset":0,"superSample":2,"vOffset":-20},"mobile":{"show":false,"scale":0.25},"react":{"opacityDefault":0.9,"opacityOnHover":0.2},"neat_enable":true,"neat_html":{"enable":true,"exclude":null},"neat_css":{"enable":true,"exclude":["‘*.min.css’"]},"neat_js":{"enable":true,"mangle":true,"output":null,"compress":null,"exclude":["‘*.min.js’"]},"log":false});</script>
+
+
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>
