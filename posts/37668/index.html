@@ -122,18 +122,18 @@
 
 
 
-<meta name="description" content="一条路走到黑">
+<meta name="description" content="在无监督学习中，我们的训练集可以写成只有$x^{(1)}$,$x^{(2)}$…..一直到$x^{(m)}$。我们没有任何标签 $y$。 我们希望有一种算法能够自动的把这些数据分成有紧密关系的子集或是簇。">
 <meta name="keywords" content="机器学习,聚类">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MachineLearning-聚类算法">
 <meta property="og:url" content="http://xingtu.info/posts/37668/index.html">
 <meta property="og:site_name" content="Maifeel">
-<meta property="og:description" content="一条路走到黑">
+<meta property="og:description" content="在无监督学习中，我们的训练集可以写成只有$x^{(1)}$,$x^{(2)}$…..一直到$x^{(m)}$。我们没有任何标签 $y$。 我们希望有一种算法能够自动的把这些数据分成有紧密关系的子集或是簇。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-09T12:46:37.157Z">
+<meta property="og:updated_time" content="2018-11-18T15:27:26.720Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MachineLearning-聚类算法">
-<meta name="twitter:description" content="一条路走到黑">
+<meta name="twitter:description" content="在无监督学习中，我们的训练集可以写成只有$x^{(1)}$,$x^{(2)}$…..一直到$x^{(m)}$。我们没有任何标签 $y$。 我们希望有一种算法能够自动的把这些数据分成有紧密关系的子集或是簇。">
 
 
 
@@ -428,7 +428,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1.2k
                 </span>
               
 
@@ -453,7 +453,49 @@
       
 
       
-        
+        <p>在无监督学习中，我们的训练集可以写成只有$x^{(1)}$,$x^{(2)}$…..一直到$x^{(m)}$。我们没有任何标签 $y$。</p>
+<p>我们希望有一种算法能够自动的把这些数据分成有紧密关系的子集或是簇。</p>
+<a id="more"></a>
+<h2 id="K-均值算法-K-Means"><a href="#K-均值算法-K-Means" class="headerlink" title="K-均值算法(K-Means)"></a>K-均值算法(K-Means)</h2><h4 id="算法步骤综述"><a href="#算法步骤综述" class="headerlink" title="算法步骤综述"></a>算法步骤综述</h4><p>K-均值是一个迭代算法，假设我们想要将数据聚类成n个组，其方法为: </p>
+<ol>
+<li>首先选择k个随机的点，称为聚类中心(cluster centroids);</li>
+<li>簇分配(cluster assignment) 对于数据集中的每一个数据，按照距离K个中心点的距离，将其与距离最近的中心点关联起来，与同一个中心点关联的所有点聚成一类。</li>
+<li>移动聚类中心(move centroids) 计算 每一个组 的平均值，将该组所关联的中心点移动到平均值的位置。</li>
+<li>重复步骤 2-4 直至中心点不再变化。</li>
+</ol>
+<h4 id="定义损失函数变量"><a href="#定义损失函数变量" class="headerlink" title="定义损失函数变量"></a>定义损失函数变量</h4><ol>
+<li>假设有K个簇，$c^{(i)}$表示样本$x^{(i)}$ 当前所属的簇的索引编号 ，$c^{(i)}∈(1,2,3…K)$</li>
+<li>$μ_k$ 表示 第k个聚类中心 的位置，其中 $k∈1,2,3,4…K$</li>
+<li>根据以上定义:则$μ_c(i)$ 表示样本$x^(i)$所属簇的中心的 位置坐标</li>
+</ol>
+<h4 id="K-means算法的优化目标"><a href="#K-means算法的优化目标" class="headerlink" title="K-means算法的优化目标"></a>K-means算法的优化目标</h4><p>损失函数为 每个样本到其所属簇的中心的距离和的平均值 ，优化函数的输入参数为 每个样本所属的簇的编号$c^{(i)}$和每个簇中心的坐标$μ_k$ 这两个都是在聚类过程中不断变化的变量。此代价函数也被称为 畸变函数(Distortion function) </p>
+<h4 id="K-means算法步骤与优化函数"><a href="#K-means算法步骤与优化函数" class="headerlink" title="K-means算法步骤与优化函数"></a>K-means算法步骤与优化函数</h4><ul>
+<li>对于K-means算法中的 簇分配(将每个样本点分配到距离最近的簇) 的步骤实际上就是在最小化代价函数 $J$，即在$μ_1,μ_2,μ_3,μ_4…μ_K$固定的条件下调整 $c^{(1)},c^{(2)},c^{(3)},…c^{(m)}$的值以使损失函数的值最小。</li>
+<li>对于K-means算法中的 移动聚类中心(将聚类中心移动到分配样本簇的平均值处) ，即在$c^{(1)},c^{(2)},c^{(3)},…c^{(m)}$固定的条件下调整 $μ_1,μ_2,μ_3,μ_4…μ_K$的值以使损失函数的值最小。</li>
+</ul>
+<h2 id="K均值算法簇中心的随机初始化-Random-initialization"><a href="#K均值算法簇中心的随机初始化-Random-initialization" class="headerlink" title="K均值算法簇中心的随机初始化 Random initialization"></a>K均值算法簇中心的随机初始化 Random initialization</h2><h4 id="随机初始化遵循法则"><a href="#随机初始化遵循法则" class="headerlink" title="随机初始化遵循法则"></a>随机初始化遵循法则</h4><ul>
+<li>我们应该选择 K小于m，即聚类中心点的个数要小于所有训练集实例的数量</li>
+<li>随机选择 K 个训练实例，然后令 K 个聚类中心分别与这 K 个训练实例相等</li>
+</ul>
+<h4 id="随机初始化的局限性"><a href="#随机初始化的局限性" class="headerlink" title="随机初始化的局限性"></a>随机初始化的局限性</h4><ul>
+<li>随机初始化很容易把 初始化簇中心 分到相近的样本中，这种初始化方式有其局限性。 </li>
+<li>K-均值的一个问题在于，<strong>它有可能会停留在一个局部最小值处，而这取决于初始化的情况。</strong></li>
+</ul>
+<h4 id="改进初始化方式–多次随机初始化"><a href="#改进初始化方式–多次随机初始化" class="headerlink" title="改进初始化方式–多次随机初始化"></a>改进初始化方式–多次随机初始化</h4><ul>
+<li>假如随机初始化K-means算法100 (一般是50-1000) 次之间，每次都使用不同的随机初始化方式，然后运行K-means算法，得到100种不同的聚类方式，都计算其损失函数，选取代价最小的聚类方式作为最终的聚类方式。</li>
+<li>这种方法在 K 较小的时候（2–10）还是可行的，但是如果 K 较大，这么做也可能不会有明显地改善。(不同初始化方式得到的结果趋于一致)</li>
+</ul>
+<h2 id="K均值算法聚类数K的选择-Choosing-the-Number-of-Cluters"><a href="#K均值算法聚类数K的选择-Choosing-the-Number-of-Cluters" class="headerlink" title="K均值算法聚类数K的选择 Choosing the Number of Cluters"></a>K均值算法聚类数K的选择 Choosing the Number of Cluters</h2><ul>
+<li>没有所谓最好的选择聚类数的方法，通常是需要根据不同的问题，人工进行选择的。选择的时候思考我们运用 K-均值算法聚类的动机是什么，然后选择能最好服务于该目的标聚类数。</li>
+</ul>
+<h4 id="肘部法则-Elbow-method"><a href="#肘部法则-Elbow-method" class="headerlink" title="肘部法则(Elbow method)"></a>肘部法则(Elbow method)</h4><ul>
+<li>改变聚类数K，然后进行聚类，计算损失函数，拐点处即为推荐的聚类数 (即通过此点后，聚类数的增大也不会对损失函数的下降带来很大的影响，所以会选择拐点) </li>
+<li>但是也有损失函数随着K的增大平缓下降的例子，此时通过肘部法则选择K的值就不是一个很有效的方法了(下图中的拐点不明显，k=3,4,5有类似的功能)</li>
+</ul>
+<h4 id="目标法则"><a href="#目标法则" class="headerlink" title="目标法则"></a>目标法则</h4><ul>
+<li>通常K均值聚类是为下一步操作做准备，例如：<strong>市场分割，社交网络分析，网络集群优化</strong> ，下一步的操作都能给你一些评价指标，那么决定聚类的数量更好的方式是：<strong>看哪个聚类数量能更好的应用于后续目的</strong></li>
+</ul>
+
       
     </div>
     
@@ -635,8 +677,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -747,6 +798,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#K-均值算法-K-Means"><span class="nav-number">1.</span> <span class="nav-text">K-均值算法(K-Means)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法步骤综述"><span class="nav-number">1.0.1.</span> <span class="nav-text">算法步骤综述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义损失函数变量"><span class="nav-number">1.0.2.</span> <span class="nav-text">定义损失函数变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means算法的优化目标"><span class="nav-number">1.0.3.</span> <span class="nav-text">K-means算法的优化目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#K-means算法步骤与优化函数"><span class="nav-number">1.0.4.</span> <span class="nav-text">K-means算法步骤与优化函数</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#K均值算法簇中心的随机初始化-Random-initialization"><span class="nav-number">2.</span> <span class="nav-text">K均值算法簇中心的随机初始化 Random initialization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#随机初始化遵循法则"><span class="nav-number">2.0.1.</span> <span class="nav-text">随机初始化遵循法则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机初始化的局限性"><span class="nav-number">2.0.2.</span> <span class="nav-text">随机初始化的局限性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改进初始化方式–多次随机初始化"><span class="nav-number">2.0.3.</span> <span class="nav-text">改进初始化方式–多次随机初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K均值算法聚类数K的选择-Choosing-the-Number-of-Cluters"><span class="nav-number">3.</span> <span class="nav-text">K均值算法聚类数K的选择 Choosing the Number of Cluters</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#肘部法则-Elbow-method"><span class="nav-number">3.0.1.</span> <span class="nav-text">肘部法则(Elbow method)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#目标法则"><span class="nav-number">3.0.2.</span> <span class="nav-text">目标法则</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -786,7 +853,7 @@
   <span class="post-meta-divider">|</span>
 
   <div class="theme-info">
-    <span class="post-count">博客全站共36.1k字</span>
+    <span class="post-count">博客全站共37.3k字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
