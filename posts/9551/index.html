@@ -111,7 +111,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,面试,">
+  <meta name="keywords" content="机器学习,面试,模型评估,">
 
 
 
@@ -122,18 +122,18 @@
 
 
 
-<meta name="description" content="一、降低过拟合风险的方法 增加训练数据​        首先，我们知道的是，使用更多的训练数据是解决过拟合问题最有效的手段。因为如果说我们有更多的样本，也就是有更多的训练数据的话，我们就能够让模型学习到更多更有效的特征，从而就能减小噪声的影响。所以我们能够从数据入手来获得更多的训练数据来解决过拟合问题。">
-<meta name="keywords" content="机器学习,面试">
+<meta name="description" content="知识点：过拟合（over fitting）、欠拟合（under fitting）">
+<meta name="keywords" content="机器学习,面试,模型评估">
 <meta property="og:type" content="article">
-<meta property="og:title" content="能否说出几种降低过拟合和欠拟合风险的方法">
-<meta property="og:url" content="http://xingtu.info/posts/35134/index.html">
+<meta property="og:title" content="百面机器学习-能否说出几种降低过拟合和欠拟合风险的方法">
+<meta property="og:url" content="http://xingtu.info/posts/9551/index.html">
 <meta property="og:site_name" content="Maifeel">
-<meta property="og:description" content="一、降低过拟合风险的方法 增加训练数据​        首先，我们知道的是，使用更多的训练数据是解决过拟合问题最有效的手段。因为如果说我们有更多的样本，也就是有更多的训练数据的话，我们就能够让模型学习到更多更有效的特征，从而就能减小噪声的影响。所以我们能够从数据入手来获得更多的训练数据来解决过拟合问题。">
+<meta property="og:description" content="知识点：过拟合（over fitting）、欠拟合（under fitting）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-18T01:49:38.769Z">
+<meta property="og:updated_time" content="2018-11-19T17:35:10.755Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="能否说出几种降低过拟合和欠拟合风险的方法">
-<meta name="twitter:description" content="一、降低过拟合风险的方法 增加训练数据​        首先，我们知道的是，使用更多的训练数据是解决过拟合问题最有效的手段。因为如果说我们有更多的样本，也就是有更多的训练数据的话，我们就能够让模型学习到更多更有效的特征，从而就能减小噪声的影响。所以我们能够从数据入手来获得更多的训练数据来解决过拟合问题。">
+<meta name="twitter:title" content="百面机器学习-能否说出几种降低过拟合和欠拟合风险的方法">
+<meta name="twitter:description" content="知识点：过拟合（over fitting）、欠拟合（under fitting）">
 
 
 
@@ -163,7 +163,7 @@
 
 
 
-  <link rel="canonical" href="http://xingtu.info/posts/35134/">
+  <link rel="canonical" href="http://xingtu.info/posts/9551/">
 
 
 
@@ -171,7 +171,7 @@
 
 
 
-  <title>能否说出几种降低过拟合和欠拟合风险的方法 | Maifeel</title>
+  <title>百面机器学习-能否说出几种降低过拟合和欠拟合风险的方法 | Maifeel</title>
   
 
 
@@ -339,7 +339,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/35134/">
+    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/9551/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mai">
@@ -356,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">能否说出几种降低过拟合和欠拟合风险的方法</h2>
+          <h2 class="post-title" itemprop="name headline">百面机器学习-能否说出几种降低过拟合和欠拟合风险的方法</h2>
         
 
         <div class="post-meta">
@@ -369,8 +369,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-17T23:50:55+08:00">
-                2018-11-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T01:17:52+08:00">
+                2018-11-20
               </time>
             
 
@@ -464,8 +464,10 @@
       
 
       
-        <h1 id="一、降低过拟合风险的方法"><a href="#一、降低过拟合风险的方法" class="headerlink" title="一、降低过拟合风险的方法"></a>一、降低过拟合风险的方法</h1><ul>
-<li><h3 id="增加训练数据"><a href="#增加训练数据" class="headerlink" title="增加训练数据"></a>增加训练数据</h3><p>​        首先，我们知道的是，使用更多的训练数据是解决过拟合问题最有效的手段。因为如果说我们有更多的样本，也就是有更多的训练数据的话，我们就能够让模型学习到更多更有效的特征，从而就能减小噪声的影响。所以我们能够从数据入手来获得更多的训练数据来解决过拟合问题。<a id="more"></a></p>
+        <p>知识点：过拟合（over fitting）、欠拟合（under fitting）</p>
+<a id="more"></a>
+<h1 id="一、降低过拟合风险的方法"><a href="#一、降低过拟合风险的方法" class="headerlink" title="一、降低过拟合风险的方法"></a>一、降低过拟合风险的方法</h1><ul>
+<li><h3 id="增加训练数据"><a href="#增加训练数据" class="headerlink" title="增加训练数据"></a>增加训练数据</h3><p>​        首先，我们知道的是，使用更多的训练数据是解决过拟合问题最有效的手段。因为如果说我们有更多的样本，也就是有更多的训练数据的话，我们就能够让模型学习到更多更有效的特征，从而就能减小噪声的影响。所以我们能够从数据入手来获得更多的训练数据来解决过拟合问题。<!-- more --></p>
 <p>​        但是我们也知道直接增加这个数据一般来讲是很困难的，那么对此我们就可以通过一定的规则来扩充训练数据，比如说我们可以使用这个GAN来合成大量的新数据，再一个如果说我们在图像分类上面的话，我们可以让图像进行平移，旋转或者缩放等方式来扩充数据。</p>
 </li>
 <li><h3 id="降低模型的复杂度"><a href="#降低模型的复杂度" class="headerlink" title="降低模型的复杂度"></a>降低模型的复杂度</h3><p>​        其次我们也知道在数据较少的时候，如果说模型是过于复杂的，也很容易产生这个过拟合问题，所以我们也可以适当的降低模型的复杂度来避免模型拟合过多的采样噪声。<br>​        比如说我们在这个神经网络模型里边儿我们就可以减少神经元的个数就是每层的神经元个数，也可以减少神经网络模型的网络层数来解决过拟合问题。当然我们如果说在这个决策树模型中的话，我们可以通过降低树的高度，或者说对树进行剪枝等操作，也能够降低模型的复杂度。<br>​        然后我们就能够通过降低模型的复杂度来解决过拟合的问题。</p>
@@ -560,6 +562,8 @@
           
             <a href="/tags/面试/" rel="tag"><i class="fa fa-tag"></i> 面试</a>
           
+            <a href="/tags/模型评估/" rel="tag"><i class="fa fa-tag"></i> 模型评估</a>
+          
         </div>
       
       
@@ -571,8 +575,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/37668/" rel="next" title="MachineLearning-聚类算法">
-                <i class="fa fa-chevron-left"></i> MachineLearning-聚类算法
+              <a href="/posts/32576/" rel="next" title="百面机器学习-逻辑回归相比线性回归，有何异同">
+                <i class="fa fa-chevron-left"></i> 百面机器学习-逻辑回归相比线性回归，有何异同
               </a>
             
           </div>
@@ -581,8 +585,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/24404/" rel="prev" title="记录-统计学习方法（第一章）">
-                记录-统计学习方法（第一章） <i class="fa fa-chevron-right"></i>
+              <a href="/posts/6132/" rel="prev" title="百面机器学习-为什么需要对数值类型的特征做归一化">
+                百面机器学习-为什么需要对数值类型的特征做归一化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -698,7 +702,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -720,7 +724,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -849,7 +853,7 @@
   <span class="post-meta-divider">|</span>
 
   <div class="theme-info">
-    <span class="post-count">博客全站共37.3k字</span>
+    <span class="post-count">博客全站共38.7k字</span>
   </div>
 
   <span class="post-meta-divider">|</span>
