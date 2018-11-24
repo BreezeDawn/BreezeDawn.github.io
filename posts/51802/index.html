@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,机器学习实践,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、决策树分类概述 介绍决策树思想的来源非常朴素，程序设计中的条件分支结构就是if-else结构，最早的决策树就是利用这类结构分割数据的一种分类学习方法。  原理 信息熵 信息增益">
+<meta name="keywords" content="机器学习,机器学习实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习实践（十）—sklearn之决策树">
+<meta property="og:url" content="http://xingtu.info/posts/51802/index.html">
+<meta property="og:site_name" content="Maifeel">
+<meta property="og:description" content="一、决策树分类概述 介绍决策树思想的来源非常朴素，程序设计中的条件分支结构就是if-else结构，最早的决策树就是利用这类结构分割数据的一种分类学习方法。  原理 信息熵 信息增益">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-24T16:54:17.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习实践（十）—sklearn之决策树">
+<meta name="twitter:description" content="一、决策树分类概述 介绍决策树思想的来源非常朴素，程序设计中的条件分支结构就是if-else结构，最早的决策树就是利用这类结构分割数据的一种分类学习方法。  原理 信息熵 信息增益">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xingtu.info/posts/51802/">
+
+
+
+
+
+
+
+  <title>机器学习实践（十）—sklearn之决策树 | Maifeel</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maifeel</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/51802/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maifeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">机器学习实践（十）—sklearn之决策树</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-23T20:44:12+08:00">
+                2018-08-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/机器学习实践/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实践</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、决策树分类概述"><a href="#一、决策树分类概述" class="headerlink" title="一、决策树分类概述"></a>一、决策树分类概述</h2><ul>
+<li><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>决策树思想的来源非常朴素，程序设计中的条件分支结构就是if-else结构，最早的决策树就是利用这类结构分割数据的一种分类学习方法。</p>
+</li>
+<li><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ul>
+<li>信息熵</li>
+<li>信息增益</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="二、信息熵"><a href="#二、信息熵" class="headerlink" title="二、信息熵"></a>二、信息熵</h2><ul>
+<li><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>$H$ 的专业术语称之为信息熵，单位为<strong>比特</strong>。</li>
+</ul>
+</li>
+<li><h4 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h4><p>$$<br>H(X) = \sum_{i=1}^{n}p(x_i)I(x_i) = - \sum_{i=1}^{n}P(x_i)log_2P(x_i)<br>$$</p>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>$I(x)$ 用来表示随机变量的信息，$p(x_i)$ 指是当 $x_i$ 发生时的概率。</li>
+</ul>
+<blockquote>
+<ul>
+<li>log可以以别的数为底，只不过值会不同罢了</li>
+<li>熵只依赖X的分布，和X的取值没有关系，熵是用来度量不确定性，当熵越大，概率说X=xi的不确定性越大，反之越小，在机器学期中分类中说，<strong>熵越大即这个类别的不确定性更大，反之越小</strong></li>
+</ul>
+</blockquote>
+</blockquote>
+<ul>
+<li><h4 id="来自百度百科"><a href="#来自百度百科" class="headerlink" title="来自百度百科"></a>来自百度百科</h4><blockquote>
+<ul>
+<li>信息是个很抽象的概念。人们常常说信息很多，或者信息较少，但却很难说清楚信息到底有多少。比如一本五十万字的中文书到底有多少<a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E9%87%8F/420401" target="_blank" rel="noopener">信息量</a>。</li>
+<li>直到1948年，香农提出了“信息熵”的概念，才解决了对信息的量化度量问题。信息熵这个词是C．E．香农从热力学中借用过来的。热力学中的热熵是表示分子状态混乱程度的物理量。<strong>香农用信息熵的概念来描述信源的不确定度。</strong></li>
+<li><a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E8%AE%BA/302185" target="_blank" rel="noopener">信息论</a>之父<a href="https://baike.baidu.com/item/%E5%85%8B%E5%8A%B3%E5%BE%B7%C2%B7%E8%89%BE%E5%B0%94%E4%BC%8D%E5%BE%B7%C2%B7%E9%A6%99%E5%86%9C/10588593" target="_blank" rel="noopener">克劳德·艾尔伍德·香农</a>第一次用数学语言阐明了概率与信息冗余度的关系。</li>
+</ul>
+</blockquote>
+</li>
+<li><h4 id="来自-lt-数学之美-gt"><a href="#来自-lt-数学之美-gt" class="headerlink" title="来自&lt;数学之美&gt;"></a>来自&lt;数学之美&gt;</h4><blockquote>
+<ul>
+<li>系统中各种随机性的概率越均等，信息熵越大，反之越小。</li>
+<li>从香农给出的数学公式上可以看出，<strong>信息熵其实是一个随机变量信息量的数学期望。</strong></li>
+<li>查看更多：<a href="https://blog.csdn.net/saltriver/article/details/53056816" target="_blank" rel="noopener">https://blog.csdn.net/saltriver/article/details/53056816</a></li>
+</ul>
+</blockquote>
+</li>
+<li><h4 id="示例助解"><a href="#示例助解" class="headerlink" title="示例助解"></a>示例助解</h4><p>举一个的例子：对游戏活跃用户进行分层，分为高活跃、中活跃、低活跃，游戏A按照这个方式划分，用户比例分别为20%，30%，50%。游戏B按照这种方式划分，用户比例分别为5%，5%，90%。那么游戏A对于这种划分方式的熵为：<br>$$<br>H(A) = -(0.2<em>log_{2}0.2+0.3</em>log_{2}0.3+0.5<em>log_{2}0.5) = 1.485<br>$$<br>同理游戏B对于这种划分方式的熵为：<br>$$<br>H(B) = -(0.05</em>log_{2}0.05+0.05<em>log_{2}0.05+0.9</em>log_{2}0.9) = 0.569<br>$$<br>游戏A的熵比游戏B的熵大，所以游戏A的不确定性比游戏B高。用简单通俗的话来讲，游戏B要不就在上升期，要不就在衰退期，它的未来已经很确定了，所以熵低。而游戏A的未来有更多的不确定性，它的熵更高。</p>
+</li>
+</ul>
+<h2 id="三、-信息增益-决策树的划分依据之一"><a href="#三、-信息增益-决策树的划分依据之一" class="headerlink" title="三、 信息增益 - 决策树的划分依据之一"></a>三、 信息增益 - 决策树的划分依据之一</h2><ul>
+<li><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p><strong>特征A 对 训练数据集D 的 信息增益 g(D,A)</strong> ,定义为 <strong>集合D 的 信息熵H(D)</strong> 与 <strong>特征A条件下 D 的 信息条件熵H(D|A)</strong> <strong>的差。</strong></p>
+</li>
+<li><h4 id="公式-1"><a href="#公式-1" class="headerlink" title="公式"></a>公式</h4><p>$$<br>g(D,A) = H(D) - H(D|A)<br>$$</p>
+</li>
+<li><h4 id="公式的详细解释："><a href="#公式的详细解释：" class="headerlink" title="公式的详细解释："></a>公式的详细解释：</h4><ul>
+<li><p>信息熵的计算：<br>$$<br>H(D) = - \sum^{K}_{k=1}\frac{|C_k|}{|D|}log_{2}\frac{|C_k|}{|D|}<br>$$</p>
+<ul>
+<li>条件熵的计算：</li>
+</ul>
+</li>
+</ul>
+<p>$$<br>H(D|A)=\sum_{i=1}^{n}\frac{|D_i|}{|D|}H(D_i)=- \sum_{i=1}^{n}\frac{|D_i|}{|D|}\sum^{K}<em>{k=1}\frac{|D</em>{ik}|}{|D_i|}log\frac{|D_{ik}|}{|D_i|}<br>$$</p>
+</li>
+</ul>
+<blockquote>
+<p>注：</p>
+<blockquote>
+<ul>
+<li>$C_k$ 表示属于某个类别的样本数</li>
+<li>信息增益表示得知特征X的信息而息的不确定性减少的程度使得类Y的信息熵减少的程度</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>这句话应该有点毛病，太绕了，没有理解透，马上补，然后再回来修改</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li><h4 id="示例助解-1"><a href="#示例助解-1" class="headerlink" title="示例助解"></a>示例助解</h4><p>假设有下表样本：</p>
+<p>第一列为QQ，第二列为性别，第三列为活跃度，最后一列用户是否流失。</p>
+<p>我们要解决一个问题：性别和活跃度两个特征，哪个对用户流失影响更大？我们通过计算信息熵可以解决这个问题。</p>
+<p>|  QQ  | gender | active_info | is_lost |<br>| :–: | :—-: | :———: | :—–: |<br>|  1   |   男   |     高      |    0    |<br>|  2   |   女   |     中      |    0    |<br>|  3   |   男   |     低      |    1    |<br>|  4   |   女   |     高      |    0    |<br>|  5   |   男   |     高      |    0    |<br>|  6   |   男   |     中      |    0    |<br>|  7   |   男   |     中      |    1    |<br>|  8   |   女   |     中      |    0    |<br>|  9   |   女   |     低      |    1    |<br>|  10  |   女   |     中      |    0    |<br>|  11  |   女   |     高      |    0    |<br>|  12  |   男   |     低      |    1    |<br>|  13  |   女   |     低      |    1    |<br>|  14  |   男   |     高      |    0    |<br>|  15  |   男   |     高      |    0    |</p>
+<p>按照分组统计，我们可以得到如下信息：</p>
+<p>|      | 已流失(人) | 未流失(人) | 汇总(人) |<br>| :–: | :——–: | :——–: | :——: |<br>| 整体 |     5      |     10     |    15    |<br>|  男  |     3      |     5      |    8     |<br>|  女  |     2      |     5      |    7     |<br>|  高  |     0      |     6      |    6     |<br>|  中  |     1      |     4      |    5     |<br>|  低  |     4      |     0      |    4     |</p>
+<p>那么可得到三个熵：</p>
+<p>整体熵：<br>$$<br>H(S) = -\frac{5}{15}log_{2}(\frac{5}{15})-\frac{10}{15}log_{2}(\frac{10}{15}) = 0.9182<br>$$<br>性别熵：<br>$$<br>H(g_1) = -\frac{3}{8}log_{2}(\frac{3}{8}) - \frac{5}{8}log_{2}(\frac{5}{8}) = 0.9543<br>$$</p>
+<p>$$<br>H(g_1) = -\frac{2}{7}log_{2}(\frac{2}{7}) - \frac{5}{7}log_{2}(\frac{5}{7}) = 0.8631<br>$$</p>
+<p>性别信息增益：<br>$$<br>g(S,g) = H(S)-\frac{8}{15}H(g_1)-\frac{7}{15}H(g_2)=0.0064<br>$$<br>同理计算活跃度熵：<br>$$<br>H(a_1)=0<br>$$</p>
+<p>$$<br>H(a_2)=0.7219<br>$$</p>
+<p>$$<br>H(a_3)=0.0<br>$$</p>
+<p>活跃度信息增益：<br>$$<br>g(S,a) = H(S)-\frac{6}{15}H(a_1)-\frac{5}{15}H(a_2)-\frac{4}{15}H(a_3)=0.6776活跃度的信息增益比性别的信息增益大，也就是说，活跃度对用户流失的影响比性别大。<br>$$<br>活跃度的信息增益比性别的信息增益大，也就是说，活跃度对用户流失的影响比性别大。</p>
+<p>在做特征选择或者数据分析的时候，我们应该重点考察活跃度这个指标。</p>
+<blockquote>
+<p>参考：<a href="https://blog.csdn.net/guomutian911/article/details/78599450" target="_blank" rel="noopener">https://blog.csdn.net/guomutian911/article/details/78599450</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="三、决策树的其它划分依据"><a href="#三、决策树的其它划分依据" class="headerlink" title="三、决策树的其它划分依据"></a>三、决策树的其它划分依据</h3><p>决策树的原理不止信息增益这一种，还有其他方法。</p>
+<ul>
+<li>ID3<ul>
+<li>信息增益 最大的准则</li>
+</ul>
+</li>
+<li>C4.5<ul>
+<li>信息增益比 最大的准则</li>
+</ul>
+</li>
+<li>CART<ul>
+<li>分类树: 基尼系数 最小的准则 在sklearn中可以选择划分的默认原则</li>
+<li>优势：划分更加细致（从后面例子的树显示来理解）</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、决策树-API"><a href="#四、决策树-API" class="headerlink" title="四、决策树 API"></a>四、决策树 API</h2><p>class sklearn.tree.DecisionTreeClassifier(criterion=’gini’, max_depth=None,random_state=None)</p>
+<ul>
+<li>决策树分类器</li>
+<li>criterion<ul>
+<li>默认是’gini’系数</li>
+<li>也可以选择信息增益的熵’entropy’</li>
+</ul>
+</li>
+<li>max_depth<ul>
+<li>树的深度大小</li>
+<li>不指定树的深度很容易出现过拟合</li>
+</ul>
+</li>
+<li>random_state<ul>
+<li>随机数种子</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>gini - 基尼系数</p>
+</blockquote>
+<h2 id="五、决策树-案例：鸢尾花分类案例"><a href="#五、决策树-案例：鸢尾花分类案例" class="headerlink" title="五、决策树 - 案例：鸢尾花分类案例"></a>五、决策树 - 案例：鸢尾花分类案例</h2><ul>
+<li><p>完整代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据集</span></span><br><span class="line">iris=load_iris()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分割数据集</span></span><br><span class="line">x_train,x_test,y_train,y_test=train_test_split(iris.data,iris.target,test_size=<span class="number">0.3</span>,random_state=<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 特征工程：标准化</span></span><br><span class="line">transfer=StandardScaler()</span><br><span class="line">x_train=transfer.fit_transform(x_train)</span><br><span class="line">x_test=transfer.transform(x_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型训练</span></span><br><span class="line"><span class="comment"># 1&gt; 实例化一个估计器</span></span><br><span class="line">estimator=DecisionTreeClassifier(criterion=<span class="string">'entropy'</span>,max_depth=<span class="number">3</span>)</span><br><span class="line"><span class="comment"># 2&gt; 传入训练数据集，进行机器学习</span></span><br><span class="line">estimator.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型评估</span></span><br><span class="line"><span class="comment"># 方法1，比较真实值与预测值</span></span><br><span class="line">y_predict=estimator.predict(x_test)</span><br><span class="line">print(<span class="string">"预测值为:\n"</span>,y_predict)</span><br><span class="line">print(<span class="string">"比较真实值与预测值结果为:\n"</span>,y_predict==y_test)</span><br><span class="line"><span class="comment"># 方法2, 计算模型准确率</span></span><br><span class="line">print(<span class="string">"模型准确率为:\n"</span>,estimator.score(x_test,y_test))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="六、决策树-案例：泰坦尼克号乘客生存预测"><a href="#六、决策树-案例：泰坦尼克号乘客生存预测" class="headerlink" title="六、决策树 - 案例：泰坦尼克号乘客生存预测"></a>六、决策树 - 案例：泰坦尼克号乘客生存预测</h2><ul>
+<li><h4 id="泰坦尼克号数据"><a href="#泰坦尼克号数据" class="headerlink" title="泰坦尼克号数据"></a>泰坦尼克号数据</h4><ul>
+<li>在泰坦尼克号和titanic2数据帧描述泰坦尼克号上的个别乘客的生存状态。这里使用的数据集是由各种研究人员开始的。其中包括许多研究人员创建的旅客名单，由Michael A. Findlay编辑。我们提取的数据集中的特征是票的类别，存活，乘坐班，年龄，登陆，home.dest，房间，票，船和性别。</li>
+<li>乘坐班是指乘客班（1，2，3），是社会经济阶层的代表。</li>
+<li>其中age数据存在缺失。</li>
+</ul>
+<blockquote>
+<p>数据：<a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic.txt" target="_blank" rel="noopener">http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic.txt</a></p>
+</blockquote>
+</li>
+<li><h4 id="步骤分析"><a href="#步骤分析" class="headerlink" title="步骤分析"></a>步骤分析</h4><ul>
+<li>数据预处理，填充缺失值</li>
+<li>提取特征值，目标值</li>
+<li>特征工程，字典特征提取</li>
+<li>数据集划分</li>
+<li>模型训练</li>
+<li>模型评估</li>
+</ul>
+</li>
+<li><h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction <span class="keyword">import</span> DictVectorizer</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据</span></span><br><span class="line">tanic=pd.read_csv(<span class="string">"http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic.txt"</span>)</span><br><span class="line">tanic.head()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据预处理，填充缺失值</span></span><br><span class="line">tanic[<span class="string">'age'</span>].fillna(tanic[<span class="string">'age'</span>].mean(),inplace=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提取特征值，目标值</span></span><br><span class="line">x=tanic[[<span class="string">'pclass'</span>,<span class="string">'age'</span>,<span class="string">'sex'</span>]]</span><br><span class="line">y=tanic[<span class="string">'survived'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 特征工程，字典特征提取</span></span><br><span class="line">transfer=DictVectorizer(sparse=<span class="keyword">False</span>)</span><br><span class="line">x=transfer.fit_transform(x.to_dict(orient=<span class="string">"records"</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据集划分</span></span><br><span class="line">x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型训练</span></span><br><span class="line"><span class="comment"># 1&gt; 实例化一个转换器</span></span><br><span class="line">estimator=DecisionTreeClassifier()</span><br><span class="line"><span class="comment"># 2&gt; 进行机器学习</span></span><br><span class="line">estimator.fit(x_train,y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型评估</span></span><br><span class="line"><span class="comment"># 方法1，比较真实值与预测值</span></span><br><span class="line">y_predict=estimator.predict(x_test)</span><br><span class="line">print(<span class="string">"预测值为:\n"</span>,y_predict)</span><br><span class="line">print(<span class="string">"比较真实值与预测值结果为:\n"</span>,y_predict==y_test)</span><br><span class="line"><span class="comment"># 方法2,计算模型准确率</span></span><br><span class="line">print(<span class="string">"模型准确率为:\n"</span>,estimator.score(x_test,y_test))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #fc6423;font-size:14px;">本文结束   <i class="fa fa-music"></i>   感谢您的阅读</div>
+    
+</div>
+      
+    </div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Mai wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mai 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Mai 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/机器学习实践/" rel="tag"><i class="fa fa-tag"></i> 机器学习实践</a>
+          
+        </div>
+      
+      
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/37565/" rel="next" title="机器学习实践（九）—sklearn之朴素贝叶斯算法">
+                <i class="fa fa-chevron-left"></i> 机器学习实践（九）—sklearn之朴素贝叶斯算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/39976/" rel="prev" title="机器学习实践（十一）—sklearn之随机森林">
+                机器学习实践（十一）—sklearn之随机森林 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BreezeDawn" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:mmmynnn@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/qq_28827635" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/xingtu-" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/qq_37738656" title="黄蜜桃" target="_blank">黄蜜桃</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/charles_thegod" title="Charles_TheGod" target="_blank">Charles_TheGod</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://Astlight.github.io" title="Astlight" target="_blank">Astlight</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、决策树分类概述"><span class="nav-number">1.</span> <span class="nav-text">一、决策树分类概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">1.0.2.</span> <span class="nav-text">原理</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#二、信息熵"><span class="nav-number">2.</span> <span class="nav-text">二、信息熵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">2.0.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公式"><span class="nav-number">2.0.2.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#来自百度百科"><span class="nav-number">2.0.3.</span> <span class="nav-text">来自百度百科</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#来自-lt-数学之美-gt"><span class="nav-number">2.0.4.</span> <span class="nav-text">来自&lt;数学之美&gt;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例助解"><span class="nav-number">2.0.5.</span> <span class="nav-text">示例助解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、-信息增益-决策树的划分依据之一"><span class="nav-number">3.</span> <span class="nav-text">三、 信息增益 - 决策树的划分依据之一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公式-1"><span class="nav-number">3.0.2.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公式的详细解释："><span class="nav-number">3.0.3.</span> <span class="nav-text">公式的详细解释：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例助解-1"><span class="nav-number">3.0.4.</span> <span class="nav-text">示例助解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、决策树的其它划分依据"><span class="nav-number">3.1.</span> <span class="nav-text">三、决策树的其它划分依据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、决策树-API"><span class="nav-number">4.</span> <span class="nav-text">四、决策树 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、决策树-案例：鸢尾花分类案例"><span class="nav-number">5.</span> <span class="nav-text">五、决策树 - 案例：鸢尾花分类案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、决策树-案例：泰坦尼克号乘客生存预测"><span class="nav-number">6.</span> <span class="nav-text">六、决策树 - 案例：泰坦尼克号乘客生存预测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#泰坦尼克号数据"><span class="nav-number">6.0.1.</span> <span class="nav-text">泰坦尼克号数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤分析"><span class="nav-number">6.0.2.</span> <span class="nav-text">步骤分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码"><span class="nav-number">6.0.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mai</span>
+
+  
+</div>
+
+
+
+
+<div>
+
+  <div class="powered-by"></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <span class="post-count">博客全站共52.9k字</span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-group"></i> 总访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总浏览量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  <script type="text/javascript" src="/js/src/china.js"></script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/histoire.model.json"},"display":{"position":"right","width":100,"height":200,"hOffset":0,"superSample":2,"vOffset":-20},"mobile":{"show":false,"scale":0.25},"react":{"opacityDefault":0.9,"opacityOnHover":0.2},"neat_enable":true,"neat_html":{"enable":true,"exclude":null},"neat_css":{"enable":true,"exclude":["‘*.min.css’"]},"neat_js":{"enable":true,"mangle":true,"output":null,"compress":null,"exclude":["‘*.min.js’"]},"log":false});</script>
+
+
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>

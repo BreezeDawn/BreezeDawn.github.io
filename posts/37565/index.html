@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,机器学习实践,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、朴素贝叶斯算法 什么是朴素贝叶斯分类方法属于哪个类别概率大，就判断属于哪个类别  概率基础 概率定义为一件事情发生的可能性 P(X) : 取值在[0, 1]">
+<meta name="keywords" content="机器学习,机器学习实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习实践（九）—sklearn之朴素贝叶斯算法">
+<meta property="og:url" content="http://xingtu.info/posts/37565/index.html">
+<meta property="og:site_name" content="Maifeel">
+<meta property="og:description" content="一、朴素贝叶斯算法 什么是朴素贝叶斯分类方法属于哪个类别概率大，就判断属于哪个类别  概率基础 概率定义为一件事情发生的可能性 P(X) : 取值在[0, 1]">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xingtu.info/posts/37565/img/%E8%AE%A1%E7%AE%97%E6%A6%82%E7%8E%87.png">
+<meta property="og:image" content="http://xingtu.info/posts/37565/img/%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB%E8%AE%A1%E7%AE%97%E4%BE%8B%E5%AD%90.png">
+<meta property="og:image" content="http://xingtu.info/posts/37565/img/%E8%AE%A1%E7%AE%97%E6%A6%82%E7%8E%87.png">
+<meta property="og:updated_time" content="2018-11-24T16:59:41.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习实践（九）—sklearn之朴素贝叶斯算法">
+<meta name="twitter:description" content="一、朴素贝叶斯算法 什么是朴素贝叶斯分类方法属于哪个类别概率大，就判断属于哪个类别  概率基础 概率定义为一件事情发生的可能性 P(X) : 取值在[0, 1]">
+<meta name="twitter:image" content="http://xingtu.info/posts/37565/img/%E8%AE%A1%E7%AE%97%E6%A6%82%E7%8E%87.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xingtu.info/posts/37565/">
+
+
+
+
+
+
+
+  <title>机器学习实践（九）—sklearn之朴素贝叶斯算法 | Maifeel</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maifeel</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/37565/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maifeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">机器学习实践（九）—sklearn之朴素贝叶斯算法</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T23:16:22+08:00">
+                2018-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/机器学习实践/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实践</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、朴素贝叶斯算法"><a href="#一、朴素贝叶斯算法" class="headerlink" title="一、朴素贝叶斯算法"></a>一、朴素贝叶斯算法</h2><ul>
+<li><h4 id="什么是朴素贝叶斯分类方法"><a href="#什么是朴素贝叶斯分类方法" class="headerlink" title="什么是朴素贝叶斯分类方法"></a>什么是朴素贝叶斯分类方法</h4><p>属于哪个类别概率大，就判断属于哪个类别</p>
+</li>
+<li><h4 id="概率基础"><a href="#概率基础" class="headerlink" title="概率基础"></a>概率基础</h4><ul>
+<li>概率定义为一件事情发生的可能性</li>
+<li>P(X) : 取值在[0, 1]</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><strong>联合概率、条件概率与相互独立</strong><ul>
+<li>联合概率：包含多个条件，且所有条件同时成立的概率<ul>
+<li>记作：P(A,B)</li>
+</ul>
+</li>
+<li>条件概率：就是事件A在另外一个事件B已经发生条件下的发生概率<ul>
+<li>记作：P(A|B)</li>
+</ul>
+</li>
+<li><strong>相互独立</strong>：如果P(A, B) = P(A)P(B)，则称事件A与事件B相互独立。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、朴素贝叶斯公式"><a href="#二、朴素贝叶斯公式" class="headerlink" title="二、朴素贝叶斯公式"></a>二、朴素贝叶斯公式</h2><p>$$<br>P(C|W) = \frac{P(W|C)P(C)}{P(W)}<br>$$</p>
+<blockquote>
+<p>朴素贝叶斯：特征之间是相互独立的。</p>
+<p>因此当 W 不存在时，可使用相互独立将 W 进行拆分</p>
+</blockquote>
+<h2 id="三、简单案例："><a href="#三、简单案例：" class="headerlink" title="三、简单案例："></a>三、简单案例：</h2><p><img src="./img/%E8%AE%A1%E7%AE%97%E6%A6%82%E7%8E%87.png" alt="计算概率"></p>
+<ul>
+<li><h4 id="计算下面概率"><a href="#计算下面概率" class="headerlink" title="计算下面概率"></a>计算下面概率</h4><ul>
+<li>P(喜欢|产品, 超重) = ？</li>
+</ul>
+</li>
+<li><h4 id="套用公式可得"><a href="#套用公式可得" class="headerlink" title="套用公式可得"></a>套用公式可得</h4><p>$$<br>P(喜欢|产品, 超重) = \frac{P(产品, 超重|喜欢)P(喜欢)}{P(产品, 超重)}<br>$$</p>
+</li>
+</ul>
+<ul>
+<li><h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4></li>
+<li><p>上式中，P(产品, 超重|喜欢) 和 P(产品, 超重) 的结果均为0，导致无法计算结果。</p>
+</li>
+<li>这是因为我们的样本量太少了，不具有代表性，本来现实生活中，肯定是存在职业是产品经理并且体重超重的人的，P(产品, 超重)不可能为0；而且事件“职业是产品经理”和事件“体重超重”通常被认为是相互独立的事件，</li>
+<li>但是，根据我们有限的7个样本计算“P(产品, 超重) = P(产品)P(超重)”不成立。</li>
+<li>而朴素贝叶斯可以帮助我们解决这个问题。</li>
+<li>朴素贝叶斯，简单理解，就是假定了特征与特征之间相互独立的贝叶斯公式。</li>
+<li>也就是说，朴素贝叶斯，之所以朴素，就在于假定了特征与特征相互独立。</li>
+<li>所以，如果按照朴素贝叶斯的思路来解决，就可以是：</li>
+</ul>
+<p>$$<br>P(产品, 超重) = P(产品) <em> P(超重) = \frac{2}{7} </em> \frac{3}{7} = \frac{6}{49}<br>$$</p>
+<p>$$<br>P(产品, 超重|喜欢) = P(产品|喜欢) <em> P(超重|喜欢) = \frac{1}{2} </em> \frac{1}{4} = \frac{1}{8}<br>$$</p>
+<p>$$<br>P(喜欢|产品, 超重) = \frac{P(产品, 超重|喜欢)P(喜欢)}{P(产品, 超重)} = \frac{\frac{1}{8} * \frac{4}{7}}{\frac{6}{49}} = \frac{7}{12}<br>$$</p>
+<h2 id="四、多个特征的朴素贝叶斯"><a href="#四、多个特征的朴素贝叶斯" class="headerlink" title="四、多个特征的朴素贝叶斯"></a>四、多个特征的朴素贝叶斯</h2><h4 id="1-公式"><a href="#1-公式" class="headerlink" title="1. 公式"></a>1. 公式</h4><p>$$<br>P(C|F_1,F_2,…) = \frac{P(F_1,F_2,…|C)P(C)}{P(F_1,F_2,…)}<br>$$</p>
+<blockquote>
+<p>C 可以是不同类别</p>
+</blockquote>
+<h4 id="2-公式分为三个部分："><a href="#2-公式分为三个部分：" class="headerlink" title="2. 公式分为三个部分："></a>2. 公式分为三个部分：</h4><ul>
+<li>P(C)：每个文档类别的概率(某文档类别数／总文档数量)</li>
+<li>P(W│C)：给定类别下特征（被预测文档中出现的词）的概率<ul>
+<li>计算方法：P(F1│C)=Ni/N （训练文档中去计算）<ul>
+<li>Ni​ 为该F1词在C类别所有文档中出现的次数</li>
+<li>N为所属类别C下的文档所有词出现的次数和</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>P(F1,F2,…) 预测文档中每个词的概率</li>
+</ul>
+<p>如果计算两个类别概率比较：</p>
+<p><strong>所以我们只要比较前面的大小就可以，得出谁的概率大</strong></p>
+<h2 id="四、案例-朴素贝叶斯-文章分类"><a href="#四、案例-朴素贝叶斯-文章分类" class="headerlink" title="四、案例-朴素贝叶斯-文章分类"></a>四、案例-朴素贝叶斯-文章分类</h2><ul>
+<li><h4 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h4><p><img src="./img/%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB%E8%AE%A1%E7%AE%97%E4%BE%8B%E5%AD%90.png" alt=""></p>
+</li>
+<li><h4 id="分别计算属于两个类的概率"><a href="#分别计算属于两个类的概率" class="headerlink" title="分别计算属于两个类的概率"></a>分别计算属于两个类的概率</h4><ul>
+<li>$P(C|Chinese, Chinese, Chinese, Tokyo, Japan)$</li>
+<li>$P(not C|Chinese, Chinese, Chinese, Tokyo, Japan)$</li>
+</ul>
+</li>
+<li><h4 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">P(C|Chinese, Chinese, Chinese, Tokyo, Japan)</span><br><span class="line">= P(Chinese, Chinese, Chinese, Tokyo, Japan|C) * P(C)</span><br><span class="line">= P(Chinese|C)^<span class="number">3</span> * P(Tokyo|C) * P(Japan|C) * P(C)</span><br><span class="line">= <span class="number">5</span>/<span class="number">8</span> * <span class="number">0</span> * <span class="number">0</span></span><br><span class="line">P(notC|Chinese, Chinese, Chinese, Tokyo, Japan)</span><br><span class="line">= P(Chinese, Chinese, Chinese, Tokyo, Japan|notC) * P(notC)</span><br><span class="line">= P(Chinese|notC)^<span class="number">3</span> * P(Tokyo|notC) * P(Japan|notC) * P(notC)</span><br><span class="line">= <span class="number">1</span>/<span class="number">9</span> * <span class="number">1</span>/<span class="number">3</span> * <span class="number">1</span>/<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>但是我们发现  P(Tokyo|C)  和  P(Japan|C) 都为 0，这是不合理的，如果词频列表里面有很多出现次数都为 0，很可能计算结果都为 0。</p>
+<p>我们能够使用拉普拉斯平滑系数解决此问题。</p>
+</li>
+<li><h4 id="拉普拉斯平滑系数"><a href="#拉普拉斯平滑系数" class="headerlink" title="拉普拉斯平滑系数"></a>拉普拉斯平滑系数</h4><p>$$<br>P(F1|C) = \frac{Ni+\alpha}{N+\alpha m}<br>$$</p>
+<blockquote>
+<p>Ni​ 为该F1词在C类别所有文档中出现的次数。</p>
+<p>N为所属类别C下的文档所有词出现的次数和。</p>
+<p>$\alpha$ 为指定的系数，一般为1。</p>
+<p>m 为训练集中有多少个特征词种类，如在此案例中 m = 6 。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="五、sklearn-朴素贝叶斯-API"><a href="#五、sklearn-朴素贝叶斯-API" class="headerlink" title="五、sklearn 朴素贝叶斯 API"></a>五、sklearn 朴素贝叶斯 API</h2><p>sklearn.naive_bayes.MultinomialNB(alpha = 1.0)</p>
+<ul>
+<li>朴素贝叶斯分类</li>
+<li>alpha<ul>
+<li>拉普拉斯平滑系数</li>
+</ul>
+</li>
+</ul>
+<h2 id="六、案例-朴素贝叶斯-20类新闻分类"><a href="#六、案例-朴素贝叶斯-20类新闻分类" class="headerlink" title="六、案例-朴素贝叶斯-20类新闻分类"></a>六、案例-朴素贝叶斯-20类新闻分类</h2><ul>
+<li><h4 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h4><p><img src="./img/%E8%AE%A1%E7%AE%97%E6%A6%82%E7%8E%87.png" alt="计算概率"></p>
+</li>
+<li><h4 id="步骤分析"><a href="#步骤分析" class="headerlink" title="步骤分析"></a>步骤分析</h4><ul>
+<li>进行数据集的分割</li>
+<li>TFIDF进行的特征抽取<ul>
+<li>将文章字符串进行单词抽取</li>
+</ul>
+</li>
+<li>朴素贝叶斯预测</li>
+</ul>
+</li>
+<li><h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><ul>
+<li><blockquote>
+<p>这里的转换器不能对测试集进行 fit 操作，因为 tfidf 转换器对于不同的文章来说提取的特征值不同，提取的特征不同，训练出的模型就不同</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> fetch_20newsgroups</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> MultinomialNB</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据</span></span><br><span class="line">news = fetch_20newsgroups()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 划分数据集</span></span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(news.data, news.target, test_size=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 特征抽取 Tfidf</span></span><br><span class="line"><span class="comment"># 实例化一个转换器</span></span><br><span class="line">transfer = TfidfVectorizer()</span><br><span class="line">x_train = transfer.fit_transform(x_train)</span><br><span class="line"><span class="comment"># 必须使用transfrom因为要让测试数据和训练数据的特征值是一样的。</span></span><br><span class="line">x_test = transfer.transform(x_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型训练</span></span><br><span class="line"><span class="comment"># 实例化一个估计器</span></span><br><span class="line">estimator = MultinomialNB()</span><br><span class="line">estimator.fit(x_train, y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment">#  模型评估</span></span><br><span class="line"><span class="comment"># 方法一：比较真实值与预测值</span></span><br><span class="line">y_predict = estimator.predict(x_test)</span><br><span class="line">print(<span class="string">'预测值为:\n'</span>, y_predict)</span><br><span class="line">print(<span class="string">'比较真实值与预测值结果为:\n'</span>, y_predict==y_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二：计算模型准确率</span></span><br><span class="line">print(<span class="string">'模型准确率为:\n'</span>, estimator.score(x_test, y_test))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="七、朴素贝叶斯优缺点"><a href="#七、朴素贝叶斯优缺点" class="headerlink" title="七、朴素贝叶斯优缺点"></a>七、朴素贝叶斯优缺点</h2><ul>
+<li>优点：<ul>
+<li>思想简单、直观</li>
+<li>有稳定的分类效率，准确度高，速度快</li>
+<li>对缺失数据不太敏感，算法也比较简单，常用于文本分类。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>由于假设了特征之间相互独立性，但是往往特征之间会有所关联，所以如果特征之间有相关性，效果不会太好。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #fc6423;font-size:14px;">本文结束   <i class="fa fa-music"></i>   感谢您的阅读</div>
+    
+</div>
+      
+    </div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Mai wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mai 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Mai 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/机器学习实践/" rel="tag"><i class="fa fa-tag"></i> 机器学习实践</a>
+          
+        </div>
+      
+      
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/6398/" rel="next" title="机器学习实践（八）—sklearn之交叉验证与参数调优">
+                <i class="fa fa-chevron-left"></i> 机器学习实践（八）—sklearn之交叉验证与参数调优
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/51802/" rel="prev" title="机器学习实践（十）—sklearn之决策树">
+                机器学习实践（十）—sklearn之决策树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BreezeDawn" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:mmmynnn@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/qq_28827635" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/xingtu-" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/qq_37738656" title="黄蜜桃" target="_blank">黄蜜桃</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/charles_thegod" title="Charles_TheGod" target="_blank">Charles_TheGod</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://Astlight.github.io" title="Astlight" target="_blank">Astlight</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、朴素贝叶斯算法"><span class="nav-number">1.</span> <span class="nav-text">一、朴素贝叶斯算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是朴素贝叶斯分类方法"><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是朴素贝叶斯分类方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概率基础"><span class="nav-number">1.0.2.</span> <span class="nav-text">概率基础</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#二、朴素贝叶斯公式"><span class="nav-number">2.</span> <span class="nav-text">二、朴素贝叶斯公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、简单案例："><span class="nav-number">3.</span> <span class="nav-text">三、简单案例：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算下面概率"><span class="nav-number">3.0.1.</span> <span class="nav-text">计算下面概率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#套用公式可得"><span class="nav-number">3.0.2.</span> <span class="nav-text">套用公式可得</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析"><span class="nav-number">3.0.3.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、多个特征的朴素贝叶斯"><span class="nav-number">4.</span> <span class="nav-text">四、多个特征的朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-公式"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. 公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-公式分为三个部分："><span class="nav-number">4.0.2.</span> <span class="nav-text">2. 公式分为三个部分：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、案例-朴素贝叶斯-文章分类"><span class="nav-number">5.</span> <span class="nav-text">四、案例-朴素贝叶斯-文章分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据"><span class="nav-number">5.0.1.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分别计算属于两个类的概率"><span class="nav-number">5.0.2.</span> <span class="nav-text">分别计算属于两个类的概率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算过程"><span class="nav-number">5.0.3.</span> <span class="nav-text">计算过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拉普拉斯平滑系数"><span class="nav-number">5.0.4.</span> <span class="nav-text">拉普拉斯平滑系数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、sklearn-朴素贝叶斯-API"><span class="nav-number">6.</span> <span class="nav-text">五、sklearn 朴素贝叶斯 API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、案例-朴素贝叶斯-20类新闻分类"><span class="nav-number">7.</span> <span class="nav-text">六、案例-朴素贝叶斯-20类新闻分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据集介绍"><span class="nav-number">7.0.1.</span> <span class="nav-text">数据集介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤分析"><span class="nav-number">7.0.2.</span> <span class="nav-text">步骤分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码"><span class="nav-number">7.0.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、朴素贝叶斯优缺点"><span class="nav-number">8.</span> <span class="nav-text">七、朴素贝叶斯优缺点</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mai</span>
+
+  
+</div>
+
+
+
+
+<div>
+
+  <div class="powered-by"></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <span class="post-count">博客全站共52.9k字</span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-group"></i> 总访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总浏览量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  <script type="text/javascript" src="/js/src/china.js"></script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/histoire.model.json"},"display":{"position":"right","width":100,"height":200,"hOffset":0,"superSample":2,"vOffset":-20},"mobile":{"show":false,"scale":0.25},"react":{"opacityDefault":0.9,"opacityOnHover":0.2},"neat_enable":true,"neat_html":{"enable":true,"exclude":null},"neat_css":{"enable":true,"exclude":["‘*.min.css’"]},"neat_js":{"enable":true,"mangle":true,"output":null,"compress":null,"exclude":["‘*.min.js’"]},"log":false});</script>
+
+
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>
