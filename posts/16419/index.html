@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="机器学习,机器学习实践,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、线性回归应用场景 房价预测 销售额度预测 金融：贷款额度预测、利用线性回归以及系数分析因子">
+<meta name="keywords" content="机器学习,机器学习实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习实践（十二）—sklearn之线性回归">
+<meta property="og:url" content="http://xingtu.info/posts/16419/index.html">
+<meta property="og:site_name" content="Maifeel">
+<meta property="og:description" content="一、线性回归应用场景 房价预测 销售额度预测 金融：贷款额度预测、利用线性回归以及系数分析因子">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="c:/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%BC%98%E5%8C%96%E5%8A%A8%E6%80%81%E5%9B%BE.gif">
+<meta property="og:image" content="c:/img/%E6%88%BF%E4%BB%B7%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D.png">
+<meta property="og:image" content="c:/img/%E5%B1%9E%E6%80%A7.png">
+<meta property="og:updated_time" content="2018-12-01T16:13:50.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习实践（十二）—sklearn之线性回归">
+<meta name="twitter:description" content="一、线性回归应用场景 房价预测 销售额度预测 金融：贷款额度预测、利用线性回归以及系数分析因子">
+<meta name="twitter:image" content="c:/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%BC%98%E5%8C%96%E5%8A%A8%E6%80%81%E5%9B%BE.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xingtu.info/posts/16419/">
+
+
+
+
+
+
+
+  <title>机器学习实践（十二）—sklearn之线性回归 | Maifeel</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Maifeel</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://xingtu.info/posts/16419/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Maifeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">机器学习实践（十二）—sklearn之线性回归</h2>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-02T00:12:07+08:00">
+                2018-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/机器学习实践/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习实践</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、线性回归应用场景"><a href="#一、线性回归应用场景" class="headerlink" title="一、线性回归应用场景"></a>一、线性回归应用场景</h2><ul>
+<li>房价预测</li>
+<li>销售额度预测</li>
+<li>金融：贷款额度预测、利用线性回归以及系数分析因子</li>
+</ul>
+<a id="more"></a>
+<h2 id="二、线性回归的原理"><a href="#二、线性回归的原理" class="headerlink" title="二、线性回归的原理"></a>二、线性回归的原理</h2><ul>
+<li><h4 id="什么是回归"><a href="#什么是回归" class="headerlink" title="什么是回归"></a>什么是回归</h4><p>在机器学习中，回归就是拟合的意思，我们需要找出一个模型来拟合(回归)数据。</p>
+</li>
+<li><h4 id="什么是线性回归"><a href="#什么是线性回归" class="headerlink" title="什么是线性回归"></a>什么是线性回归</h4><ul>
+<li>线性回归是：利用回归方程(函数)，对特征值和目标值之间关系进行建模的一种分析方式。</li>
+<li>特征值和目标值可以是一个或多个，特征值和目标值可以看作函数意义上的自变量和因变量。</li>
+</ul>
+</li>
+<li><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>只有一个自变量的情况称为单变量回归。</li>
+<li>多于一个自变量的情况称为多元回归。</li>
+</ul>
+</li>
+<li><h4 id="通用公式"><a href="#通用公式" class="headerlink" title="通用公式"></a>通用公式</h4><p>$$<br>h(\theta) = \theta_1x_1 + \theta_2x_2 + \theta_3x_3 + … + b = \theta^Tx + b<br>$$</p>
+<ul>
+<li>其中：<ul>
+<li>$\theta = (\theta_1,\theta_2,…,\theta_n,b)^T$</li>
+<li>$x = (x_1,x_2,…,x_n,1)^T$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="线性回归的特征与目标的关系"><a href="#线性回归的特征与目标的关系" class="headerlink" title="线性回归的特征与目标的关系"></a>线性回归的特征与目标的关系</h4><p>线性回归当中线性模型有两种，一种是线性关系，另一种是非线性关系。</p>
+</li>
+</ul>
+<h2 id="三、损失函数"><a href="#三、损失函数" class="headerlink" title="三、损失函数"></a>三、损失函数</h2><p>假设真实值为 $y$ ，我们的预测值为 $h(\theta)$ ，真实结果与我们预测的结果之间可能存在一定的误差。</p>
+<p>既然存在这个误差，那我们就可以将这个误差给衡量出来。</p>
+<ul>
+<li><h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><p>$$<br>J(\theta) = (h_\theta(x_1)-y_1)^2 +(h_\theta(x_2)-y_2)^2 + … +(h_\theta(x_3)-y_3)^2 = \sum_{i=1}^{m}(h_\theta(x_i)-y_i)^2<br>$$</p>
+<ul>
+<li>$y_i$ 为第 i 条训练数据的真实值。</li>
+<li>$h(x_i)$ 为第 i 条训练数据的预测函数产生的预测值，且 $h(x_i)$ 是关于参数 $\theta$ 的函数。</li>
+<li>又称最小二乘法</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、优化算法"><a href="#四、优化算法" class="headerlink" title="四、优化算法"></a>四、优化算法</h2><p>如何去减少损失函数的损失使我们预测的更加准确呢？</p>
+<p>我们一直说机器学习有自动学习的能力，在线性回归这里更是能够体现。</p>
+<p>这里可以通过一些优化方法去优化（本质是求导）回归的总损失！</p>
+<ul>
+<li><h4 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h4><p>$$<br>\theta = (X^TX)^{-1}X^Ty<br>$$</p>
+<blockquote>
+<p>理解：X 为特征值矩阵，y 为目标值矩阵。直接求到最好的结果。</p>
+<p>缺点：当特征过多过复杂时，求解速度太慢并且得不到结果。</p>
+</blockquote>
+</li>
+<li><h4 id="梯度下降-Gradient-Descent"><a href="#梯度下降-Gradient-Descent" class="headerlink" title="梯度下降(Gradient Descent)"></a>梯度下降(Gradient Descent)</h4><p>$$<br>\theta_j := \theta_j - \alpha \frac{\partial}{\partial\theta_j} J(\theta)<br>$$</p>
+<blockquote>
+<p>理解：α 为学习速率，需要手动指定（超参数），$\frac{\partial}{\partial\theta_j} J(\theta)$ 整体表示下降方向</p>
+<p>沿着这个函数下降的方向，最后就能找到山谷的最低点，然后更新 $\theta$ 值</p>
+<p>使用：面对训练数据规模十分庞大的任务 ，能够找到较好的结果</p>
+</blockquote>
+<ul>
+<li>梯度下降步骤<ol>
+<li>随机初始化一个点 </li>
+<li>自主学习</li>
+<li>达到最小，终止学习</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><h4 id="有了梯度下降这样一个优化算法，回归就有了”自动学习”的能力"><a href="#有了梯度下降这样一个优化算法，回归就有了”自动学习”的能力" class="headerlink" title="有了梯度下降这样一个优化算法，回归就有了”自动学习”的能力"></a>有了梯度下降这样一个优化算法，回归就有了”自动学习”的能力</h4></li>
+</ul>
+<p><img src="C:/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%BC%98%E5%8C%96%E5%8A%A8%E6%80%81%E5%9B%BE.gif" alt=""></p>
+<h2 id="五、sklearn-线性回归-API"><a href="#五、sklearn-线性回归-API" class="headerlink" title="五、sklearn - 线性回归 - API"></a>五、sklearn - 线性回归 - API</h2><p>sklearn提供给我们两种实现的API， 可以根据选择使用。</p>
+<ul>
+<li><h4 id="正规方程-API"><a href="#正规方程-API" class="headerlink" title="正规方程 API"></a>正规方程 API</h4><p>sklearn.linear_model.LinearRegression(fit_intercept=True)</p>
+<ul>
+<li>通过正规方程优化</li>
+<li>fit_intercept<ul>
+<li>是否计算偏置</li>
+</ul>
+</li>
+<li>LinearRegression.coef_<ul>
+<li>回归系数</li>
+</ul>
+</li>
+<li>LinearRegression.intercept_<ul>
+<li>偏置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="梯度下降-API"><a href="#梯度下降-API" class="headerlink" title="梯度下降 API"></a>梯度下降 API</h4><p>sklearn.linear_model.SGDRegressor(loss=”squared_loss”, fit_intercept=True, learning_rate =’invscaling’, eta0=0.01)</p>
+<ul>
+<li>SGDRegressor类实现了随机梯度下降学习，它支持不同的<strong>loss函数和正则化惩罚项</strong>来拟合线性回归模型。</li>
+<li>loss<ul>
+<li>损失类型</li>
+<li>loss=”squared_loss”: 普通最小二乘法</li>
+</ul>
+</li>
+<li>fit_intercept<ul>
+<li>是否计算偏置</li>
+</ul>
+</li>
+<li>learning_rate <ul>
+<li>学习率填充</li>
+<li>‘constant’<ul>
+<li>$\eta = \eta_0$</li>
+</ul>
+</li>
+<li>‘optimal’<ul>
+<li>$\eta = \frac{1.0}{\alpha * (t + t_0)} $ [default]</li>
+</ul>
+</li>
+<li>‘invscaling’<ul>
+<li>$\eta = \frac{\eta_0}{pow(t, power_t)}$</li>
+<li>power_t=0.25<ul>
+<li>存在父类当中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对于一个常数值的学习率来说，可以使用learning_rate=’constant’ ，并使用 $\eta_0$来指定学习率。</li>
+</ul>
+</li>
+<li>SGDRegressor.coef_<ul>
+<li>回归系数</li>
+</ul>
+</li>
+<li>SGDRegressor.intercept_<ul>
+<li>偏置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="回归性能评估-API"><a href="#回归性能评估-API" class="headerlink" title="回归性能评估 API"></a>回归性能评估 API</h4><ul>
+<li>均方误差(Mean Squared Error)评价机制：</li>
+</ul>
+<p>$$<br>MSE = \frac{1}{m}\sum_{i=1}^{m}(y^i-y^{real})^2<br>$$</p>
+<blockquote>
+<p>注：$y^i$ 为预测值，$y^{real}$ 为真实值</p>
+</blockquote>
+<ul>
+<li>sklearn.metrics.mean_squared_error(y_true, y_pred)<ul>
+<li>均方误差回归损失</li>
+<li>y_true<ul>
+<li>真实值</li>
+</ul>
+</li>
+<li>y_pred<ul>
+<li>预测值</li>
+</ul>
+</li>
+<li>return<ul>
+<li>浮点数结果</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="六、案例-线性回归-波士顿房价预测"><a href="#六、案例-线性回归-波士顿房价预测" class="headerlink" title="六、案例 - 线性回归 - 波士顿房价预测"></a>六、案例 - 线性回归 - 波士顿房价预测</h2><ul>
+<li><h4 id="数据介绍"><a href="#数据介绍" class="headerlink" title="数据介绍"></a>数据介绍</h4><p><img src="C:/img/%E6%88%BF%E4%BB%B7%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D.png" alt=""></p>
+</li>
+</ul>
+<p><img src="C:/img/%E5%B1%9E%E6%80%A7.png" alt=""></p>
+<blockquote>
+<p>给定的这些特征，是专家们得出的影响房价的结果属性。我们此阶段不需要自己去探究特征是否有用，只需要使用这些特征。</p>
+</blockquote>
+<ul>
+<li><h4 id="步骤分析"><a href="#步骤分析" class="headerlink" title="步骤分析"></a>步骤分析</h4><p>回归当中的数据大小不一致，是否会导致结果影响较大。所以需要做标准化处理。</p>
+<ul>
+<li>数据分割与标准化处理</li>
+<li>回归预测</li>
+<li>线性回归的算法效果评估</li>
+</ul>
+</li>
+<li><h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression,SGDRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_boston</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据</span></span><br><span class="line">boston = load_boston()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 划分数据集</span></span><br><span class="line">x_train,x_test,y_train,y_test = train_test_split(boston.data,boston.target,random_state=<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 特征工程，标准化</span></span><br><span class="line"><span class="comment"># 1&gt; 创建一个转换器</span></span><br><span class="line">transfer = StandardScaler()</span><br><span class="line"><span class="comment"># 2&gt; 数据标准化</span></span><br><span class="line">x_train = transfer.fit_transform(x_train)</span><br><span class="line">x_test = transfer.transform(x_test)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一：正规方程求解</span></span><br><span class="line"><span class="comment"># 模型训练</span></span><br><span class="line"><span class="comment"># 1&gt; 创建一个估计器</span></span><br><span class="line">estimator_1 = LinearRegression()</span><br><span class="line"><span class="comment"># 2&gt; 传入训练数据，进行机器学习</span></span><br><span class="line">estimator_1.fit(x_train,y_train)</span><br><span class="line"><span class="comment"># 3&gt; 打印梯度下降优化后的模型结果系数</span></span><br><span class="line">print(estimator_1.coef_)</span><br><span class="line"><span class="comment"># 4&gt; 打印梯度下降优化后的模型结果偏置</span></span><br><span class="line">print(estimator_1.intercept_)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二：梯度下降求解</span></span><br><span class="line"><span class="comment"># 模型训练</span></span><br><span class="line"><span class="comment"># 1&gt; 创建一个估计器，可以通过调参数，找到学习率效果更好的值</span></span><br><span class="line">estimator_2 = SGDRegressor(learning_rate=<span class="string">'constant'</span>, eta0=<span class="number">0.001</span>)</span><br><span class="line"><span class="comment"># 2&gt; 传入训练数据，进行机器学习</span></span><br><span class="line">estimator_2.fit(x_train,y_train)</span><br><span class="line"><span class="comment"># 3&gt; 打印梯度下降优化后的模型结果系数</span></span><br><span class="line">print(estimator_2.coef_)</span><br><span class="line"><span class="comment"># 4&gt; 打印梯度下降优化后的模型结果偏置</span></span><br><span class="line">print(estimator_2.intercept_)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型评估</span></span><br><span class="line"><span class="comment"># 使用均方误差对正规方程模型评估</span></span><br><span class="line">y_predict = estimator_1.predict(x_test)</span><br><span class="line">error = mean_squared_error(y_test,y_predict)</span><br><span class="line">print(<span class="string">'正规方程优化的均方误差为:\n'</span>,error)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用均方误差对梯度下降模型评估</span></span><br><span class="line">y_predict = estimator_2.predict(x_test)</span><br><span class="line">error = mean_squared_error(y_test,y_predict)</span><br><span class="line">print(<span class="string">'梯度下降优化的均方误差为:\n'</span>,error)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="七、正规方程与梯度下降比较"><a href="#七、正规方程与梯度下降比较" class="headerlink" title="七、正规方程与梯度下降比较"></a>七、正规方程与梯度下降比较</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">梯度下降</th>
+<th style="text-align:center">正规方程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">需要选择学习率</td>
+<td style="text-align:center">不需要</td>
+</tr>
+<tr>
+<td style="text-align:center">需要迭代求解</td>
+<td style="text-align:center">一次运算得出</td>
+</tr>
+<tr>
+<td style="text-align:center">特征数量较大可以使用</td>
+<td style="text-align:center">需要计算方程，时间复杂度高O(n3)</td>
+</tr>
+<tr>
+<td style="text-align:center">适用大数据集</td>
+<td style="text-align:center">适用小数据集</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #fc6423;font-size:14px;">本文结束   <i class="fa fa-music"></i>   感谢您的阅读</div>
+    
+</div>
+      
+    </div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Mai wechat" style="width: 200px; max-width: 100%;">
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mai 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Mai 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+          
+            <a href="/tags/机器学习实践/" rel="tag"><i class="fa fa-tag"></i> 机器学习实践</a>
+          
+        </div>
+      
+      
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/17138/" rel="next" title="百面机器学习-怎样处理类别型特征">
+                <i class="fa fa-chevron-left"></i> 百面机器学习-怎样处理类别型特征
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/47108/" rel="prev" title="机器学习实践（十三）—sklearn之欠拟合与过拟合">
+                机器学习实践（十三）—sklearn之欠拟合与过拟合 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Mai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/BreezeDawn" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:mmmynnn@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/qq_28827635" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/xingtu-" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/qq_37738656" title="黄蜜桃" target="_blank">黄蜜桃</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://me.csdn.net/charles_thegod" title="Charles_TheGod" target="_blank">Charles_TheGod</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://Astlight.github.io" title="Astlight" target="_blank">Astlight</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、线性回归应用场景"><span class="nav-number">1.</span> <span class="nav-text">一、线性回归应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、线性回归的原理"><span class="nav-number">2.</span> <span class="nav-text">二、线性回归的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是回归"><span class="nav-number">2.0.1.</span> <span class="nav-text">什么是回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是线性回归"><span class="nav-number">2.0.2.</span> <span class="nav-text">什么是线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">2.0.3.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通用公式"><span class="nav-number">2.0.4.</span> <span class="nav-text">通用公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性回归的特征与目标的关系"><span class="nav-number">2.0.5.</span> <span class="nav-text">线性回归的特征与目标的关系</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#三、损失函数"><span class="nav-number">3.</span> <span class="nav-text">三、损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#损失函数"><span class="nav-number">3.0.1.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、优化算法"><span class="nav-number">4.</span> <span class="nav-text">四、优化算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正规方程"><span class="nav-number">4.0.1.</span> <span class="nav-text">正规方程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降-Gradient-Descent"><span class="nav-number">4.0.2.</span> <span class="nav-text">梯度下降(Gradient Descent)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有了梯度下降这样一个优化算法，回归就有了”自动学习”的能力"><span class="nav-number">4.0.3.</span> <span class="nav-text">有了梯度下降这样一个优化算法，回归就有了”自动学习”的能力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、sklearn-线性回归-API"><span class="nav-number">5.</span> <span class="nav-text">五、sklearn - 线性回归 - API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正规方程-API"><span class="nav-number">5.0.1.</span> <span class="nav-text">正规方程 API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降-API"><span class="nav-number">5.0.2.</span> <span class="nav-text">梯度下降 API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回归性能评估-API"><span class="nav-number">5.0.3.</span> <span class="nav-text">回归性能评估 API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、案例-线性回归-波士顿房价预测"><span class="nav-number">6.</span> <span class="nav-text">六、案例 - 线性回归 - 波士顿房价预测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据介绍"><span class="nav-number">6.0.1.</span> <span class="nav-text">数据介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤分析"><span class="nav-number">6.0.2.</span> <span class="nav-text">步骤分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码"><span class="nav-number">6.0.3.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、正规方程与梯度下降比较"><span class="nav-number">7.</span> <span class="nav-text">七、正规方程与梯度下降比较</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mai</span>
+
+  
+</div>
+
+
+
+
+<div>
+
+  <div class="powered-by"></div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    <span class="post-count">博客全站共58.1k字</span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-group"></i> 总访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总浏览量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+  <script type="text/javascript" src="/js/src/china.js"></script>
+  <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":true,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/histoire.model.json"},"display":{"position":"right","width":100,"height":200,"hOffset":0,"superSample":2,"vOffset":-20},"mobile":{"show":false,"scale":0.25},"react":{"opacityDefault":0.9,"opacityOnHover":0.2},"neat_enable":true,"neat_html":{"enable":true,"exclude":null},"neat_css":{"enable":true,"exclude":["‘*.min.css’"]},"neat_js":{"enable":true,"mangle":true,"output":null,"compress":null,"exclude":["‘*.min.js’"]},"log":false});</script>
+
+
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+</body>
+</html>
